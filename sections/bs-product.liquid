@@ -224,6 +224,41 @@
               <ul class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}">
                 <li>{{- block.settings.text -}}</li>
               </ul>
+
+            {%- when 'people_bought_today' -%}
+              <div class="people-bought-today"
+                   data-block-id="{{ block.id }}"
+                   data-initial-count="{{ block.settings.initial_count }}"
+                   data-min-increment="{{ block.settings.min_increment }}"
+                   data-max-increment="{{ block.settings.max_increment }}"
+                   data-text-template="{{ block.settings.text_template }}">
+                <style>
+                  .people-bought-today {
+                    background: #f8f9fa;
+                    border-left: 3px solid #28a745;
+                    padding: 12px 16px;
+                    margin: 15px 0;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    color: #333;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                  }
+                  .people-bought-today::before {
+                    content: "🔥";
+                    font-size: 18px;
+                  }
+                  .people-bought-today-count {
+                    font-weight: 600;
+                    color: #28a745;
+                  }
+                </style>
+                <span class="people-bought-today-text">
+                  <span class="people-bought-today-count">{{ block.settings.initial_count }}</span> people bought this today.
+                </span>
+              </div>
+
             {% if product_type %}
             <p class="product-single__type"><label>{{ 'products.product.type' | t }}</label>: {{ product.type }}</p>
             {% endif %}
@@ -1372,7 +1407,98 @@
     $('.sidebar-overlay').removeClass('show');
     $('.sidebar-fixed').removeClass('active');
 
-  }); 
+  });
+</script>
+
+<script>
+  // People Bought Today Counter with Auto-Increment
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var counterBlock = document.querySelector('.people-bought-today');
+
+      if (!counterBlock) return;
+
+      var blockId = counterBlock.getAttribute('data-block-id');
+      var initialCount = parseInt(counterBlock.getAttribute('data-initial-count')) || 15;
+      var minIncrement = parseInt(counterBlock.getAttribute('data-min-increment')) || 5;
+      var maxIncrement = parseInt(counterBlock.getAttribute('data-max-increment')) || 15;
+      var textTemplate = counterBlock.getAttribute('data-text-template') || '{count} people bought this today.';
+
+      var storageKey = 'peoplebought_' + blockId + '_' + window.location.pathname;
+      var timeStorageKey = storageKey + '_time';
+
+      // Get stored data
+      var storedCount = localStorage.getItem(storageKey);
+      var storedTime = localStorage.getItem(timeStorageKey);
+      var currentTime = new Date().getTime();
+
+      var currentCount = initialCount;
+
+      // Check if we have stored data
+      if (storedCount && storedTime) {
+        var timeDiff = currentTime - parseInt(storedTime);
+        var hoursDiff = timeDiff / (1000 * 60 * 60);
+
+        // Random interval between 2-3 hours
+        var incrementInterval = 2 + Math.random(); // 2 to 3 hours
+
+        if (hoursDiff >= incrementInterval) {
+          // Time to increment
+          var increment = Math.floor(Math.random() * (maxIncrement - minIncrement + 1)) + minIncrement;
+          currentCount = parseInt(storedCount) + increment;
+
+          // Store new values
+          localStorage.setItem(storageKey, currentCount);
+          localStorage.setItem(timeStorageKey, currentTime);
+        } else {
+          // Use stored count
+          currentCount = parseInt(storedCount);
+        }
+      } else {
+        // First time, store initial values
+        localStorage.setItem(storageKey, currentCount);
+        localStorage.setItem(timeStorageKey, currentTime);
+      }
+
+      // Update display
+      var countSpan = counterBlock.querySelector('.people-bought-today-count');
+      var textSpan = counterBlock.querySelector('.people-bought-today-text');
+
+      if (countSpan) {
+        countSpan.textContent = currentCount;
+      }
+
+      if (textSpan) {
+        textSpan.innerHTML = textTemplate.replace('{count}', '<span class="people-bought-today-count">' + currentCount + '</span>');
+      }
+
+      // Set up periodic check every 30 minutes
+      setInterval(function() {
+        var checkTime = new Date().getTime();
+        var lastUpdateTime = parseInt(localStorage.getItem(timeStorageKey));
+        var timeSinceUpdate = checkTime - lastUpdateTime;
+        var hoursSinceUpdate = timeSinceUpdate / (1000 * 60 * 60);
+
+        var incrementInterval = 2 + Math.random(); // 2 to 3 hours
+
+        if (hoursSinceUpdate >= incrementInterval) {
+          var increment = Math.floor(Math.random() * (maxIncrement - minIncrement + 1)) + minIncrement;
+          var newCount = parseInt(localStorage.getItem(storageKey)) + increment;
+
+          localStorage.setItem(storageKey, newCount);
+          localStorage.setItem(timeStorageKey, checkTime);
+
+          if (countSpan) {
+            countSpan.textContent = newCount;
+          }
+
+          if (textSpan) {
+            textSpan.innerHTML = textTemplate.replace('{count}', '<span class="people-bought-today-count">' + newCount + '</span>');
+          }
+        }
+      }, 30 * 60 * 1000); // Check every 30 minutes
+    });
+  })();
 </script>
 
 {% schema %}
@@ -1634,6 +1760,45 @@
           "id": "page",
           "type": "page",
           "label": "t:sections.main-product.blocks.popup.settings.page.label"
+        }
+      ]
+    },
+    {
+      "type": "people_bought_today",
+      "name": "People Bought Today",
+      "settings": [
+        {
+          "type": "range",
+          "id": "initial_count",
+          "min": 5,
+          "max": 50,
+          "step": 1,
+          "default": 15,
+          "label": "Initial Count"
+        },
+        {
+          "type": "range",
+          "id": "min_increment",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 5,
+          "label": "Minimum Increment Amount"
+        },
+        {
+          "type": "range",
+          "id": "max_increment",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "default": 15,
+          "label": "Maximum Increment Amount"
+        },
+        {
+          "type": "text",
+          "id": "text_template",
+          "default": "{count} people bought this today.",
+          "label": "Display Text (use {count} for number)"
         }
       ]
     }
