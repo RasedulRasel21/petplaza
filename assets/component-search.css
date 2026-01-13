@@ -1,0 +1,43 @@
+.search__input.field__input {
+  padding-right: 5rem;
+  padding-left: 20px;
+}
+
+.search__button .icon {
+  height: 1.8rem;
+}
+.search__button .icon:hover {
+  color: var(--theme-primary-color);
+}
+/* Remove extra spacing for search inputs in Safari */
+input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.template-search__results .search-title{
+  padding: 20px 0;
+}
+
+.template-search__results .grid-search-popup .product-item {
+  margin-bottom: 30px;
+}
+@media (max-width: 1024px) { 
+  div.template-search__results {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 992px) { 
+.template-search__results .grid-search-popup .product-item {
+  width: 33.33%;
+}
+}
+@media (max-width: 767px) { 
+  .template-search__results .grid-search-popup .product-item {
+    width: 50%;
+  }
+}
+@media (max-width: 480px) { 
+  .template-search__results .grid-search-popup .product-item {
+    width: 100%;
+  }
+}

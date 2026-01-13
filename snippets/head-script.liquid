@@ -1,0 +1,82 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'bs-layout.css' | asset_url | stylesheet_tag }}
+{{ 'bs-component.css' | asset_url | stylesheet_tag }}
+{{ 'bs-listing.css' | asset_url | stylesheet_tag }}
+{{ 'bs-minicart.css' | asset_url | stylesheet_tag }}
+{{ 'bs-search.css' | asset_url | stylesheet_tag }}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+<script src="{{ 'jquery.ajaxify.js' | asset_url }}" defer="defer"></script> 
+<script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'lazyload.js' | asset_url }}" defer="defer"></script>
+<script src="{{'jquery.history.js' | asset_url}}" ></script>
+<script src="{{'jquery.elevateZoom.min.js' | asset_url}}" ></script>
+<script src="{{'jquery.themepunch.revolution.min.js' | asset_url}}" ></script>
+<script src="{{'jquery.themepunch.tools.min.js' | asset_url}}" ></script>
+<script src="{{'bs-filter.js' | asset_url}}" ></script>
+
+<script src="{{'slick.min.js' | asset_url}}" ></script>
+<script src="{{'selectize.min.js' | asset_url}}" ></script>
+<script src="{{ 'wow.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{'bs_app.js' | asset_url}}" ></script>
+<script src="{{'bzo_component.js' | asset_url}}" ></script>
+<script src="{{'appear.js' | asset_url}}" ></script>
+<script src="{{'jquery-cookie.min.js' | asset_url}}" ></script>
+<script src="{{'api.jquery.js' | shopify_asset_url }}" ></script>
+<script src="{{'libs.js' | asset_url}}" ></script>
+<script src="{{'wish-list.js' | asset_url}}" ></script>
+<script src="{{'owl.carousel.min.js' | asset_url}}" ></script>
+<script src="{{'owl.animate.js' | asset_url}}" ></script>
+<script src="{{'option_selection.js' | shopify_asset_url }}" ></script>
+<script src="{{'sticky-kit.min.js' | asset_url}}" ></script>
+{% if template contains 'customers' %}
+<script src="{{'shopify_common.js' | shopify_asset_url }}" ></script>
+{% endif %}
+{% if template contains 'product' %}
+<script src="{{'jquery.fancybox.pack.js' | asset_url}}" ></script>
+{% endif %}
+
+<script>
+  
+  window.money_format = "{{shop.money_with_currency_format}}";
+  window.shop_currency = "{{ shop.currency }}";
+  window.show_multiple_currencies = {{settings.show_multiple_currencies}};
+
+  window.file_url = "{{''|file_url}}"; 
+  window.theme_load = "{{ 'ajax-loader.gif' | asset_url}}"; 
+  window.filter_mul_choice = true;
+  //Product Detail - Add to cart
+  window.btn_addToCart = '#btnAddtocart';
+  window.product_detail_form = '#AddToCartForm';
+  window.product_detail_name = '.product-info h1';
+  window.product_detail_mainImg = '.product-single-photos img';
+  window.addcart_susscess = "{{ addcart-susscess}}";
+  window.cart_count = ".mini-cart .cart-count";
+  window.cart_total = ".mini-cart .cart-total";
+  window.addcart_susscess = "{{ addcart-susscess}}";
+  window.trans_text = {
+    in_stock: "{{ 'products.product.in_stock' | t }}",
+    many_in_stock: "{{ 'products.product.many_in_stock' | t }}",
+    out_of_stock: "{{ 'products.product.out_of_stock' | t }}",
+    add_to_cart: "{{ 'products.product.add_to_cart' | t }}",
+    sold_out: "{{ 'products.product.sold_out' | t }}",
+    unavailable: "{{ 'products.product.unavailable' | t }}"
+  };
+
+</script>
+
+
+
+
+
+
+
+
+

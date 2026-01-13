@@ -1,0 +1,686 @@
+{% assign productCollection = section.settings.product_collection %}
+{% assign limit = section.settings.limit %}
+{% assign imageSize = section.settings.image_size %}
+{% assign randomNumber = 'now' | date: '%N' | modulo: 100 %}
+{% assign totalProductsCollection = collections[productCollection].products_count | plus: 0 %}
+{% assign totalProducts = 0 %}
+{% assign row = section.settings.row | plus: 0 %}
+{% assign count = 0 %}
+
+{% assign blockType = section.settings.block_type %}
+{% if blockType == '1' %}
+  {% assign typeClass = 'block-type-slider' %}
+{% else %}
+  {% assign typeClass = 'block-type-grid' %}
+  {% assign gridColumns = section.settings.grid_columns %}
+  {% assign gridColumnsValue = gridColumns | times: 1.0 %}
+  {% assign width = 100 | divided_by: gridColumnsValue %}
+  {% assign style = 'style="width:' | append: width | append: '%"' %}
+{% endif %}
+
+{% if limit >= totalProductsCollection %}
+  {% assign totalProducts = totalProductsCollection %}
+{% else %}
+  {% assign totalProducts = limit %}
+{% endif %}
+
+{% assign typeTitle = 'block-title-center' %}
+{% if section.settings.button_text != blank %}
+  {% assign typeTitle = 'block-title-left' %}
+{% endif %}
+
+<div class="grid-product-slider {{ section.settings.custom_class }}">
+  <div class="container">
+    <div class="block block-grid-product">
+      {% if section.settings.enable_block_title == '1' %}
+        <div class="block-title {{ typeTitle }}">
+          <div class="title-content">
+            <strong>{{ section.settings.block_title }}</strong>
+
+            {% if section.settings.block_description != blank %}
+              <div class="block-description">
+                {{ section.settings.block_description }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if section.settings.button_text != blank %}
+            <div class="block-title-button">
+              <a class="link-button block-button" href="{{ section.settings.button_url.url }}">
+                {{ section.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="block-content clearfix">
+        <div class="product-grid {{ typeClass }}" id="block-product-id-{{ randomNumber }}">
+          {% if blockType == '1' %}
+            <div class="owl-carousel owl-theme">
+          {% endif %}
+            {% if  totalProductsCollection > 0 %}
+              {% for product in collections[productCollection].products limit: limit %}
+                {% assign count = count | plus: 1 %}
+                {% assign check = count | modulo: row %}
+  
+                {% if check == 1 or row == 1 %}
+                  <div class="item-column" {{ style }}>
+                {% endif %}
+  
+                {% render 'product-card-grid', product: product, imageSize: imageSize %}
+  
+                {% if check == 0 or count == totalProducts %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              {% if collections[productCollection].url == blank %}
+                {% for i in (1..4) %}
+                  <div class="item-column">
+                    {% render 'product-card-placeholder' %}
+                  </div>
+                {% endfor %}
+              {% else %}
+              <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+              {% endif %}
+            {% endif %}
+          {% if blockType == '1' %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if blockType == '1' %}
+<script>
+  $(function () {
+    $('#block-product-id-{{ randomNumber }} .owl-carousel').owlCarousel({
+      loop: {{ section.settings.loop }},
+      autoplay: {{ section.settings.auto_play }},
+      margin: {{ section.settings.margin }},
+      nav: {{ section.settings.nav }},
+      dots: {{ section.settings.dots }},
+      responsive: {
+        0: {
+          items: {{ section.settings.screen_8 }},
+        },
+        481: {
+            items: {{ section.settings.screen_7 }},
+        },
+        768: {
+            items: {{ section.settings.screen_6 }},
+        },
+        992: {
+            items: {{ section.settings.screen_5 }},
+        },
+        1200: {
+            items: {{ section.settings.screen_4 }},
+        },
+        1441: {
+            items: {{ section.settings.screen_3 }},
+        },
+        1681: {
+            items: {{ section.settings.screen_2 }},
+        },
+        1921: {
+            items: {{ section.settings.screen_1 }},
+        }
+      }
+    });
+  });
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "BS - Grid Product",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "enable_block_title",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "1",
+      "label": "Enable block title"
+    },
+    {
+      "type": "text",
+      "id": "block_title",
+      "label": "Block title",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "richtext",
+      "id": "block_description",
+      "label": "Short description"
+    },
+    {
+      "type": "header",
+      "content": "Block button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default": "View All",
+      "info":"Empty to disable"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Block configuration"
+    },
+    {
+      "type": "select",
+      "id": "block_type",
+      "options": [
+        {
+          "value": "1",
+          "label": "Slider"
+        },
+        {
+          "value": "0",
+          "label": "Grid"
+        }
+      ],
+      "default": "1",
+      "label": "Style"
+    },
+    {
+      "type": "collection",
+      "id": "product_collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "limit",
+      "label": "Limit",
+      "default": "8"
+    },
+    {
+      "type": "text",
+      "id": "image_size",
+      "label": "Image size",
+      "default": "270x270",
+      "info": "350x350"
+    },
+    {
+      "type": "header",
+      "content": "Grid configuration"
+    },
+    {
+      "type": "select",
+      "id": "grid_columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "3",
+      "label": "Grid column number"
+    },
+    {
+      "type": "header",
+      "content": "Slider Configuration"
+    },
+    {
+      "type": "text",
+      "id": "row",
+      "label": "Row number",
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "nav",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "1",
+      "label": "Show navigation"
+    },
+    {
+      "type": "select",
+      "id": "dots",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Show dots"
+    },
+    {
+      "type": "select",
+      "id": "loop",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Enable Loop"
+    },
+    {
+      "type": "select",
+      "id": "auto_play",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Enable auto play"
+    },
+    {
+      "type": "text",
+      "id": "margin",
+      "label": "Margin",
+      "default": "30"
+    },
+    {
+      "type": "select",
+      "id": "screen_1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "Greater than 1921px"
+    },
+    {
+      "type": "select",
+      "id": "screen_2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1681px => 1920px"
+    },
+    {
+      "type": "select",
+      "id": "screen_3",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1441px => 1680px"
+    },
+    {
+      "type": "select",
+      "id": "screen_4",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1200px => 1440px"
+    },
+    {
+      "type": "select",
+      "id": "screen_5",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "5",
+      "label": "992px => 1199px"
+    },
+    {
+      "type": "select",
+      "id": "screen_6",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "4",
+      "label": "768px => 991px"
+    },
+    {
+      "type": "select",
+      "id": "screen_7",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "3",
+      "label": "481px => 767px"
+    },
+    {
+      "type": "select",
+      "id": "screen_8",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "2",
+      "label": "Equal or less than 480px"
+    },
+    {
+      "type": "header",
+      "content": "Developer"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "BS - Grid Product",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

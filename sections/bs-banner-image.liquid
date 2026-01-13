@@ -1,0 +1,173 @@
+{% assign typeTitle = 'block-title-center' %}
+{% if section.settings.button_text != blank %}
+  {% assign typeTitle = 'block-title-left' %}
+{% endif %}
+
+<div class="banner-images {{ section.settings.custom_class }}">
+  <div class="container">
+      <div class="block banner-container">
+        {% if section.settings.enable_block_title == '1' %}
+          <div class="block-title {{ typeTitle }}">
+            <div class="title-content">
+              <strong>{{ section.settings.block_title }}</strong>
+    
+              {% if section.settings.block_description != blank %}
+                <div class="block-description">
+                  {{ section.settings.block_description }}
+                </div>
+              {% endif %}
+            </div>
+    
+            {% if section.settings.button_text != blank %}
+              <div class="block-title-button">
+                <a class="link-button block-button" href="{{ section.settings.button_url.url }}">
+                  {{ section.settings.button_text }}
+                </a>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="block-content clearfix">
+          <div class="list-banner">
+            {% for block in section.blocks %}
+              <div class="item" style="width:{{ block.settings.banner_width }}">
+                <div class="item-inner">
+                  <div class="banner-image">
+                    <a href="{{ block.settings.banner_url.url }}">
+                      {% if block.settings.banner_image != blank %}
+                      <img loading="lazy" src="{{ block.settings.banner_image | image_url: width: 800 }}" alt="{{ block.settings.banner_image.alt }}" width="800" height="400" />
+                      {% else %}
+                        <img loading="lazy" src="//via.placeholder.com/620x350">
+                      {% endif %}
+                    </a>
+                  </div>
+      
+                  <div class="banner-info">
+                    <div class="banner-title font-title">{{ block.settings.banner_heading }}</div>
+                    <div class="banner-description">{{ block.settings.banner_description }}</div>
+
+                    {% if block.settings.banner_url.url and block.settings.button_text != blank %}
+                      <div class="banner-button">
+                        <a class="link-button-style2 button-banner" href="{{ block.settings.banner_url.url }}">{{ block.settings.button_text }}</a>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        
+      </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+"name": "BS - Banner Image",
+"tag": "section",
+"class": "section",
+"settings": [
+  {
+    "type": "select",
+    "id": "enable_block_title",
+    "options": [
+      {
+        "value": "1",
+        "label": "Yes"
+      },
+      {
+        "value": "0",
+        "label": "No"
+      }
+    ],
+    "default": "1",
+    "label": "Enable block title"
+  },
+  {
+    "type": "text",
+    "id": "block_title",
+    "label": "Block title",
+    "default": "Block title"
+  },
+  {
+    "type": "richtext",
+    "id": "block_description",
+    "label": "Short description"
+  },
+  {
+    "type": "header",
+    "content": "Block button"
+  },
+  {
+    "type": "text",
+    "id": "button_text",
+    "label": "Text",
+    "default": "View All",
+    "info":"Empty to disable"
+  },
+  {
+    "type": "url",
+    "id": "button_url",
+    "label": "Link"
+  },
+  {
+    "type": "text",
+    "id": "custom_class",
+    "label": "Custom class"
+  }
+],
+"blocks": [
+  {
+    "type": "item_banner",
+    "name": "Banner",
+
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Icon image"
+      },
+      {
+        "type": "url",
+        "id": "banner_url",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "banner_heading",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "banner_description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text"
+      },
+      {
+        "type": "text",
+        "id": "banner_width",
+        "label": "Width",
+        "info": "Ex: 50%"
+      }
+    ]
+  }
+],
+"presets": [
+  {
+    "name": "BS - Banner Image",
+    "blocks": [
+      {
+        "type": "item_banner"
+      }
+    ]
+  }
+]
+}
+{% endschema %}

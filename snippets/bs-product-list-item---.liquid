@@ -1,0 +1,75 @@
+<div class="product-item" data-id="product-{{ product.id }}">
+  <div class="item-inner">
+    <div class="product-image">
+      <a class="grid-view-item__link image-ajax" href="{{ product.url | within: collection }}">
+        <img
+          class="img-responsive s-img"
+          src="{{ product.featured_image.src | product_img_url:imageSize, crop:'center' }}"
+          alt="{{ product.featured_image.alt }}"
+        >
+      </a>
+    </div>
+
+    <div class="product-info">
+      {% if settings['show-vendor'] %}
+        <div class="title-vendor">{{ product.vendor | link_to_vendor }}</div>
+      {% endif %}
+
+      {% if settings['show-title'] %}
+        <strong class="product-name">
+          <a href="{{ product.url | within: collection }}">{{ product.title | strip_html }}</a>
+        </strong>
+      {% endif %}
+
+      {% if settings['show-review'] %}
+        <div class="custom-reviews">
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        </div>
+      {% endif %}
+
+      {% if settings['show-price'] %}
+        {% render 'price-product', product: product %}
+      {% endif %}
+
+      {% if sold_out %}
+        <button
+          class="btn_sold_out action-to-cart disabled"
+          type="submit"
+          value="Submit"
+          disabled
+          data-toggle="tooltip"
+          title="{{ 'products.product.sold_out' | t }}"
+        >
+          <i class="fa fa-shopping-basket"></i><span class="">{{ 'products.product.sold_out' | t }}</span>
+        </button>
+      {% elsif product.variants.size > 1 %}
+        <div class="btn-button add-to-cart add-select">
+          <a
+            href="{{ product.url | within: collection }}"
+            class="btn_df grl"
+            title="{{ 'products.product.select_options' | t }}"
+            ><span>{{ 'products.product.select_options' | t }}</span></a
+          >
+        </div>
+      {% else %}
+        <div class="btn-button add-to-cart action  {% if sold_out %}sold-out{% endif %}">
+          <form
+            action="/cart/add"
+            method="post"
+            class="variants"
+            data-id="AddToCartForm-{{ product.id }}"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" name="id" value="{{ product.variants[0].id }}">
+            <a
+              class="action-to-cart"
+              href="javascript:void(0)"
+              title="{{ 'products.product.add_to_cart' | t }}"
+              ><span>{{ 'products.product.add_to_cart' | t }}</span></a
+            >
+          </form>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+{% comment %}
+  This is used to create CSS custom variables with Liquid references
+  The file variables.scss is referring these CSS custom variables as Sass variables
+  to use throughout the stylesheet
+{% endcomment %}
+{% style %}
+  :root {
+	/* Layout */
+	--layout-max-width: {{ settings.max_width }}px;
+
+	/* Theme color */
+	--body-background-color: {{ settings.body_background_color }};
+	--body-background-image: {{ settings.body_background_image }};
+	--body-background-repeat: {{ settings.body_background_repeat }};
+	--body-background-position: {{ settings.body_background_position }};
+	--text-color: {{ settings.text_color }};
+	--link-color: {{ settings.link_color }};
+	--link-hover-color: {{ settings.link_hover_color }};
+	--border-color: {{ settings.border_color }};
+
+	--font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    --font-body-style: {{ settings.type_body_font.style }};
+    --font-body-weight: {{ settings.type_body_font.weight }};
+
+    --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+    --font-heading-style: {{ settings.type_header_font.style }};
+    --font-heading-weight: {{ settings.type_header_font.weight }};
+
+	--font-custom-family: {{ settings.type_custom_font.family }}, {{ settings.type_custom_font.fallback_families }};
+    --font-custom-style: {{ settings.type_custom_font.style }};
+    --font-custom-weight: {{ settings.type_custom_font.weight }};
+
+	/* Typo */	
+	--font-size-body:{{ settings.body_fontsize }}px;
+	--font-size-heading: {{ settings.heading_fontsize }}px;
+	--font-size-custom: {{ settings.custom_fontsize }}px;
+	
+	/* Input */
+	--input-background-color: {{ settings.input_background_color }};
+	--input-border-color: {{ settings.input_border_color }};
+	--input-text-color: {{ settings.input_text_color }};
+	--input-border-radius: {{ settings.input_border_radius }}px;
+
+	/* Button */
+	--button-background-color: {{ settings.button_background_color }};
+	--button-background-hover-color: {{ settings.button_background_hover_color }};
+	--button-text-color: {{ settings.button_text_color }};
+	--button-text-hover-color: {{ settings.button_text_hover_color }};
+	--button-border-radius: {{ settings.button_border_radius }}px;
+
+	/* Primary color */
+	--theme-primary-color: {{ settings.primary_color }};
+	--theme-primary-lighten-color: {{ settings.primary_color | color_lighten: 10 }};
+	--theme-primary-darken-color: {{ settings.primary_color | color_darken: 10 }};
+	--text-on-theme-primary-color: {{ settings.text_on_primary_color }};
+	/* Secondary color */
+	--theme-secondary-color: {{ settings.secondary_color }};
+	--theme-secondary-darken-color: {{ settings.secondary_color | color_darken: 10 }};
+	--text-on-theme-secondary-color: {{ settings.text_on_secondary_color }};
+
+	/* Collection columns */
+
+	--one_column_screen_1: {{ 100.0 | divided_by: settings.one_column_screen_1 }}%;
+	--one_column_screen_2: {{ 100.0 | divided_by: settings.one_column_screen_2 }}%;
+	--one_column_screen_3: {{ 100.0 | divided_by: settings.one_column_screen_3 }}%;
+	--one_column_screen_4: {{ 100.0 | divided_by: settings.one_column_screen_4 }}%;
+	--one_column_screen_5: {{ 100.0 | divided_by: settings.one_column_screen_5 }}%;
+	--one_column_screen_6: {{ 100.0 | divided_by: settings.one_column_screen_6 }}%;
+	--one_column_screen_7: {{ 100.0 | divided_by: settings.one_column_screen_7 }}%;
+	--one_column_screen_8: {{ 100.0 | divided_by: settings.one_column_screen_8 }}%;
+
+	--two_columns_screen_1: {{ 100.0 | divided_by: settings.two_columns_screen_1 }}%;
+	--two_columns_screen_2: {{ 100.0 | divided_by: settings.two_columns_screen_2 }}%;
+	--two_columns_screen_3: {{ 100.0 | divided_by: settings.two_columns_screen_3 }}%;
+	--two_columns_screen_4: {{ 100.0 | divided_by: settings.two_columns_screen_4 }}%;
+	--two_columns_screen_5: {{ 100.0 | divided_by: settings.two_columns_screen_5 }}%;
+	--two_columns_screen_6: {{ 100.0 | divided_by: settings.two_columns_screen_6 }}%;
+	--two_columns_screen_7: {{ 100.0 | divided_by: settings.two_columns_screen_7 }}%;
+	--two_columns_screen_8: {{ 100.0 | divided_by: settings.two_columns_screen_8 }}%;
+
+	
+
+    {%- comment -%}
+      Based on the image overlay opacity, either lighten or darken the image on hover
+    {%- endcomment -%}
+	{%- if settings.enable_rtl -%}
+	--left: right;
+	--right: left;
+    {%- else -%}
+	--left: left;
+	--right: right;
+    {%- endif -%}
+  }
+{% endstyle %}

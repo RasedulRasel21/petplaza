@@ -1,0 +1,38 @@
+<div class="sidebar-content">
+  {% if settings.enable_block_categories_sidebar %}
+    {% if template contains 'collection' or template contains 'product' %}
+      {% include 'sidebar-category' %}
+    {% endif %}
+  {% endif %}
+  
+  {% if template contains 'blog' or template contains 'article' %}
+    {% include 'bs-list-posts' %}
+    {% include 'bs-recent-posts' %}
+  {% endif %}
+  
+  {% if template contains 'collection' %}
+    {% include 'bs-sidebar-filter-collection' %}
+  {% endif %}
+  
+  {% if settings.enable_block_featured_product_sidebar=="1" %}
+    {% include 'bs-siderbar-featured-product' %}
+  {% endif %}
+  
+  {% if settings.enable_block_custom_html_sidebar =="1" %}
+    {% include 'bs-sidebar-html' %}
+  {% endif %}
+  
+  {% if settings.enable_block_banner_sidebar =="1" %}
+    {% include 'bs-sidebar-banner' %}
+  {% endif %}
+  
+</div>
+<a class="close-filter" href="javascript:void(0);"><i class="las la-times"></i></a>
+<script>
+  /*$(".close-filter").on("click", function(){
+    $( "body" ).removeClass("show-filter");
+  });*/
+  $("body").on('click', '.close-filter, .filter-overlay', function () {
+    $('body').toggleClass('show-filter');
+});
+</script>

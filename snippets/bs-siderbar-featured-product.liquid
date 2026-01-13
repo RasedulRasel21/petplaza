@@ -1,0 +1,32 @@
+{% assign limit = settings.featured_product_limit %}
+<div class="block widget-product-sidebar">
+  {% if settings.featured_product_title != blank %}
+    <div class="block-title">
+      <strong>{{ settings.featured_product_title }}</strong>
+    </div>
+  {% endif %}
+  <div class="block-content">
+    {% if settings.featured_product_list_collection == blank %}
+      {% for product in (1..limit) %}
+        <div class="product-item">
+          <a href="#" class="product-img">
+            {% capture current %}{% cycle 1 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </a>
+          <div class="product-info">
+            <div class="product-name"><strong>Yours Product Demo</strong></div>
+            <div class="price">
+              <span class="price-new"> $999.00 </span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      {% for product in collections[settings.featured_product_list_collection].products
+        limit: settings.featured_product_limit
+      %}
+        {% include 'product-item' %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>

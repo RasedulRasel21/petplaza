@@ -1,0 +1,212 @@
+<style>
+  /* General */
+  .amp-cart-drawer * {
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+  }
+  /* Header */
+  .amp-cart__header.amp-cart__header--slim {
+    padding: 15px 30px;
+  }
+  .amp-cart__header.amp-cart__header--slim span,
+  .amp-cart__header.amp-cart__header--slim span * {
+    font-size: 16px;
+  }
+  .amp-cart__header-title {
+    font-weight: 600 !important;
+    font-size: 16 !important;
+  }
+  /* Tiered Rewards */
+  .amp-cart__rewards-progress-bar-indicator {
+    height: 6px;
+  }
+  .amp-cart__rewards-progress-bar-line {
+    height: 6px;
+  }
+  .amp-cart__rewards {
+    background: #ffffff !important;
+    gap: 10px;
+    border-bottom: 0 !important;
+    padding: 18px 30px !important;
+  }
+  .amp-cart__rewards-current-reward * {
+    font-size: 14px;
+  }
+  .amp-cart-drawer .amp-cart__rewards .amp-cart__rewards-current-reward span.money {
+    font-weight: 600;
+  }
+  .amp-cart-drawer .amp-cart__rewards .amp-cart__rewards-progress-bar-tier-trigger-label {
+    font-size: 12px;
+  }
+  .amp-cart-drawer .amp-cart__rewards .amp-cart__rewards-progress-bar-tier-marker {
+    transform: translateY(-3px);
+  }
+  .amp-cart-drawer .amp-cart__rewards .amp-cart__rewards-current-reward {
+    order: 1;
+  }
+  .amp-cart-drawer .amp-cart__rewards .amp-cart__rewards-applied-reward {
+    order: 2;
+  }
+  .amp-cart-drawer .amp-cart__rewards .amp-cart__rewards-progress-bar {
+    order: 3;
+  }
+  /* Cart Items */
+  .amp-cart__cart-line-title {
+    font-size: 14px !important;
+  }
+  .amp-cart__cart-lines {
+    border-top: 0 !important;
+  }
+  input.amp-cart__line-quantity-selector-input {
+    border-radius: 0 !important;
+  }
+  .amp-cart__cart-line-price, .amp-cart__cart-line-price * {
+    font-size: 18px !important;
+  }
+  .amp-cart__cart-line-title {
+    padding-right: 3rem;
+  }
+  .amp-cart__cart-line-details-top {
+    line-height: 2.5rem;
+  }
+  .amp-cart__line-quantity-selector button {
+    width: 22px !important;
+    min-width: 20px;
+  }
+  .amp-cart__line-quantity-selector input {
+    width: 40px !important;
+    min-width: 40px;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+  }
+  .amp-cart__cart-line-variant-details, .amp-cart__cart-line-variant-details * {
+    color: rgba(0,0,0,0.4) !important;
+  }
+  /* Discount Box */
+  .amp-cart-drawer .amp-cart__discount-box .amp-cart__discount-box-button {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .amp-cart-drawer .amp-cart__discount-box .amp-cart__discount-box-button:hover {
+    background: #2d2f58 !important;
+  }
+  /* Footer */
+  .amp-cart-drawer .amp-cart__footer {
+    background: #ffffff !important;
+    border-top: 1px solid #f2f2f2;
+  }
+  .amp-cart__footer-checkout-button[disabled="true"] {
+    opacity: 0.5 !important;
+    background-color: rgba(0,0,0,0.8) !important;
+    cursor: not-allowed !important;
+  }
+  .amp-cart-drawer .amp-cart__footer #storePickupApp .inputWithButton select {
+    flex: 1 0 auto;
+    appearance: auto;
+    border: 1px solid #f2f2f2;
+    border-radius: 7px;
+  }
+  .amp-cart-drawer #storePickupApp .inputWithButton {
+    gap: 5px;
+  }
+  .amp-cart-drawer #storePickupApp .Zapiet-ScreenReader__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+  }
+  .amp-cart-drawer .amp-cart__footer .amp-cart__footer-row--shipping-value {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: #abaaaa;
+  }
+  .amp-cart-drawer .amp-cart__footer .amp-cart__footer-row--subtotal-label {
+    font-weight: 600;
+  }
+  .amp-cart-drawer .amp-cart__footer .amp-cart__footer-checkout-button {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .amp-cart-drawer .amp-cart__footer .amp-cart__footer-checkout-button:hover {
+    background: #f94073 !important;
+  }
+</style>
+<script>
+  window.AMP_FLAGS = {
+    formatMoney: true
+  };
+
+  function scAutoCloseMiniCart () {
+    // close theme mini cart
+    const miniCloseBtn = document.querySelector('header .cart-sidebar a.btn-close');
+    
+    if (miniCloseBtn) {
+      miniCloseBtn.click();
+    }
+  }
+
+  function scToggleZapietCheckout () {
+    // enable / disable checkout button based on zapiet validation
+    const scCheckoutBtn = document.querySelector('.amp-button.amp-cart__footer-checkout-button');
+
+    if (scCheckoutBtn && window.Zapiet) {
+      if (window.ZapietCheckoutEnabled) {
+        scCheckoutBtn.removeAttribute('disabled');
+      } else {
+        scCheckoutBtn.setAttribute('disabled', true);
+      }
+    }
+  }
+
+  function ampAddZapietWidget () {
+    // add zapiet widget to upsell cart
+    const ampCartCheckoutBtn = document.querySelector('.amp-cart-drawer .amp-cart__footer .amp-cart__footer-checkout-button');
+
+    if (ampCartCheckoutBtn) {
+      const zapietHtml = '<div id="storePickupApp"></div>';
+      
+      ampCartCheckoutBtn.insertAdjacentHTML('beforebegin', zapietHtml);
+      document.dispatchEvent(new CustomEvent("zapiet:start"));
+    }
+  }
+
+  function ampFixRewardLabelAmounts () {
+    // fix amount thresholds displayed in rewards bar
+    const amounts = document.querySelectorAll('.amp-cart-drawer .amp-cart__rewards .amp-cart__rewards-progress-bar-tier-trigger-label');
+
+    amounts.forEach(amountEl => {
+      let newText = amountEl.textContent.replace('<span class=money>', '');
+      newText = newText.replace('</span>', '');
+      amountEl.textContent = newText;
+    });
+  }
+
+  function ampSyncCartCounts (count) {
+    const headerCartCount = document.querySelector('a[href="/cart"].header__icon .cart-count-bubble span');
+
+    if (headerCartCount) {
+      headerCartCount.textContent = count;
+    }
+  }
+
+  window.AMP_CART_LOADED = cart => {
+    ampFixRewardLabelAmounts();
+    setTimeout(ampAddZapietWidget, 1000);
+    setInterval(scToggleZapietCheckout, 1000);
+  }
+
+  window.AMP_CART_OPENED = function() {
+    setTimeout(scAutoCloseMiniCart, 500);
+  }
+
+  window.AMP_CART_UPDATED = cart => {
+    ampSyncCartCounts(cart.item_count);
+  }
+</script>

@@ -1,0 +1,392 @@
+{% if section.settings.results_per_page %}
+  {%- assign limit_product = section.settings.results_per_page -%}
+{% else %}
+  {%- assign limit_product = 10 -%}
+{% endif %}
+
+{% if template contains 'left' %}
+  {% assign layout = 'layout-2columns layout-2columns-left' %}
+{% elsif template contains 'right' %}
+  {% assign layout = 'layout-2columns layout-2columns-right' %}
+{% else %}
+  {% assign layout = 'layout-1column layout-1columns-slide-sidebar' %}
+{% endif %}
+
+    {% include 'breadcrumb'      
+    %}
+
+<div id="CollectionProductGrid">
+
+<div class="collection {{ layout }} clearfix ">
+  <div class="container">
+    <div class="collection-container product-grid">
+      <div class="col-main">
+        <div class="collection-info-full">
+          {% if section.settings.show_collection_title %}
+            <h1 class="collection-tille">{{ collection.title }}</h1>
+          {% endif %}
+        </div>
+        {% comment %} {% if collection.description != blank %}
+        <div class="pp-collection-description">
+          {{ collection.description }}
+        </div>
+      {% endif %} {% endcomment %}
+    </div>
+        {% comment %}
+          <div class="bzo_colec_img"> 
+            {% if collection.image %}
+          <img loading="lazy" src="{{ collection | img_url: '450x450' }}" alt="{{ collection.image.alt }}" />
+            {% endif %}
+          </div>
+        {% endcomment %}
+        {% include 'collection-toolsbar' %}
+
+        {% paginate collection.products by limit_product %}
+          <div data-section-id="{{ section.id }}" data-section-type="collection-template" class="products-collection">
+            <div class="products-wrapper" id="Collection">
+              <div id="products-listing" class="products-listing">
+                {% for product in collection.products %}
+                  {% include 'product-card-grid', grid_image_width: image_size %}
+                {% endfor %}
+                {% if section.settings.pagination_style == 'default' %}
+                  {% if paginate.pages > 1 %}
+                    <div class="d-flex justify-content-center col-12">
+                      {% include 'pagination-custom' %}
+                    </div>
+                  {% endif %}
+                {% else %}
+                  {% if paginate.next %}
+                    <div class="pagination loadmore d-flex justify-content-center col-12">
+                      <a class="btn btn-default loadmore" href="{{ paginate.next.url }}">
+                        {{- 'collections.general.load_more' | t -}}
+                      </a>
+                    </div>
+                  {% endif %}
+                {% endif %}
+              </div>
+              {% if is_empty_collection %}
+                <div class="small--text-center">
+                  <p class="text-left">{{ 'collections.general.no_matches' | t }}</p>
+                </div>
+              {% endif %}
+
+            </div>
+          </div>
+        {% endpaginate %}
+      </div>
+      
+      <div class="col-sidebar slidebar-slide">
+        {% include 'sidebar-collection' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Pages",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "pagination_style",
+      "label": "Pagination style",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "EndlessScroll", "label": "Scroll" },
+        { "value": "EndlessClick", "label": "Click" }
+      ],
+      "default": "EndlessClick"
+    },
+    {
+      "type": "text",
+      "id": "results_per_page",
+      "label": "schemas per page  (grid only) ",
+      "default": "15"
+    },
+    {
+      "type": "header",
+      "content": "Collection info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "label": "Display collection image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_title",
+      "label": "Display collection title",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_des",
+      "label": "Display collection description",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_color",
+      "name": "Filter Color",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable",
+          "label": "Enable",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Filter Title"
+        },
+        {
+          "type": "text",
+          "id": "color_text_1",
+          "label": "Color tag name 1",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_1",
+          "label": "Color image 1"
+        },
+        {
+          "type": "text",
+          "id": "color_text_2",
+          "label": "Color tag name 2",
+          "info": "i.e \"Blue\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_2",
+          "label": "Color image 2"
+        },
+        {
+          "type": "text",
+          "id": "color_text_3",
+          "label": "Color tag name 3",
+          "info": "i.e \"Brown\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_3",
+          "label": "Color image 3"
+        },
+        {
+          "type": "text",
+          "id": "color_text_4",
+          "label": "Color tag name 4",
+          "info": "i.e \"Orange\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_4",
+          "label": "Color image 4"
+        },
+        {
+          "type": "text",
+          "id": "color_text_5",
+          "label": "Color tag name 5",
+          "info": "i.e \"Green\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_5",
+          "label": "Color image 5"
+        },
+        {
+          "type": "text",
+          "id": "color_text_6",
+          "label": "Color tag name 6",
+          "info": "i.e \"Black\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_6",
+          "label": "Color image 6"
+        },
+        {
+          "type": "text",
+          "id": "color_text_7",
+          "label": "Color tag name 7",
+          "info": "i.e \"Pink\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_7",
+          "label": "Color image 7"
+        },
+        {
+          "type": "text",
+          "id": "color_text_8",
+          "label": "Color tag name 8",
+          "info": "i.e \"Sliver\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_8",
+          "label": "Color image 8"
+        },
+        {
+          "type": "text",
+          "id": "color_text_9",
+          "label": "Color tag name 9",
+          "info": "i.e \"White\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_9",
+          "label": "Color image 9"
+        },
+        {
+          "type": "text",
+          "id": "color_text_10",
+          "label": "Color tag name 10",
+          "info": "i.e \"Yellow\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_10",
+          "label": "Color image 10"
+        },
+        {
+          "type": "text",
+          "id": "color_text_11",
+          "label": "Color tag name 11",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_11",
+          "label": "Color image 11"
+        },
+        {
+          "type": "text",
+          "id": "color_text_12",
+          "label": "Color tag name 12",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_12",
+          "label": "Color image 12"
+        },
+        {
+          "type": "text",
+          "id": "color_text_13",
+          "label": "Color tag name 13",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_13",
+          "label": "Color image 13"
+        },
+        {
+          "type": "text",
+          "id": "color_text_14",
+          "label": "Color tag name 14",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_14",
+          "label": "Color image 14"
+        },
+        {
+          "type": "text",
+          "id": "color_text_15",
+          "label": "Color tag name 15",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_15",
+          "label": "Color image 15"
+        },
+        {
+          "type": "text",
+          "id": "color_text_16",
+          "label": "Color tag name 16",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_16",
+          "label": "Color image 16"
+        },
+        {
+          "type": "text",
+          "id": "color_text_17",
+          "label": "Color tag name 17",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_17",
+          "label": "Color image 17"
+        },
+        {
+          "type": "text",
+          "id": "color_text_18",
+          "label": "Color tag name 18",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_18",
+          "label": "Color image 18"
+        },
+        {
+          "type": "text",
+          "id": "color_text_19",
+          "label": "Color tag name 19",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_19",
+          "label": "Color image 19"
+        },
+        {
+          "type": "text",
+          "id": "color_text_20",
+          "label": "Color tag name 20",
+          "info": "i.e \"Red\"."
+        },
+        {
+          "type": "image_picker",
+          "id": "color_img_20",
+          "label": "Color image 20"
+        }
+      ]
+    },
+    {
+      "type": "filter_tag",
+      "name": "Filter Tags",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable",
+          "label": "Enable",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Filter Title"
+        },
+        {
+          "type": "textarea",
+          "id": "list_tags",
+          "label": "List Tags",
+          "info": "Separate by a comma, i.e \"S, M, L\"."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    var currentAjaxRequest = null;
+    var shopUrl = $('input[name="shop_url"]').val();
+    var searchForms = $('form[action="/search"]').css('position','relative').each(function() {
+      var input = $(this).find('input[name="q"]');
+      var offSet = input.position().top + input.innerHeight();
+      $('<ul class="search-results"></ul>').appendTo($(this)).hide();
+      
+      input.attr('autocomplete', 'off').bind('keyup change', function() {
+        var term = $(this).val();
+        var form = $(this).closest('form');
+        var searchURL = shopUrl + '/search?q=' + term + '&view=ajax-search';
+        if (term.length <3) {
+          $('#search-popup-results').hide();
+          $('#m-search-popup-results').hide();
+        } else {
+          $('#search-popup-results').show();
+          $('#m-search-popup-results').show();
+        }
+        $('.search-popup-container').addClass('loading');
+        if (term.length >= 3 && term != $(this).attr('data-old-term')) {
+          $.ajax({
+            url: searchURL,
+            type: "GET",
+            data: "",
+            success: function (res) {
+              $('#search-popup-results').html(res);
+              $('#m-search-popup-results').html(res);
+              $('.search-popup-container').removeClass('loading');
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(thrownError);
+            }
+        });
+        }
+        
+      });
+    });
+  })
+</script>

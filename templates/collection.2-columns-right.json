@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "bs-collection",
+      "blocks": {
+        "0400f9ee-4293-4994-84c6-16d0ee39cbe0": {
+          "type": "filter_tag",
+          "settings": {
+            "enable": true,
+            "title": "Filter Price",
+            "list_tags": "0 - $99, $100 - $199, $200 - $299, $300 - $399, Above $400"
+          }
+        },
+        "bdd16cdf-bff6-44d3-a807-a79e1b0e2cac": {
+          "type": "filter_color",
+          "settings": {
+            "enable": true,
+            "title": "Filter Color",
+            "color_text_1": "Red",
+            "color_img_1": "shopify://shop_images/red.jpg",
+            "color_text_2": "Blue",
+            "color_img_2": "shopify://shop_images/blue.jpg",
+            "color_text_3": "Brown",
+            "color_img_3": "shopify://shop_images/brown.jpg",
+            "color_text_4": "Orange",
+            "color_img_4": "shopify://shop_images/orange.jpg",
+            "color_text_5": "Green",
+            "color_text_6": "Black",
+            "color_text_7": "Pink",
+            "color_img_7": "shopify://shop_images/pink.jpg",
+            "color_text_8": "Sliver",
+            "color_text_9": "White",
+            "color_img_9": "shopify://shop_images/white.jpg",
+            "color_text_10": "Yellow",
+            "color_text_11": "Cyan",
+            "color_text_12": "Gold",
+            "color_text_13": "Grey",
+            "color_text_14": "",
+            "color_text_15": "",
+            "color_text_16": "",
+            "color_text_17": "",
+            "color_text_18": "",
+            "color_text_19": "",
+            "color_text_20": ""
+          }
+        },
+        "ac81262b-1b43-42a3-ac30-11f619f3dee3": {
+          "type": "filter_tag",
+          "settings": {
+            "enable": true,
+            "title": "Size",
+            "list_tags": "XS, S, M, L, XL, XXL, Free Size, One Size"
+          }
+        },
+        "e83aec42-8cd0-463c-ba95-f8631924e31e": {
+          "type": "filter_tag",
+          "settings": {
+            "enable": true,
+            "title": "Brand",
+            "list_tags": "Chanel, Dior, Lion, Gap, Lucci, Louis, Hermes, Cherry, Glass, Lime, Nice"
+          }
+        }
+      },
+      "block_order": [
+        "0400f9ee-4293-4994-84c6-16d0ee39cbe0",
+        "bdd16cdf-bff6-44d3-a807-a79e1b0e2cac",
+        "ac81262b-1b43-42a3-ac30-11f619f3dee3",
+        "e83aec42-8cd0-463c-ba95-f8631924e31e"
+      ],
+      "settings": {
+        "pagination_style": "default",
+        "results_per_page": "9",
+        "show_collection_image": true,
+        "show_collection_title": true,
+        "show_collection_des": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

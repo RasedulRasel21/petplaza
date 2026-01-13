@@ -1,0 +1,800 @@
+{% assign randomNumber = 'now' | date: '%N' | modulo: 100 %}
+
+{% assign list_blog = section.settings.list_blog %}
+
+{% assign blockType = section.settings.block_type %}
+{% if blockType == '1' %}
+  {% assign typeClass = 'blog-slider' %}
+{% else %}
+  {% assign typeClass = 'blog-grid' %}
+  {% assign gridColumns = section.settings.grid_columns %}
+  {% assign gridColumnsValue = gridColumns | times: 1.0 %}
+  {% assign width = 100 | divided_by: gridColumnsValue %}
+  {% assign style = 'style="width:' | append: width | append: '%"' %}
+{% endif %}
+
+{% assign typeTitle = 'block-title-center' %}
+{% if section.settings.button_text != blank %}
+  {% assign typeTitle = 'block-title-left' %}
+{% endif %}
+
+<div class="latest-blog banner-images {{ section.settings.custom_class }}">
+  <div class="container">
+    <div class="block banner-container">
+      {% if section.settings.enable_block_title == '1' %}
+        <div class="block-title {{ typeTitle }}">
+          <div class="title-content">
+            <strong>{{ section.settings.block_title }}</strong>
+
+            {% if section.settings.block_description != blank %}
+              <div class="block-description">
+                {{ section.settings.block_description }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if section.settings.button_text != blank %}
+            <div class="block-title-button">
+              <a class="link-button block-button" href="{{ section.settings.button_url.url }}">
+                {{ section.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="block-content clearfix">
+        <div class="latest-post {{ typeClass }}" id="slider-blog-{{ randomNumber }}">
+          {% if blockType == '1' %}
+            <div class="owl-carousel owl-theme {{ blogs[list_blog].articles_count }}">
+          {% endif %}
+            {% if blogs[list_blog].articles_count != blank %}
+              {% for article in blogs[list_blog].articles %}
+                <div class="post-item" {{ style }}>
+                  <div class="inner-item">
+                    <div class="post-image">
+                      <a href="{{ article.url }}">
+                        <img loading="lazy"
+                          src="{{ article.image | image_url: width: 410 }}"
+                          alt="{{ article.image.alt }}"
+                          width="410"
+                          height="290"
+                        >
+                      </a>
+                    </div>
+      
+                    <div class="post-info">
+                      {% if section.settings.enable_blog_category == '1' %}
+                        <div class="post-blog-category">
+                          <span>In </span>
+                          <a href="{{ blogs[list_blog].url }}"> {{ blogs[list_blog].title }}</a>
+                        </div>
+                      {% endif %}
+                      <div class="post-title">
+                        <strong>
+                          <a href="{{ article.url }}">
+                            {{ article.title }}
+                          </a>
+                        </strong>
+                      </div>
+      
+                      {% if section.settings.enable_author == '1' %}
+                        <div class="post-author">
+                          {{ article.author }}
+                        </div>
+                      {% endif %}
+      
+                      {% if section.settings.enable_published_at == '1' %}
+                        <div class="post-date">
+                          {{ article.published_at }}
+                        </div>
+                      {% endif %}
+      
+                      {% if section.settings.enable_short_description == '1' %}
+                        <div class="post-short-description">
+                          {{ article.excerpt }}
+                        </div>
+                      {% endif %}
+      
+                      {% if section.settings.readmore_text != blank %}
+                        <div class="post-more">
+                          <a href="{{ article.url }}">
+                            {{ section.settings.readmore_text }}
+                          </a>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% else %}
+                {% if blogs[list_blog].url == blank %}
+                    {% for i in (1..4) %}
+                    
+                      <div class="post-item">
+                        <div class="inner-item">
+                          <div class="post-image">
+                            <a href="#">
+                              {{ 'image' | placeholder_svg_tag:'bzpets-placeholder-class bg-grey' }}
+                            </a>
+                          </div>
+            
+                          <div class="post-info">
+                            
+                              <div class="post-blog-category">
+                                <span>In </span>
+                                <a href="#"> Blog</a>
+                              </div>
+                            
+                            <div class="post-title">
+                              <strong>
+                                <a href="#">
+                                  Post sample title
+                                </a>
+                              </strong>
+                            </div>
+                              <div class="post-more">
+                                <a href="#">
+                                  Read More
+                                </a>
+                              </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                   
+                    {% endfor %}
+                  {% else %}
+                  There is no post.
+                  {% endif %}
+            {% endif %}
+          {% if blockType == '1' %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if blockType == '1' %}
+<script>
+  $(function () {
+    $('#slider-blog-{{ randomNumber }} .owl-carousel').owlCarousel({
+      loop: {{ section.settings.loop }},
+      autoplay: {{ section.settings.auto_play }},
+      margin: {{ section.settings.margin }},
+      nav: {{ section.settings.nav }},
+      dots: {{ section.settings.dots }},
+      responsive: {
+        0: {
+          items: {{ section.settings.screen_8 }},
+        },
+        481: {
+            items: {{ section.settings.screen_7 }},
+        },
+        768: {
+            items: {{ section.settings.screen_6 }},
+        },
+        992: {
+            items: {{ section.settings.screen_5 }},
+        },
+        1200: {
+            items: {{ section.settings.screen_4 }},
+        },
+        1441: {
+            items: {{ section.settings.screen_3 }},
+        },
+        1681: {
+            items: {{ section.settings.screen_2 }},
+        },
+        1921: {
+            items: {{ section.settings.screen_1 }},
+        }
+      }
+    });
+  });
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "BS - Latest Blog",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "enable_block_title",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "1",
+      "label": "Enable block title"
+    },
+    {
+      "type": "text",
+      "id": "block_title",
+      "label": "Block title",
+      "default": "Block title"
+    },
+    {
+      "type": "richtext",
+      "id": "block_description",
+      "label": "Short description"
+    },
+    {
+      "type": "header",
+      "content": "Block button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default": "View All",
+      "info":"Empty to disable"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Block configuration"
+    },
+    {
+      "type": "select",
+      "id": "block_type",
+      "options": [
+        {
+          "value": "1",
+          "label": "Slider"
+        },
+        {
+          "value": "0",
+          "label": "Grid"
+        }
+      ],
+      "default": "1",
+      "label": "Style"
+    },
+    {
+      "type": "blog",
+      "id": "list_blog",
+      "label": "Blog category"
+    },
+    {
+      "type": "select",
+      "id": "enable_published_at",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Show published date"
+    },
+    {
+      "type": "select",
+      "id": "enable_short_description",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Show short description"
+    },
+    {
+      "type": "select",
+      "id": "enable_author",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Show author name"
+    },
+    {
+      "type": "select",
+      "id": "enable_blog_category",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Show Blog Category"
+    },
+    {
+      "type": "text",
+      "id": "readmore_text",
+      "label": "Read more text",
+      "default": "Read More",
+      "info": "Empty to disable"
+    },
+    {
+      "type": "header",
+      "content": "Grid configuration"
+    },
+    {
+      "type": "select",
+      "id": "grid_columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "3",
+      "label": "Grid column number"
+    },
+    {
+      "type": "header",
+      "content": "Slider configuration"
+    },
+    {
+      "type": "select",
+      "id": "nav",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "1",
+      "label": "Show navigation"
+    },
+    {
+      "type": "select",
+      "id": "dots",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Show dots"
+    },
+    {
+      "type": "select",
+      "id": "loop",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Enable Loop"
+    },
+    {
+      "type": "select",
+      "id": "auto_play",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Enable auto play"
+    },
+    {
+      "type": "text",
+      "id": "margin",
+      "label": "Margin",
+      "default": "30"
+    },
+    {
+      "type": "select",
+      "id": "screen_1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "Greater than 1921px"
+    },
+    {
+      "type": "select",
+      "id": "screen_2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1681px => 1920px"
+    },
+    {
+      "type": "select",
+      "id": "screen_3",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1441px => 1680px"
+    },
+    {
+      "type": "select",
+      "id": "screen_4",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1200px => 1440px"
+    },
+    {
+      "type": "select",
+      "id": "screen_5",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "5",
+      "label": "992px => 1199px"
+    },
+    {
+      "type": "select",
+      "id": "screen_6",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "4",
+      "label": "768px => 991px"
+    },
+    {
+      "type": "select",
+      "id": "screen_7",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "3",
+      "label": "481px => 767px"
+    },
+    {
+      "type": "select",
+      "id": "screen_8",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "2",
+      "label": "Equal or less than 480px"
+    },
+    {
+      "type": "header",
+      "content": "Developer"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "BS - Latest Blog",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

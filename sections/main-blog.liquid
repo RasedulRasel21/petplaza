@@ -1,0 +1,95 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- assign sidebar 			= settings.enable_blogs_sidebar -%}
+{%- assign sidebar_position 	= settings.sidebar_position -%}
+
+{%- paginate blog.articles by 5 -%}
+{% include 'breadcrumb' %}
+  <div class="main-blog page-width{% if sidebar %} positon-sidebar{% endif %}">
+    <h1 class="title--primary">{{ blog.title | escape }}</h1>
+      <div class="row">
+        {% if sidebar and sidebar_position == 'left' %}
+         <div class="col-sidebar sidebar-fixed col-lg-3">
+           {% include 'sidebar-collection' %}
+        </div>
+        <div class="sidebar-overlay"></div>
+        {%- endif -%}
+         <a href="javascript:void(0)" class="open-sidebar d-lg-none"><i class="fa fa-bars"></i>{{ 'general.sidebar' | t }}</a>
+        <div class="blog-articles {% if sidebar %}col-lg-9 {% else %}col-12{%- endif -%}">
+         
+          {%- for article in blog.articles -%}
+            <div class="blog-articles__article article">
+              {%- render 'article-card', article: article, show_image: section.settings.show_image -%}
+            </div>
+          {%- endfor -%}
+        </div>
+		{% if sidebar and sidebar_position == 'right' %}
+         <div class="col-sidebar sidebar-fixed col-lg-3">
+           {% include 'sidebar-collection' %}
+        </div>
+        <div class="sidebar-overlay"></div>
+        {%- endif -%}
+        {%- if paginate.pages > 1 -%}
+          {%- render 'pagination', paginate: paginate -%}
+        {%- endif -%}
+      </div>
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "blog-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label",
+      "info": "t:sections.main-blog.settings.show_image.info"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "t:sections.main-blog.blocks.title.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_date",
+          "default": true,
+          "label": "t:sections.main-blog.blocks.title.settings.show_date.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_author",
+          "default": false,
+          "label": "t:sections.main-blog.blocks.title.settings.show_author.label"
+        }
+      ]
+    },
+    {
+      "type": "summary",
+      "name": "t:sections.main-blog.blocks.summary.name",
+      "limit": 1
+    },
+    {
+      "type": "link",
+      "name": "t:sections.main-blog.blocks.link.name",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

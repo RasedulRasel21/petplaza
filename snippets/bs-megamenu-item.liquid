@@ -1,0 +1,38 @@
+<li class="item {% if block.settings.enable_dropdown == '1' %} item-dropdown {% endif %} {% if index > limit %} hidden-item {% endif %} {% if block.settings.dropdown_align %} align-{{ block.settings.dropdown_align }} {% endif %} {{ block.settings.custom_class }}">
+    <a class="item-link" href="{{ block.settings.category_link }}">
+        <span class="cat-content">
+            {% if block.settings.category_icon %}
+                <span class="cat-image">
+                    <img src="{{ block.settings.category_icon | image_url: width: 30 }}" width="30" height="30"/>
+                </span>
+            {% endif %}
+            <span class="cat-name">
+                {{ block.settings.category_name }}
+            </span>
+            
+            {% if block.settings.enable_dropdown == '1' %}
+                <span class="caret"></span>
+            {% endif %}
+        </span>
+
+        {% if block.settings.label_text != blank %}
+            <span class="cat-label" style="background-color: {{ block.settings.label_background_color }}; color: {{ block.settings.label_text_color }}">
+                {{ block.settings.label_text }}
+            </span>
+        {% endif %}
+    </a>
+
+    {% if block.settings.enable_dropdown == '1' %}
+        <span class="btn-drop-mobile"></span>
+    {% endif %}
+
+    {% if block.settings.enable_dropdown == '1' %}
+        <div class="dropdown-megamenu" style="width: {{ block.settings.dropdown_width }}">
+            <div class="dropdown-content">
+            {% render 'bs-megamenu-top', block: block %}
+            {% render 'bs-megamenu-categories', block: block %}
+            {% render 'bs-megamenu-bottom', block: block %}
+            </div>
+        </div>
+    {% endif %}
+</li>

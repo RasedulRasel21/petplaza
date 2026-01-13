@@ -1,0 +1,129 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "bs-collection",
+      "blocks": {
+        "0400f9ee-4293-4994-84c6-16d0ee39cbe0": {
+          "type": "filter_tag",
+          "settings": {
+            "enable": true,
+            "title": "Precio",
+            "list_tags": "0 - $99, $100 - $199, $200 - $299, $300 - $399, Above $400"
+          }
+        },
+        "bdd16cdf-bff6-44d3-a807-a79e1b0e2cac": {
+          "type": "filter_color",
+          "settings": {
+            "enable": true,
+            "title": "Color del filtro",
+            "color_text_1": "Red",
+            "color_text_2": "Blue",
+            "color_text_3": "Brown",
+            "color_text_4": "Orange",
+            "color_text_5": "Green",
+            "color_text_6": "Black",
+            "color_text_7": "Pink",
+            "color_text_8": "Sliver",
+            "color_text_9": "White",
+            "color_text_10": "Yellow",
+            "color_text_11": "Cyan",
+            "color_text_12": "Gold",
+            "color_text_13": "Grey",
+            "color_text_14": "",
+            "color_text_15": "",
+            "color_text_16": "",
+            "color_text_17": "",
+            "color_text_18": "",
+            "color_text_19": "",
+            "color_text_20": ""
+          }
+        },
+        "ac81262b-1b43-42a3-ac30-11f619f3dee3": {
+          "type": "filter_tag",
+          "settings": {
+            "enable": true,
+            "title": "Tamaño",
+            "list_tags": "16, 18, 20, 22, 24, 26, ONE SIZE"
+          }
+        },
+        "e83aec42-8cd0-463c-ba95-f8631924e31e": {
+          "type": "filter_tag",
+          "settings": {
+            "enable": true,
+            "title": "Marca",
+            "list_tags": ""
+          }
+        }
+      },
+      "block_order": [
+        "0400f9ee-4293-4994-84c6-16d0ee39cbe0",
+        "bdd16cdf-bff6-44d3-a807-a79e1b0e2cac",
+        "ac81262b-1b43-42a3-ac30-11f619f3dee3",
+        "e83aec42-8cd0-463c-ba95-f8631924e31e"
+      ],
+      "custom_css": [
+        ".breadcrumbs-title .title--primary,.breadcrumbwrapper .breadcrumb li a,.breadcrumbwrapper .breadcrumb li:not(:last-child):after,.breadcrumbwrapper .breadcrumb li.active span {color: #ffffff00;}",
+        ".product-item .product-image .product-label {display: none !important;}"
+      ],
+      "settings": {
+        "pagination_style": "default",
+        "results_per_page": "12",
+        "show_collection_image": true,
+        "show_collection_title": true,
+        "show_collection_des": true
+      }
+    },
+    "rich_text_69pbJR": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_g43dqU": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "medium"
+          }
+        },
+        "text_QgrLcY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ collection.metafields.custom.seo_text | metafield_tag }}</p>"
+          }
+        },
+        "button_rtHDRX": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_g43dqU",
+        "text_QgrLcY",
+        "button_rtHDRX"
+      ],
+      "custom_css": [],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_69pbJR"
+  ]
+}

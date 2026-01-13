@@ -1,0 +1,21 @@
+<div class="product-addto-links">
+  <div class="action-link default-wishbutton-{{ product.handle }}">
+    <a class="add-in-wishlist-js btn_df" href="{{ product.handle | handleize }}">
+      <i class="la la-heart-o"></i>
+      <span>{{ 'general.wishlist.add_to_wishlist' | t }}</span>
+    </a>
+  </div>
+
+  <div class="action-link loading loadding-wishbutton-{{ product.handle }}" style="display: none; pointer-events: none">
+    <a class="btn_df add_to_wishlist" href="{{ product.handle | handleize }}"
+      ><i class="la la-circle-notch la-spin"></i>
+    </a>
+  </div>
+
+  <div class="action-link added added-wishbutton-{{ product.handle }}" style="display: none;">
+    <a class="added-wishlist btn_df add_to_wishlist" href="/pages/wishlist">
+      <i class="la la-heart"></i>
+      <span>Wishlist Added</span>
+    </a>
+  </div>
+</div>

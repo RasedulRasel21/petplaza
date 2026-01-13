@@ -1,0 +1,99 @@
+.bzo-block .block-title{
+    margin: 0 0 10px;
+}
+
+.bzo-block .block-description p{
+    margin-top: 0;
+}
+
+.bzo-block .block-description p:last-child{
+    margin-bottom: 0;
+}
+
+.grid-cat-items{
+    margin: 0 -15px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.grid-cat-items .item{
+    padding: 0 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.grid-cat-items .cat-image {
+    max-width: 190px;
+    border: 20px solid #f7f7f7;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 15px;
+}
+
+.grid-cat-items .cat-image img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.grid-cat-items .cat-image img{
+    vertical-align: top;
+}
+
+.grid-cat-items .cat-name{
+    margin: 0 0 5px;
+    font-weight: 700;
+}
+
+.grid-cat-items .cat-name a{
+    text-decoration: none;
+    color: #2D3054;
+}
+
+.grid-cat-items .cat-short-description p{
+    margin-top: 0;
+}
+
+.grid-cat-items .cat-short-description p:last-child{
+    margin-bottom: 0;
+}
+
+.list-subcats{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.list-subcats a{
+    text-decoration: none;
+    color: #222;
+}
+
+.has-show-all{
+    position: relative;
+    padding-right: 120px;
+}
+
+.has-show-all .cat-all-btn{
+    position: absolute;
+    right: 0;
+    top: 8px;
+}
+
+.cat-all-btn a{
+    display: inline-block;
+    white-space: nowrap;
+    padding: 5px 24px;
+    border: 1px solid #ddd;
+    color: #222;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: .1s;
+}
+
+.cat-all-btn a:hover{
+    border-color: #222;
+}

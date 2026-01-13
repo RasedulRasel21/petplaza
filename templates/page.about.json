@@ -1,0 +1,112 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about": {
+      "type": "template-about",
+      "blocks": {
+        "137c7bb1-99da-403c-a67b-4fbfff5a2fcd": {
+          "type": "faq",
+          "settings": {
+            "our_image_1": "shopify://shop_images/team-1.jpg",
+            "cl_name_1": "Lusineh Tatev",
+            "cl_job_1": "Founder, CEO",
+            "cl_des_1": "",
+            "social_facebook_link": "#",
+            "social_twitter_link": "#",
+            "social_google_link": "#",
+            "social_dribbble_link": "#",
+            "social_linkedin_link": "#"
+          }
+        },
+        "2b4574b6-d2be-49ef-88cc-87c37c6d62d0": {
+          "type": "faq",
+          "settings": {
+            "our_image_1": "shopify://shop_images/team-2.jpg",
+            "cl_name_1": "Anahit Narine",
+            "cl_job_1": "Assistent",
+            "cl_des_1": "",
+            "social_facebook_link": "#",
+            "social_twitter_link": "#",
+            "social_google_link": "#",
+            "social_dribbble_link": "#",
+            "social_linkedin_link": "#"
+          }
+        },
+        "26135ca7-5655-436a-b99f-01e73f841e62": {
+          "type": "faq",
+          "settings": {
+            "our_image_1": "shopify://shop_images/team-3.jpg",
+            "cl_name_1": "Gohar Arsen",
+            "cl_job_1": "Manager",
+            "cl_des_1": "",
+            "social_facebook_link": "#",
+            "social_twitter_link": "#",
+            "social_google_link": "#",
+            "social_dribbble_link": "#",
+            "social_linkedin_link": "#"
+          }
+        },
+        "260a8c13-434a-473b-baa6-bcaa0958c505": {
+          "type": "faq",
+          "settings": {
+            "our_image_1": "shopify://shop_images/team-4.jpg",
+            "cl_name_1": "Rudolf Sevan",
+            "cl_job_1": "Pet Instructor",
+            "cl_des_1": "",
+            "social_facebook_link": "#",
+            "social_twitter_link": "#",
+            "social_google_link": "#",
+            "social_dribbble_link": "#",
+            "social_linkedin_link": "#"
+          }
+        },
+        "b6ae82e0-5357-4373-85e2-b7286c2571fc": {
+          "type": "faq",
+          "settings": {
+            "our_image_1": "shopify://shop_images/team-5.jpg",
+            "cl_name_1": "Nare Mariam",
+            "cl_job_1": "Pet Instructor",
+            "cl_des_1": "",
+            "social_facebook_link": "#",
+            "social_twitter_link": "#",
+            "social_google_link": "#",
+            "social_dribbble_link": "#",
+            "social_linkedin_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "137c7bb1-99da-403c-a67b-4fbfff5a2fcd",
+        "2b4574b6-d2be-49ef-88cc-87c37c6d62d0",
+        "26135ca7-5655-436a-b99f-01e73f841e62",
+        "260a8c13-434a-473b-baa6-bcaa0958c505",
+        "b6ae82e0-5357-4373-85e2-b7286c2571fc"
+      ],
+      "settings": {
+        "about_title": "About Us",
+        "about_text_desc": "<div class=\"about-container\">\n        <div class=\"row mb-desktop-40 mb-mobile-0\">\n            <div class=\"col-lg-6\">\n                <div class=\"about-content mb-desktop-30\">\n                    <div class=\"about-title google-element-font\">Hello, With 25+ Years Of Experience</div>\n\n                    <p>Simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's\n                        standard\n                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it\n                        to make\n                        a type specimen book.</p>\n\n                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots piece classical\n                        Latin\n                        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at\n                        Hampden-Sydney College in Virginia, looked up one of the more.</p>\n\n                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots piece classical\n                        Latin\n                        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at\n                        Hampden-Sydney College in Virginia, looked up one of the more.</p>\n\n                    <div class=\"row\">\n                        <div class=\"col-lg-6\">\n                            <div class=\"sub-title google-element-font\">Our Vision</div>\n                            <p>Lorem simply dummy text the arm printing typesetting industry the industry standard dummy\n                                ever\n                                since the unknown printer a took galley of type and scrambled</p>\n                        </div>\n\n                        <div class=\"col-lg-6\">\n                            <div class=\"sub-title google-element-font\">Our Mission</div>\n                            <p>It is a long established fact that a reader will be distracted by the readable content of\n                                a page\n                                when looking at its layout. The point of using suffered alterationmore</p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"col-lg-6\">\n                <div class=\"about-image mb-desktop-30\">\n                    <img src=\"https://cdn.shopify.com/s/files/1/0690/8808/4241/files/about-1_1.jpg?v=1680601424\" alt=\"About Us\" width=\"607\" height=\"514\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row change-block mb-desktop-40 mb-mobile-0\">\n            <div class=\"col-lg-6 change\">\n                <div class=\"about-content mb-desktop-30\">\n                    <div class=\"about-title google-element-font\">We Are Proud To Provide The Best Service For\n                        Customers\n                    </div>\n\n                    <p>consectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut\n                        enim ad\n                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. Duis\n                        aute\n                        irure dolor in reprehenderit in voluptate velit.</p>\n\n                    <div class=\"sub-title google-element-font\">Our History</div>\n\n                    <p>We must explain to you how all this mistaken idea of denouncing pleasure and praising paint was\n                        born and\n                        I will give you acomplete account of the system, and expound actual teachings of the great\n                        explorer of\n                        the truth, the master-builder of human happiness.</p>\n\n                    <div class=\"sub-title google-element-font\">Operations</div>\n\n                    <p>Accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque\n                        corrupti\n                        quos dolores et quasa molestias excepturi sint occaecati cupiditate provident, similique sunt in\n                        culpa\n                        qui officia deserunt mollitia animi,</p>\n\n\n                    <div class=\"sig-about\">\n                        <div class=\"sig\"><img src=\"https://cdn.shopify.com/s/files/1/0690/8808/4241/files/sig.png?v=1680658404\" alt=\"About Us\" width=\"147\" height=\"60\"></div>\n                        <strong class=\"google-element-font\">James Smith</strong> / Ceo\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"col-lg-6\">\n                <div class=\"about-image mb-desktop-30 mb-mobile-0\">\n                    <img src=\"https://cdn.shopify.com/s/files/1/0690/8808/4241/files/about-2.jpg?v=1680658347\" alt=\"About Us\" width=\"595\" height=\"660\">\n                </div>\n            </div>\n        </div>\n    </div>",
+        "show_service": false,
+        "icon1": "Strategy & Marketing",
+        "des1": "Lorem Khaled Ipsum is a major key to success. Eliptical talk. The key to more success is to get a massage once a week, very important, major key, cloth talk.",
+        "icon2": "interaction design",
+        "des2": "Lorem Khaled Ipsum is a major key to success. Eliptical talk. The key to more success is to get a massage once a week, very important, major key, cloth talk.",
+        "icon3": "WEb Development",
+        "des3": "Lorem Khaled Ipsum is a major key to success. Eliptical talk. The key to more success is to get a massage once a week, very important, major key, cloth talk.",
+        "show_team": true,
+        "member_title": "Our Team",
+        "our_text_desc": ""
+      }
+    }
+  },
+  "order": [
+    "about"
+  ]
+}

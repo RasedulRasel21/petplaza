@@ -1,0 +1,18 @@
+<div class="sidebar-content">  
+  {% if settings.enable_block_livechat_sidebar =="1" %}
+    {% include 'bs-livechat-html' %}
+  {% endif %}
+  {% if settings.enable_block_services_box_sidebar =="1" %}
+    {% include 'bs-service-html' %}
+  {% endif %}
+  
+  {% if settings.enable_block_product_banner_sidebar =="1" %}
+    {% include 'bs-product-sidebar-banner' %}
+  {% endif %}
+</div>
+<a class="close-filter" id="close-sidebar" href="javascript:void(0);"><i class="las la-times"></i></a>
+<script>
+  $("body").on('click', '.close-filter, .filter-overlay', function () {
+    $('body').toggleClass('show-filter');
+});
+</script>

@@ -1,0 +1,554 @@
+{{ 'footer.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .footer-container{
+    background-color: {{ section.settings.footer_background_color }};
+    color: {{ section.settings.footer_text_color }};
+  }
+
+  .footer-container a{
+    color: {{ section.settings.footer_link_color }};
+  }
+
+  .footer-container a:hover,
+  .footer-container .text-email a,
+  .ft-block .phone-info .call-phone a{
+    color: {{ section.settings.footer_link_hover_color }};
+  }
+
+  .ft-block .ft-title{
+    color: {{ section.settings.footer_title_color }};
+  }
+</style>
+
+<footer class="footer-container{% if section.settings.enable_bottom_bar %} enable-bottom-bar {% endif %}">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 col-6">
+          <div class="ft-block">
+            <div class="ft-title">{{ section.settings.contact_title }}</div>
+
+            <div class="ft-content">
+              <div class="text-address">
+                {{ section.settings.contact_address }}
+              </div>
+
+              <div class="text-email">
+                {{ section.settings.contact_email_title }}
+                <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a>
+              </div>
+<div class="call-order" style="display: flex; align-items: center;">
+  <div class="phone-image" style="margin-right: 10px;">
+    {% if section.settings.contact_phone_icon != blank %}
+      <img loading="lazy" src="{{ section.settings.contact_phone_icon | image_url: width: 800 }}" alt="Phone Icon" />
+    {% else %}
+      <img loading="lazy" src="//via.placeholder.com/50x49" alt="Placeholder Icon">
+    {% endif %}
+  </div>
+
+  <div class="phone-info">
+    <div class="call-title">{{ section.settings.contact_phone_title }}</div>
+    <div class="call-phone">
+      <a href="tel:{{ section.settings.contact_phone_number }}">
+        {{ section.settings.contact_phone_number }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Logo goes down here, NOT inside .call-order -->
+<div class="footer-logo" style="margin-top: 15px;">
+  <img 
+    src="https://cdn.shopify.com/s/files/1/0693/2299/7948/files/Logo_Horizontal_PP.webp?v=1748462784" 
+    alt="Footer Logo" 
+    style="max-width: 200px;"
+  />
+</div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-sm-6 col-6">
+          <div class="ft-block">
+            <div class="ft-title">{{ section.settings.quick_title }}</div>
+
+            <div class="ft-content">
+              <ul class="list-links">
+                {%- for link in section.settings.quick_list.links -%}
+                  <li class="item">
+                    <a href="{{ link.url }}">
+                      <span class="icon-keyboard_arrow_right"></span>
+                      {{ link.title | escape }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-sm-6 col-6">
+          <div class="ft-block">
+            <div class="ft-title">{{ section.settings.userful_title }}</div>
+
+            <div class="ft-content">
+              <ul class="list-links">
+                {%- for link in section.settings.userful_list.links -%}
+                  <li class="item">
+                    <a href="{{ link.url }}">
+                      <span class="icon-keyboard_arrow_right"></span>
+                      {{ link.title | escape }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 col-6">
+          <div class="ft-block">
+            <div class="ft-title">{{ section.settings.newsletter_title }}</div>
+
+            <div class="ft-content">
+              <div class="text-description">
+                {{ section.settings.newsletter_description }}
+              </div>
+
+              <div class="footer-block-content newsletter">
+                {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+                  <input type="hidden" name="contact[tags]" value="newsletter">
+                  <div class="newsletter-form__field-wrapper">
+                    <div class="field">
+                      <input
+                        id="NewsletterForm--{{ section.id }}"
+                        type="email"
+                        name="contact[email]"
+                        value="{{ form.email }}"
+                        aria-required="true"
+                        autocapitalize="off"
+                        autocomplete="email"
+                        {% if form.errors %}
+                          autofocus
+                          aria-invalid="true"
+                          aria-describedby="ContactFooter-error"
+                        {% elsif form.posted_successfully? %}
+                          aria-describedby="ContactFooter-success"
+                        {% endif %}
+                        placeholder="{{ 'newsletter.label' | t }}"
+                        required
+                      >
+                    </div>
+                    {%- if form.errors -%}
+                      <small class="newsletter-form__message form__message" id="ContactFooter-error">
+                        {%- render 'icon-error' -%}
+                        {{- form.errors.translated_fields.email | capitalize }}
+                        {{ form.errors.messages.email -}}
+                      </small>
+                    {%- endif -%}
+                  </div>
+                  <button
+                    type="submit"
+                    class="button button--secondary newsletter-form__button"
+                    name="commit"
+                    id="Subscribe"
+                  >
+                    {{ 'newsletter.button_label' | t }}
+                  </button>
+                  {%- if form.posted_successfully? -%}
+                    <h3
+                      class="newsletter-form__message newsletter-form__message--success form__message"
+                      id="ContactFooter-success"
+                      tabindex="-1"
+                      autofocus
+                    >
+                      {% render 'icon-success' -%}
+                      {{- 'newsletter.success' | t }}
+                    </h3>
+                  {%- endif -%}
+                {%- endform -%}
+              </div>
+
+              {% render 'bs-social-fanpage' %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-7">
+          <div class="copyright">
+            {{ section.settings.copyright }}
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-5">
+          <div class="payment-method">
+            {% if section.settings.payment != blank %}
+            <img loading="lazy" src="{{ section.settings.payment | image_url }}" alt="Payment Method" width="1" height="1">
+            {% else %}
+             <img loading="lazy" src="//via.placeholder.com/270x30">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% if section.settings.enable_bottom_bar %} 
+<div class="mobile-bottom-bar">
+  <ul class="bottom-bar">
+    <li>
+      <a href='/'>
+        <span class="icon las la-home"></span>
+        <span class="text">{{ 'general.mobile_bottom_bar.home_title' | t }}</span>
+      </a>
+    </li>
+    <li>
+      <a role="link" class="btn-search-popup">
+        <span class="icon las la-search"></span>
+        <span class="text">{{ 'general.mobile_bottom_bar.search_title' | t }}</span>
+      </a>
+    </li>
+    <li>
+      <a href='/collections'>
+        <span class="icon las la-layer-group"></span>
+        <span class="text">{{ 'general.mobile_bottom_bar.collection_title' | t }}</span>
+      </a>
+    </li>
+    <li>
+      <a href='/account/login'>
+        <span class="icon las la-user"></span>
+        <span class="text">{{ 'general.mobile_bottom_bar.account_title' | t }}</span>
+      </a>
+    </li>
+    <li>
+      <a role="link" class="btn-cart-sidebar">
+        <span class="icon las la-shopping-cart"></span>
+        <span class="text">{{ 'general.mobile_bottom_bar.cart_title' | t }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="m-search-sidebar">
+  <div class="overlay-search" data-action="close-search"></div>
+  <div class="search-popup-container">
+    <div class="search-title">
+      <h3>Search</h3>
+      <a class="btn-close" href="#" data-action="close-search"><span>Close</span></a>
+    </div>
+    <div class="container">
+      <div class="search-content" id="search-desktop">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+          <div class="field">
+            <input
+              class="search__input"
+              id="m-Search-In-Modal"
+              type="search"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'general.search.placeholder' | t }}"
+            >
+            <input type="hidden" name="shop_url" value={{ shop.url }}>
+            <input type="hidden" name="options[prefix]" value="last">
+            <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+              <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
+                <use href="#icon-search"/>
+              </svg>
+            </button>
+          </div>
+
+          {% if section.settings.search_navigation != blank %}
+            <div class="top-search-collection">
+              <span>{{ 'general.search.top_collection' | t }}</span>
+              <ul class="menu">
+                {% for link in section.settings.search_navigation.links %}
+                  <li class="menu-link">
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </form>
+
+        <div id="m-search-popup-results"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% render 'currencies' %}
+{% javascript %}
+  class LocalizationForm extends HTMLElement {
+    constructor() {
+      super();
+      this.elements = {
+        input: this.querySelector('input[name="locale_code"], input[name="country_code"]'),
+        button: this.querySelector('button'),
+        panel: this.querySelector('ul'),
+      };
+      this.elements.button.addEventListener('click', this.openSelector.bind(this));
+      this.elements.button.addEventListener('focusout', this.closeSelector.bind(this));
+      this.querySelectorAll('a').forEach((item) => item.addEventListener('click', this.onItemClick.bind(this)));
+    }
+
+    onItemClick(event) {
+      event.preventDefault();
+      this.elements.input.value = event.currentTarget.dataset.value;
+      this.querySelector('form')?.submit();
+    }
+
+    openSelector() {
+      this.elements.button.focus();
+      this.elements.panel.toggleAttribute('hidden');
+      this.elements.button.setAttribute(
+        'aria-expanded',
+        (this.elements.button.getAttribute('aria-expanded') === 'false').toString()
+      );
+    }
+
+    closeSelector(event) {
+      const shouldClose = event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON';
+      if (event.relatedTarget === null || shouldClose) {
+        this.elements.button.setAttribute('aria-expanded', 'false');
+        this.elements.panel.setAttribute('hidden', true);
+      }
+    }
+  }
+
+  customElements.define('localization-form', LocalizationForm);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label",
+          "info": "t:sections.footer.blocks.link_list.settings.heading.info"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>Share store details, promotions, or brand content with your customers.</p>",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Footer color"
+    },
+    {
+      "type": "color",
+      "id": "footer_background_color",
+      "label": "Footer background color",
+      "default": "#2d3054"
+    },
+    {
+      "type": "color",
+      "id": "footer_text_color",
+      "label": "Footer text color",
+      "default": "#d0d0d6"
+    },
+    {
+      "type": "color",
+      "id": "footer_link_color",
+      "label": "Footer link color",
+      "default": "#d0d0d6"
+    },
+    {
+      "type": "color",
+      "id": "footer_link_hover_color",
+      "label": "Footer link hover color",
+      "default": "#F94073"
+    },
+    {
+      "type": "color",
+      "id": "footer_title_color",
+      "label": "Footer title color",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Block contact"
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Title",
+      "default": "Contact Us"
+    },
+    {
+      "type": "text",
+      "id": "contact_address",
+      "label": "Address",
+      "default": "Address: 139 Brook Drive South Richmond Hill, New York 1067 USA"
+    },
+    {
+      "type": "text",
+      "id": "contact_email_title",
+      "label": "Email title",
+      "default": "Email: "
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Email",
+      "default": "bzopets@support.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone_title",
+      "label": "Phone title",
+      "default": "Call To Order"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone_number",
+      "label": "Phone number",
+      "default": "(+084) 859 481 3614"
+    },
+    {
+      "type": "image_picker",
+      "id": "contact_phone_icon",
+      "label": "Phone icon"
+    },
+    {
+      "type": "header",
+      "content": "Block quick links"
+    },
+    {
+      "type": "text",
+      "id": "quick_title",
+      "label": "Title",
+      "default": "Quick Links"
+    },
+    {
+      "type": "link_list",
+      "id": "quick_list",
+      "label": "Links"
+    },
+    {
+      "type": "header",
+      "content": "Block userful links"
+    },
+    {
+      "type": "text",
+      "id": "userful_title",
+      "label": "Title",
+      "default": "Userful Links"
+    },
+    {
+      "type": "link_list",
+      "id": "userful_list",
+      "label": "Links"
+    },
+    {
+      "type": "header",
+      "content": "Block newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "default": "Our Newsletter",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_description",
+      "default": "Subscribe to the weekly newsletter for all the latest updates & get a 10% off bill offers.",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Copyright"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "default": "BzoPets © 2022 Demo Store. All Rights Reserved. Designed by BZOTech.Com",
+      "label": "Copyright"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Bottom Footer"
+    },
+    {
+      "type": "radio",
+      "id": "enable_bottom_bar",
+      "label": "Enable Mobile Bottom Bar",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "link_list",
+      "id": "search_navigation",
+      "label": "Top Collection"
+    },
+    {
+      "type": "header",
+      "content": "Payment method"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment",
+      "label": "Payment image"
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link_list"
+      }
+    ]
+  }
+}
+{% endschema %}

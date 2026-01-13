@@ -1,0 +1,105 @@
+<div class="header-cart minicart-header">
+  <a
+    href="{{ routes.cart_url }}"
+    class="header__icon header__icon--cart focus-inset btn-cart-sidebar"
+    id="cart-icon-bubble"
+  >
+    <span class="">{{ 'templates.cart.cart' | t }}</span>
+    {%- if cart != empty -%}
+      <div class="cart-count-bubble">
+        {%- if cart.item_count < 100 -%}
+          <span class="cout_item" aria-hidden="true">{{ cart.item_count }}</span>
+        {%- endif -%}
+        <span class="cout_item visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+      </div>
+    {%- else -%}
+      <div class="cart-count-bubble">
+        <span class="cout_item" aria-hidden="true">{{ cart.item_count }}</span>
+
+        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+      </div>
+    {%- endif -%}
+  </a>
+
+  <div class="overlay-cart" data-action="close-minicart"></div>
+
+  <div class="cart-sidebar">
+    <a class="btn-close" href="#" data-action="close-minicart">
+      <span>Close</span>
+    </a>
+
+    <div class="block-content">
+      <div class="block-inner has-items">
+        <div class="head-minicart">
+          <span class="label-products">{{ 'layout.cart.title_your_products' | t }}</span>
+        </div>
+
+        <div class="cart-empty">Your shopping cart is empty.</div>
+
+        <ol id="minicart-sidebar" class="mini-products-list">
+          {% for item in cart.items %}
+            <li class="item" data-product_id="{{ item.id }}">
+              <div class="product-img-wrap">
+                <a href="{{item.url}}" class="product-image">
+                  <img src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}">
+                </a>
+              </div>
+              <div class="product-details">
+                <div class="inner-left">
+                  <p class="product-name">
+                    <a href="{{item.url}}">{{ item.product.title }}</a>
+                  </p>
+                  {% if item.product.variants.size != 0 %}
+                    <div class="option">
+                      {% unless item.variant.title contains 'Default' %}
+                        <small>{{ item.variant.title }}</small>
+                      {% endunless %}
+                    </div>
+                  {% endif %}
+                  <div class="product-details-bottom">
+                    <span class="title-desc">{{ 'layout.cart.title_quantity' | t }}</span>
+                    <strong>{{ item.quantity }}</strong>
+                  </div>
+                </div>
+                <div class="product-price">
+                  <span class="price">{{ item.price | money }}</span>
+                  <a href="javascript:void(0)" title="Remove This Item" class="btn-remove">Remove</a>
+                </div>
+                
+              </div>
+            </li>
+          {% endfor %}
+        </ol>
+        <div class="bottom-action actions">
+          <div class="price-total-w">
+            <span class="label-price-total">{{ 'layout.cart.title_subtotal' | t }}</span>
+            <span class="price-total">
+              <span class="price">
+                <span class="money">
+                  {{ cart.total_price | money }}
+                </span>
+              </span>
+            </span>
+            <div style="clear:both;"></div>
+          </div>
+          <div class="button-wrapper">
+            <a
+              href="/cart"
+              class="link-button btn-gotocart btn"
+              title="{{ 'layout.cart.title_view_your_cart' | t }}"
+              <a style="background-color: #F94073; border-color: #F94073;">
+              {{- 'layout.cart.title_go_to_cart' | t -}}
+            </a>
+            {% comment %}<a
+              href="/checkout"
+              class="link-button btn-checkout btn"
+              title="{{ 'layout.cart.title_checkout' | t }}"
+              {{- 'layout.cart.title_checkout' | t -}}
+            </a>>{% endcomment %}
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

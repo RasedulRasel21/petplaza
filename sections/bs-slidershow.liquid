@@ -1,0 +1,595 @@
+{{ 'bs-slidershow.css' | asset_url | stylesheet_tag }}
+
+{% assign randomNumber = "now" | date: "%N" | modulo: 100 %}
+
+{% if section.settings.full_width == '1' %}
+  <div class="full-width">
+{% else %}
+  <div class="container">
+{% endif %}
+<div class="slidershow" id="slider-{{ randomNumber }}">
+    <div class="owl-carousel owl-theme">
+      {% for block in section.blocks %}
+        <div class="item {{ block.settings.slider_custom_class }}">
+          <div class="slider-image">
+            <a href="{{ block.settings.slider_url.url }}">
+              {% if block.settings.slider_image != blank %}
+              <img loading="lazy" src="{{ block.settings.slider_image | image_url: width: 1920 }}" alt="{{ block.settings.slider_title }}" width="1920" height="768" />
+              {% else %}
+              <img loading="lazy" src="//via.placeholder.com/1920x670">
+              {% endif %}
+            </a>
+          </div>
+          
+          <div class="slider-info">
+            <div class="container"> 
+              <div class="slider-info-wrap content-left effect_item">             
+                <div class="slider-main-title font-title">{{ block.settings.slider_title }}</div>
+                <div class="slider-sub-title font-title">{{ block.settings.slider_sub_title }}</div>
+                <div class="slider-description">{{ block.settings.slider_short_description }}</div>
+
+{% if block.settings.slider_btn_primary_text != blank or block.settings.slider_btn_secondary_text != blank %}
+  <div class="slider-buttons">
+    {% if block.settings.slider_btn_primary_text != blank %}
+      <a class="link-button-slide button-primary" href="{{ block.settings.slider_btn_primary_url.url }}">
+        <span>{{ block.settings.slider_btn_primary_text }}</span>
+      </a>
+    {% endif %}
+
+    {% if block.settings.slider_btn_secondary_text != blank %}
+      <a class="link-button-slide button-secondary" href="{{ block.settings.slider_btn_secondary_url.url }}">
+        <span>{{ block.settings.slider_btn_secondary_text }}</span>
+      </a>
+    {% endif %}
+  </div>
+{% endif %}
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
+</div>
+
+<script>
+  $(function () {
+    $('#slider-{{ randomNumber }} .owl-carousel').owlCarousel({
+      loop: {{ section.settings.loop }},
+      autoplay: {{ section.settings.auto_play }},
+      margin: {{ section.settings.margin }},
+      nav: {{ section.settings.nav }},
+      dots: {{ section.settings.dots }},
+      animateOut: 'fadeOut',
+      animateIn: 'fadeIn',
+      smartSpeed:450,
+      responsive: {
+        0: {
+          items: {{ section.settings.screen_8 }},
+        },
+        481: {
+            items: {{ section.settings.screen_7 }},
+        },
+        768: {
+            items: {{ section.settings.screen_6 }},
+        },
+        992: {
+            items: {{ section.settings.screen_5 }},
+        },
+        1200: {
+            items: {{ section.settings.screen_4 }},
+        },
+        1441: {
+            items: {{ section.settings.screen_3 }},
+        },
+        1681: {
+            items: {{ section.settings.screen_2 }},
+        },
+        1921: {
+            items: {{ section.settings.screen_1 }},
+        }
+      }
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+"name": "BS - Slidershow",
+"tag": "section",
+"class": "section",
+"settings": [
+  {
+    "type": "header",
+    "content": "Slider Configuration"
+  },
+  {
+    "type": "select",
+    "id": "full_width",
+    "options": [
+      {
+        "value": "1",
+        "label": "Yes"
+      },
+      {
+        "value": "0",
+        "label": "No"
+      }
+    ],
+    "default": "0",
+    "label": "Enable full width"
+  },
+  {
+    "type": "select",
+    "id": "nav",
+    "options": [
+      {
+        "value": "1",
+        "label": "Yes"
+      },
+      {
+        "value": "0",
+        "label": "No"
+      }
+    ],
+    "default": "0",
+    "label": "Show navigation"
+  },
+  {
+    "type": "select",
+    "id": "dots",
+    "options": [
+      {
+        "value": "1",
+        "label": "Yes"
+      },
+      {
+        "value": "0",
+        "label": "No"
+      }
+    ],
+    "default": "0",
+    "label": "Show dots"
+  },
+  {
+    "type": "select",
+    "id": "loop",
+    "options": [
+      {
+        "value": "1",
+        "label": "Yes"
+      },
+      {
+        "value": "0",
+        "label": "No"
+      }
+    ],
+    "default": "0",
+    "label": "Enable Loop"
+  },
+  {
+    "type": "select",
+    "id": "auto_play",
+    "options": [
+      {
+        "value": "1",
+        "label": "Yes"
+      },
+      {
+        "value": "0",
+        "label": "No"
+      }
+    ],
+    "default": "0",
+    "label": "Enable auto play"
+  },
+  {
+    "type": "text",
+    "id": "margin",
+    "label": "Margin",
+    "default": "30"
+  },
+  {
+    "type": "select",
+    "id": "screen_1",
+    "options": [
+      {
+        "value": "1",
+        "label": "1 Column"
+      },
+      {
+        "value": "2",
+        "label": "2 Columns"
+      },
+      {
+        "value": "3",
+        "label": "3 Columns"
+      },
+      {
+        "value": "4",
+        "label": "4 Columns"
+      },
+      {
+        "value": "5",
+        "label": "5 Columns"
+      },
+      {
+        "value": "6",
+        "label": "6 Columns"
+      },
+      {
+        "value": "7",
+        "label": "7 Columns"
+      },
+      {
+        "value": "8",
+        "label": "8 Columns"
+      }
+    ],
+    "default": "6",
+    "label": "Greater than 1921px"
+  },
+  {
+    "type": "select",
+    "id": "screen_2",
+    "options": [
+      {
+        "value": "1",
+        "label": "1 Column"
+      },
+      {
+        "value": "2",
+        "label": "2 Columns"
+      },
+      {
+        "value": "3",
+        "label": "3 Columns"
+      },
+      {
+        "value": "4",
+        "label": "4 Columns"
+      },
+      {
+        "value": "5",
+        "label": "5 Columns"
+      },
+      {
+        "value": "6",
+        "label": "6 Columns"
+      },
+      {
+        "value": "7",
+        "label": "7 Columns"
+      },
+      {
+        "value": "8",
+        "label": "8 Columns"
+      }
+    ],
+    "default": "6",
+    "label": "1681px => 1920px"
+  },
+  {
+    "type": "select",
+    "id": "screen_3",
+    "options": [
+      {
+        "value": "1",
+        "label": "1 Column"
+      },
+      {
+        "value": "2",
+        "label": "2 Columns"
+      },
+      {
+        "value": "3",
+        "label": "3 Columns"
+      },
+      {
+        "value": "4",
+        "label": "4 Columns"
+      },
+      {
+        "value": "5",
+        "label": "5 Columns"
+      },
+      {
+        "value": "6",
+        "label": "6 Columns"
+      },
+      {
+        "value": "7",
+        "label": "7 Columns"
+      },
+      {
+        "value": "8",
+        "label": "8 Columns"
+      }
+    ],
+    "default": "6",
+    "label": "1441px => 1680px"
+  },
+  {
+    "type": "select",
+    "id": "screen_4",
+    "options": [
+      {
+        "value": "1",
+        "label": "1 Column"
+      },
+      {
+        "value": "2",
+        "label": "2 Columns"
+      },
+      {
+        "value": "3",
+        "label": "3 Columns"
+      },
+      {
+        "value": "4",
+        "label": "4 Columns"
+      },
+      {
+        "value": "5",
+        "label": "5 Columns"
+      },
+      {
+        "value": "6",
+        "label": "6 Columns"
+      },
+      {
+        "value": "7",
+        "label": "7 Columns"
+      },
+      {
+        "value": "8",
+        "label": "8 Columns"
+      }
+    ],
+    "default": "6",
+    "label": "1200px => 1440px"
+  },
+  {
+    "type": "select",
+    "id": "screen_5",
+    "options": [
+      {
+        "value": "1",
+        "label": "1 Column"
+      },
+      {
+        "value": "2",
+        "label": "2 Columns"
+      },
+      {
+        "value": "3",
+        "label": "3 Columns"
+      },
+      {
+        "value": "4",
+        "label": "4 Columns"
+      },
+      {
+        "value": "5",
+        "label": "5 Columns"
+      },
+      {
+        "value": "6",
+        "label": "6 Columns"
+      },
+      {
+        "value": "7",
+        "label": "7 Columns"
+      },
+      {
+        "value": "8",
+        "label": "8 Columns"
+      }
+    ],
+    "default": "5",
+    "label": "992px => 1199px"
+  },
+  {
+    "type": "select",
+    "id": "screen_6",
+    "options": [
+      {
+        "value": "1",
+        "label": "1 Column"
+      },
+      {
+        "value": "2",
+        "label": "2 Columns"
+      },
+      {
+        "value": "3",
+        "label": "3 Columns"
+      },
+      {
+        "value": "4",
+        "label": "4 Columns"
+      },
+      {
+        "value": "5",
+        "label": "5 Columns"
+      },
+      {
+        "value": "6",
+        "label": "6 Columns"
+      },
+      {
+        "value": "7",
+        "label": "7 Columns"
+      },
+      {
+        "value": "8",
+        "label": "8 Columns"
+      }
+    ],
+    "default": "4",
+    "label": "768px => 991px"
+  },
+  {
+    "type": "select",
+    "id": "screen_7",
+    "options": [
+      {
+        "value": "1",
+        "label": "1 Column"
+      },
+      {
+        "value": "2",
+        "label": "2 Columns"
+      },
+      {
+        "value": "3",
+        "label": "3 Columns"
+      },
+      {
+        "value": "4",
+        "label": "4 Columns"
+      },
+      {
+        "value": "5",
+        "label": "5 Columns"
+      },
+      {
+        "value": "6",
+        "label": "6 Columns"
+      },
+      {
+        "value": "7",
+        "label": "7 Columns"
+      },
+      {
+        "value": "8",
+        "label": "8 Columns"
+      }
+    ],
+    "default": "3",
+    "label": "481px => 767px"
+  },
+  {
+    "type": "select",
+    "id": "screen_8",
+    "options": [
+      {
+        "value": "1",
+        "label": "1 Column"
+      },
+      {
+        "value": "2",
+        "label": "2 Columns"
+      },
+      {
+        "value": "3",
+        "label": "3 Columns"
+      },
+      {
+        "value": "4",
+        "label": "4 Columns"
+      },
+      {
+        "value": "5",
+        "label": "5 Columns"
+      },
+      {
+        "value": "6",
+        "label": "6 Columns"
+      },
+      {
+        "value": "7",
+        "label": "7 Columns"
+      },
+      {
+        "value": "8",
+        "label": "8 Columns"
+      }
+    ],
+    "default": "2",
+    "label": "Equal or less than 480px"
+  }
+],
+"blocks": [
+  {
+    "type": "item_slider",
+    "name": "Item",
+
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "slider_image",
+        "label": "Image"
+      },
+      {
+        "type": "url",
+        "id": "slider_url",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "slider_title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "slider_sub_title",
+        "label": "Sub title"
+      },
+      {
+        "type": "richtext",
+        "id": "slider_short_description",
+        "label": "Short description"
+      },
+      {
+        "type": "text",
+        "id": "slider_custom_class",
+        "label": "Custom Class"
+      },
+      {
+        "type": "header",
+        "content": "Primary button"
+      },
+      {
+        "type": "text",
+        "id": "slider_btn_primary_text",
+        "label": "Text"
+      },
+      {
+        "type": "url",
+        "id": "slider_btn_primary_url",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Secondary button"
+      },
+      {
+        "type": "text",
+        "id": "slider_btn_secondary_text",
+        "label": "Text"
+      },
+      {
+        "type": "url",
+        "id": "slider_btn_secondary_url",
+        "label": "Link"
+      }
+      
+    ]
+  }
+],
+"presets": [
+  {
+    "name": "BS - Slidershow",
+    "blocks": [
+      {
+        "type": "item_slider"
+      }
+    ]
+  }
+]
+}
+{% endschema %}

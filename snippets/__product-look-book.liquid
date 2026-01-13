@@ -1,0 +1,87 @@
+{% unless image_size %}
+{% if section.settings.image_size != blank %}
+{% assign image_size = section.settings.image_size %}
+{% else %}
+{% assign image_size = 'master' %}
+{% endif %}
+{% endunless %}
+
+{% assign grid_image_scale = '2' %}
+
+{% assign on_sale = false %}
+{% assign sale_text = 'products.product.sale' | t %}
+{% if product.compare_at_price > product.price %}
+{% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% assign sold_out_text = 'products.product.sold_out' | t %}
+{% assign sTT = 'products.product.outOfStock' | t %}
+{% if product.available %}
+{% assign sold_out = false %}
+{% assign sTT = 'products.product.inStock' | t %}
+{% endif %}
+
+<div class="product-item" data-id="product-{{ product.id }}">
+  <div class="product-item-container grid-view-item {% if settings.hover-image == 'no-change' %}no-change{% endif %} {% if sold_out %} sold-out{% endif %} {% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}">
+    <div class="left-block">
+      <div class="product-image-container product-image">
+        <a class="grid-view-item__link image-ajax" href="{{ product.url | within: collection }}">
+          {% if section.settings.crop_product %}
+          <img class="img-responsive s-img lazyload" data-sizes="auto" src="{{ "icon-loadings.svg" | asset_url }}" data-src="{{ product.featured_image.src | product_img_url: image_size, crop:'center' }}" alt="{{ product.featured_image.alt }}" />
+          {% else %}
+          <img class="img-responsive s-img lazyload" data-sizes="auto" src="{{ "icon-loadings.svg" | asset_url }}" data-src="{{ product.featured_image.src | product_img_url:image_size }}" alt="{{ product.featured_image.alt }}" />
+          {% endif %}
+        </a>
+        <div class="button-link">
+          {% if sold_out %}
+        <div class="btn-button add-to-cart sold-out disabled" title="{{ 'products.product.sold_out' | t }}">
+          <span class="action-to-cart grl btn_df"><i class="icon-ct-shopping"></i></span>
+        </div>
+          {% elsif product.variants.size > 1 %}
+          <div class="btn-button add-to-cart add-select">  
+            <a class="btn_df grl" href="{{ product.url | within: collection }}" title="{{ 'products.product.select_options' | t }}"><i class="icon-ct-shopping"></i></a>
+          </div>
+          {% else %}
+          <div class="btn-button add-to-cart action  {% if sold_out %}sold-out{% endif %}">    
+            <form action="/cart/add" method="post" class="variants" data-id="AddToCartForm-{{ product.id }}" enctype="multipart/form-data">   
+              <input type="hidden" name="id" value="{{ product.variants[0].id }}" />           
+              <a class="action-to-cart grl btn_df" href="javascript:void(0)" title="{{ 'products.product.add_to_cart' | t }}"><i class="icon-ct-shopping"></i></a>
+            </form>  
+          </div>
+          {% endif %}        
+          {% include 'product-wishlist' %}
+          <div class="quickview-button">
+            <a class="quickview iframe-link visible-lg btn_df" href="javascript:void(0)" data-variants_id="{{ product.variants[0].id }}" data-toggle="modal" data-target="#myModal" data-id="{{ product.handle }}" title="{{ 'products.product.quick_view' | t }}"><i class="icon-ct-search"></i></a>
+          </div>
+        </div>
+      </div>
+
+      {% if sold_out %}
+      <div class="label-sold-out">
+        <span>{{ 'products.product.sold_out_stock' | t }}</span>
+      </div>
+      {% endif %}
+
+
+    </div>
+    <div class="right-block">
+      <div class="caption">
+        {% if settings.show-vendor %}
+        <div class="title-vendor">{{ product.vendor | link_to_vendor }}</div>
+        {% endif %}
+        {% if settings.show-title %}
+        <h4 class="title-product text-truncate"><a class="product-name" href="{{ product.url }}">{{ product.title | strip_html | truncate: settings.limit_title }}</a></h4>
+        {% endif %}
+        <div class="custom-reviews">          
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>          
+        </div>
+        {% if settings.show-price %}
+        <div class="price">
+          {% include 'product-price' %}
+        </div>
+        {% endif %}
+      </div>
+    </div> 
+  </div>
+</div>

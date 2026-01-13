@@ -1,0 +1,27 @@
+
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "notfound_image": "shopify://shop_images/S101278bb159943e795f5d7f518bef76cf.webp",
+        "title_404": "Oop, ese enlace está roto.",
+        "des_404": "La página no existe o se produjo algún error. Vaya a la página anterior o vuelva a la página principal."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
+
+

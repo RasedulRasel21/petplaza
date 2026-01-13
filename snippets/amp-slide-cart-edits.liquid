@@ -1,0 +1,91 @@
+<style>
+  #slidecarthq header.header {
+    padding: 15px 30px;
+  }
+  #slidecarthq header.header span,
+  #slidecarthq header.header span * {
+    font-size: 16px;
+  }
+  #slidecarthq .rewards {
+    background: #ffffff;
+    gap: 10px;
+  }
+  #slidecarthq .rewards .rewards-pre-unlock-text * {
+    font-size: 14px;
+  }
+  #slidecarthq .items .item .title a {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  #slidecarthq footer.footer {
+    background: #ffffff;
+  }
+  #slidecarthq footer.footer #storePickupApp .inputWithButton select {
+    flex: 1 0 auto;
+    appearance: auto;
+    border: 1px solid #f2f2f2;
+  }
+  #slidecarthq .footer #storePickupApp .inputWithButton {
+    gap: 5px;
+  }
+  #slidecarthq .footer #storePickupApp .Zapiet-ScreenReader__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+    grid-area: top;
+  }
+  #storePickupApp .checkoutMethodContainer .inputWithButton {
+    display: grid !important;
+    height: auto !important;
+    min-width: fit-content !important;
+    position: relative;
+    grid-template-areas: "top top"
+    "left right";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 5px;
+  }
+  #storePickupApp .checkoutMethodContainer .snize-exclude-input {
+    grid-area: left;
+  }
+  #storePickupApp .checkoutMethodContainer .inputWithButton .button {
+    grid-area: right;
+  }
+</style>
+<script>
+  function scAutoCloseMiniCart () {
+    // close theme mini cart
+    const miniCloseBtn = document.querySelector('header .cart-sidebar a.btn-close');
+    
+    if (miniCloseBtn) {
+      miniCloseBtn.click();
+    }
+  }
+
+  function scToggleZapietCheckout () {
+    // enable / disable checkout button based on zapiet validation
+    const scCheckoutBtn = document.querySelector('#slidecarthq footer.footer button[name="checkout"]');
+
+    if (scCheckoutBtn && window.Zapiet) {
+      if (window.ZapietCheckoutEnabled) {
+        scCheckoutBtn.removeAttribute('disabled');
+      } else {
+        scCheckoutBtn.setAttribute('disabled', true);
+      }
+    }
+  }
+
+  window.SLIDECART_LOADED = cart => {
+    setInterval(scToggleZapietCheckout, 2000);
+  }
+
+  window.SLIDECART_OPENED = () => {
+    setTimeout(scAutoCloseMiniCart, 500);
+  }
+</script>

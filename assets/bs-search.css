@@ -1,0 +1,107 @@
+.overlay-search {
+    position: fixed;
+    z-index: 9990;
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s;
+}
+
+.show-search .overlay-search {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-popup-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: #fff;
+    top: 0;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+    visibility: hidden;
+    max-height: 80%;
+    overflow-y: auto;
+    transition: .6s;
+    transform: translateY(-100%);
+}
+
+.show-search .search-popup-container {
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.show-search {
+    overflow: hidden;
+}
+
+.search-popup-container .search-content {
+    padding: 50px;
+}
+
+.search-popup-container .box-results {
+    position: static !important;
+    box-shadow: none !important;
+}
+
+.grid-search-popup {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.grid-search-popup .product-item {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.search-no-result {
+    display: none;
+}
+
+.search-no-result {
+    display: none;
+}
+
+.grid-search-popup:empty+.search-no-result {
+    display: block;
+}
+
+.list-post-result:empty+.search-no-result {
+    display: block;
+}
+.search-popup-container .top-search-collection {
+    display: flex;
+    gap: 10px;
+    padding: 35px 0;
+    align-items: center;
+}
+.search-popup-container .top-search-collection > span {
+    color: #000;
+}
+.search-popup-container .top-search-collection .menu {
+    display: flex;
+    gap: 10px;
+}
+.search-popup-container .top-search-collection .menu .menu-link {
+    padding: 3px 20px;
+    border: 1px solid #ededed;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+.search-popup-container .top-search-collection .menu .menu-link a {
+    color: #868686;
+}
+.search-popup-container .top-search-collection .menu .menu-link:hover a {
+    color: var(--theme-primary-color);
+}
+.search-popup-container .top-search-collection .menu .menu-link:hover {
+    border: 1px solid var(--theme-primary-color);
+}

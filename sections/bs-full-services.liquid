@@ -1,0 +1,156 @@
+{% assign typeTitle = 'block-title-center' %}
+{% if section.settings.button_text != blank %}
+  {% assign typeTitle = 'block-title-left' %}
+{% endif %}
+<div class="horizontal_full_services">
+  <div class="container">
+    <div class="block block-services-detail">
+      <div class="block-title {{ typeTitle }}">
+        <div class="title-content">
+          <strong>{{ section.settings.block_title }}</strong>
+
+          {% if section.settings.block_description != blank %}
+            <div class="block-description">
+              {{ section.settings.block_description }}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if section.settings.button_text != blank %}
+          <a class="link-button block-button" href="{{ section.settings.button_url.url }}">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="block-content clearfix">
+        <ul class="services-detail">
+          {% for block in section.blocks %}
+            <li class="item" style="width:{{ block.settings.service_width }}">
+              <div class="item-inner">
+                <div class="service-image">
+                  <a href="{{ block.settings.service_url.url }}">
+                    {% if block.settings.service_icon != blank %}
+                    <img loading="lazy"
+                      src="{{ block.settings.service_icon | image_url: width: 200 }}"
+                      alt="{{ block.settings.service_icon.alt }}"
+                      width="200"
+                      height="200"
+                    >
+                      {% else %}
+                      <img loading="lazy" src="//via.placeholder.com/60x60">
+                      {% endif %}
+                  </a>
+                </div>
+    
+                <div class="service-info">
+                  <div class="service-title">
+                    <a href="{{ block.settings.service_url.url }}">
+                      {{ block.settings.service_text }}
+                    </a>
+                  </div>
+    
+                  <div class="service-description">
+                    {{ block.settings.service_description }}
+                  </div>
+    
+                  <div class="service-more">
+                    <a href="{{ block.settings.service_url.url }}">
+                      {{ block.settings.service_read_more }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+   
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BS - Advanced Services",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "block_title",
+      "label": "Block title",
+      "default": "Our Services"
+    },
+    {
+      "type": "richtext",
+      "id": "block_description",
+      "label": "Short description"
+    },
+    {
+      "type": "header",
+      "content": "Block button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default": "Make An Appointment"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item_service",
+      "name": "Item",
+
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "service_icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "url",
+          "id": "service_url",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "service_text",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "service_description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "service_read_more",
+          "label": "Read more text"
+        },
+        {
+          "type": "text",
+          "id": "service_width",
+          "label": "Width"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BS - Advanced Services",
+      "blocks": [
+        {
+          "type": "item_service"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

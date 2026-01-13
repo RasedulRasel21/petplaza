@@ -1,0 +1,56 @@
+<div class="block block-category">
+  {% if settings.sidebar_categories_title != blank %}
+  <div class="block-title">
+    <strong>{{ settings.sidebar_categories_title }}</strong>
+  </div>
+  {% endif %}
+  <div class="block-content">  
+      <ul class="list-categories">     
+        {% for link in linklists[settings.categories_menu].links %}       
+        {% assign child_list_handle = link.handle %}
+        {% if linklists[child_list_handle].links != blank %}
+        <li class="{% if link.active %}active{% endif %} toggle-content">
+
+          <a href="{{ link.url }}">{{ link.title | capitalize }}<span class="count">{% if collections[child_list_handle].title !="" %}( {{collections[child_list_handle].products_count}} ){% endif %}</span></a>
+          <span class="caret"><i class="fa fa-angle-down"></i></span>
+          <ul class="sub-menu level-1" style="display: none;">
+            {% for childlink in linklists[child_list_handle].links %}
+            {% assign child2_list_handle = childlink.title | handleize %}      
+            {% if linklists[child2_list_handle].links != blank %}
+
+            <li {% if childlink.active %} class="active"{% endif %}>
+              <a href="{{ childlink.url }}" >{{ childlink.title | capitalize }}<span class="count">{% if collections[child2_list_handle].title !="" %}( {{collections[child2_list_handle].products_count}} ){% endif %}</span><span class="caret"><i class="fa fa-angle-down"></i></span></a>              
+              <ul class="sub-menu level-2">
+                {% for childlink2 in linklists[child2_list_handle].links %}
+                <li{% if childlink2.active %} class="active"{% endif %}>  
+                  <a href="{{ childlink2.url }}">{{ childlink2.title | capitalize }}<span class="count">{% if collections[childlink2.title].title !="" %}( {{collections[childlink2.title].products_count}} ){% endif %}</span></a>
+                </li>
+                {% endfor %}
+              </ul>            
+            </li>
+            {% else %}
+
+            <li {% if childlink.active %} class="active"{% endif %}>
+              <a href="{{ childlink.url }}" >{{ childlink.title | capitalize }}<span class="count">{% if collections[child2_list_handle].title !="" %}( {{collections[child2_list_handle].products_count}} ){% endif %}</span></a>              
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </li>    
+        {% else %}
+
+        <li {% if link.active %} class="active"{% endif %}>
+
+          <a href="{{ link.url }}">{{ link.title | capitalize }}<span class="count">{% if collections[child_list_handle].title !="" %}( {{collections[child_list_handle].products_count}} ){% endif %}</span></a>
+        </li>
+        {% endif %}
+        {% endfor %}      
+      </ul>  
+  </div>
+</div>
+
+<script>
+  $(".list-categories .toggle-content .caret").click(function(){
+    $(this).closest('.toggle-content').find('.sub-menu').toggle();
+  });
+</script>

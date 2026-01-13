@@ -1,0 +1,75 @@
+<section id="main-404-{{ section.id }}" class="main-404 page-width page-margin center">
+  {% if section.settings.notfound_image != blank %}
+    <div class="main-404__image">
+      {{ section.settings.notfound_image | image_url: width: 2048 | image_tag: class: 'main-404__img', alt: section.settings.notfound_image.alt | default: shop.name }}
+    </div>
+  {% endif %}
+
+  <div class="main-404__info">
+    <h1 class="main-404__title">{{ section.settings.title_404 }}</h1>
+    <div class="main-404__description">
+      {{ section.settings.des_404 }}
+    </div>
+
+    <div class="main-404__actions">
+      <a class="btn main-404__btn" href="javascript:void(0)" onclick="history.go(-1); return false;">Go Back</a>
+      <a class="btn main-404__btn" href="/">Go Home</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #main-404-{{ section.id }} { text-align: center; }
+
+  #main-404-{{ section.id }} .main-404__img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+  }
+
+  #main-404-{{ section.id }} .main-404__title + * {
+    margin-top: 1rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    #main-404-{{ section.id }} .main-404__title + * {
+      margin-top: 2rem;
+    }
+  }
+
+  #main-404-{{ section.id }} .main-404__actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "404 Page",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "notfound_image",
+      "label": "404 Image"
+    },
+    {
+      "type": "text",
+      "id": "title_404",
+      "label": "Title 404",
+      "default": "Oops, that link is broken."
+    },
+    {
+      "type": "textarea",
+      "id": "des_404",
+      "label": "Description not found",
+      "default": "Page does not exist or some other error occurred. Go to the previous page or return to the Home page."
+    }
+  ],
+  "presets": [
+    { "name": "404 Page" }
+  ]
+}
+{% endschema %}

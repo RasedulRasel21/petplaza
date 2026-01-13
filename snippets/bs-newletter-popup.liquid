@@ -1,0 +1,180 @@
+<div id="popup-newletter" class="popup-newletter">
+  <div class="module main-newsleter-popup newsletter-wrappers bs_newletter_oca_popup" id="newsletter-wrappers" style="display: block;">
+    <div class="bs_newletter_custom_popup_bg popup_bg"></div> 
+    <div class="popup-wraper" style="width: {{ settings.ssnp_width }}px;">
+      <button title="Close" type="button" class="{% if settings.newsletter == blank %} blank-image {% endif %} popup-close"><i class="la la-close" aria-hidden="true"></i></button> 
+      <div class="bs-custom-popup bs-custom-oca-popup"> 
+
+        <div class="modcontent"> 
+          <div class="oca_popup" id="test-popup" >
+               {% if settings.newsletter != blank %}
+               {% assign img_url = settings.newsletter | img_url: 'master' %}
+                <div class="popup-image"> 
+                    <img src="{{img_url}}" alt="newsletter"/>
+                </div>
+               {% endif %}
+            
+            <div class="popup-content">
+              <div class="wrap-info">
+                <div class="popup-title"><h4>{{ settings.ssnp_title }}</h4></div>
+                 <div class="short-description">{{ settings.ssnp_description }}</div>
+                {% if settings.newslettermodal_mailchimp %}
+                {% comment %}
+
+                MailChimp is the go-to newsletter service for Shopify.
+                Use the link below to find your MailChimp "form action"
+                and insert it in your site settings.
+
+                MailChimp newsletter integration and requirement:
+                - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
+
+                {% endcomment %}
+
+                {% assign form_action = settings.newsletter_formmodal_action %}
+               
+                
+                {%- assign formId = 'ContactFooter2' -%}
+                  {% form 'customer', id: formId, novalidate: 'novalidate' %}
+                    {%- if form.posted_successfully? -%}
+                      <p class="form-message form-message--success" tabindex="-1" data-form-status>
+                        {{ 'general.newsletter_form.confirmation' | t }}
+                      </p>
+                    {%- endif -%}
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <div class="input-group {% if form.errors %} input-group--error{% endif %}">
+                      <input type="email"
+                        name="contact[email]"
+                        id="{{ formId }}-email"
+                        class="form-control input-group__field newsletter__input{% if form.errors %} input--error{% endif %}"
+                        value="{{ form.email }}"
+                        placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                        aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                        aria-required="true"
+                        autocapitalize="off"
+                        {% if form.errors %}
+                          aria-invalid="true"
+                          aria-describedby="{{ formId }}-email-error"
+                          data-form-status
+                        {% endif %}>
+                        <button type="submit" class="btn newsletter__submit" name="commit" >
+                          <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+                        </button>
+                    </div>
+                    {% if form.errors contains 'email' %}
+                      <span id="{{ formId }}-email-error" class="input-error-message">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                          <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                          <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                          <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                          <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                        </svg>
+                        <span class="site-footer__newsletter-error">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                      </span>
+                    {% endif %}
+                  {% endform %}
+
+
+                {% endif %}	
+
+                {% if settings.ssnp_show_checkbox and settings.ssnp_checkbox_title != blank %}
+                <label class="hidden-popup">
+                  <input type="checkbox" value="1" name="hidden-popups">
+                  <span class="inline">&nbsp;&nbsp;{{ settings.ssnp_checkbox_title }}</span>
+                </label>
+                {% endif %}
+               <div class="socials-popup">
+                  <ul class="social-list">
+                    {% if settings.ssnp_show_facebook %}
+                    <li class="facebook"><a href="{{ settings.ssnp_link_facebook }}" title="facebook"><i class="fa fa-facebook"></i><span class="hidden">Facebook</span></a></li>
+                    {% endif %}
+                    {% if settings.ssnp_show_twitter %}
+                    <li class="twitter"><a href="{{ settings.ssnp_link_twitter }}" title="twitter"><i class="fa fa-twitter"></i><span class="hidden">Twitter</span></a></li>
+                    {% endif %}
+                   
+                    {% if settings.ssnp_show_pinterest %}
+                    <li class="pinterest"><a href="{{ settings.ssnp_link_pinterest }}" title="pinterest"><i class="fa fa-pinterest"></i><span class="hidden">Pinterest</span></a></li>
+                    {% endif %}
+                  
+                    {% if settings.ssnp_show_instagram %}
+                    <li class="instagram"><a href="{{ settings.ssnp_link_instagram }}" title="instagram"><i class="fa fa-instagram"></i><span class="hidden">Instagram</span></a></li>
+                    {% endif %}
+                  </ul>
+                </div> 
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div>
+  <script>
+  (function($){
+    var COOKIE_NAME = "newsletter-wrapper";
+    var COOKIE_DAYS = 0; // change if you want a longer/shorter duration
+    var SESSION_FLAG = "__nlp_shown";
+
+    function setCookie(name, value, days){
+      var d = new Date();
+      d.setTime(d.getTime() + (days*24*60*60*1000));
+      var expires = "expires=" + d.toUTCString();
+      var secure = location.protocol === "https:" ? "; Secure" : "";
+      document.cookie = name + "=" + encodeURIComponent(value) + "; " + expires + "; path=/; SameSite=Lax" + secure;
+    }
+
+    function getCookie(name){
+      var cname = name + "=";
+      var parts = document.cookie.split(';');
+      for (var i=0; i<parts.length; i++){
+        var c = parts[i].trim();
+        if (c.indexOf(cname) === 0) return decodeURIComponent(c.substring(cname.length));
+      }
+      return "";
+    }
+
+    function unsetCookie(name){
+      var secure = location.protocol === "https:" ? "; Secure" : "";
+      document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; SameSite=Lax" + secure;
+    }
+
+    function dismissPopup(){
+      // persist across pages + avoid re-open in this session
+      setCookie(COOKIE_NAME, "dismissed", COOKIE_DAYS);
+      sessionStorage.setItem(SESSION_FLAG, "1");
+      $('body').removeClass('hidden-scroll');
+      $('#popup-newletter').removeClass('show popup_bgs').hide();
+    }
+
+    $(function(){
+      // hide by default (double-safety in case inline style isn't changed)
+      $('#popup-newletter').hide();
+
+      $(window).on('load', function(){
+        var cookie = getCookie(COOKIE_NAME);
+        var alreadyShownThisSession = sessionStorage.getItem(SESSION_FLAG) === "1";
+
+        if (!cookie && !alreadyShownThisSession){
+          sessionStorage.setItem(SESSION_FLAG, "1");
+          $('#popup-newletter').show().addClass('popup_bgs show');
+          $('body').addClass('hidden-scroll');
+        }
+
+        // Close handlers write the cookie so it won't reappear on next pages
+        $('.bs_newletter_custom_popup_bg, .popup-close').on('click', function(e){
+          e.preventDefault();
+          dismissPopup();
+        });
+
+        // Optional: “Don’t show again” checkbox
+        $('input[name="hidden-popups"]').on('change', function(){
+          if (this.checked){
+            setCookie(COOKIE_NAME, "dismissed", COOKIE_DAYS);
+          } else {
+            unsetCookie(COOKIE_NAME);
+          }
+        });
+      });
+    });
+  })(jQuery);
+</script>
+
+</div>

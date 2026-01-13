@@ -1,0 +1,146 @@
+<style>
+    .ft-block .social-fanpage .list-social .facebook a{
+        background-color: {{ settings.facebook_background_color }};
+        color: {{ settings.facebook_text_color }};
+    }
+    .ft-block .social-fanpage .list-social .facebook a:hover{
+        background-color:{{ settings.facebook_text_color }} ;
+        color: {{ settings.facebook_background_color }};
+    }
+
+    .ft-block .social-fanpage .list-social .twitter a{
+        background-color: {{ settings.twitter_background_color }};
+        color: {{ settings.twitter_text_color }};
+    }
+    .ft-block .social-fanpage .list-social .twitter a:hover{
+        background-color: {{ settings.twitter_text_color }};
+        color: {{ settings.twitter_background_color }};
+    }
+    .ft-block .social-fanpage .list-social .linkedin a{
+        background-color: {{ settings.linkedin_background_color }};
+        color: {{ settings.linkedin_text_color }};
+    }
+    .ft-block .social-fanpage .list-social .linkedin a:hover{
+        background-color: {{ settings.linkedin_text_color }};
+        color: {{ settings.linkedin_background_color }};
+    }
+
+    .ft-block .social-fanpage .list-social .instagram a{
+        background-color: {{ settings.instagram_background_color }};
+        color: {{ settings.instagram_text_color }};
+    }
+    .ft-block .social-fanpage .list-social .instagram a:hover{
+        background-color: {{ settings.instagram_text_color }};
+        color: {{ settings.instagram_background_color }};
+    }
+    .ft-block .social-fanpage .list-social .pinterest a{
+        background-color: {{ settings.pinterest_background_color }};
+        color: {{ settings.pinterest_text_color }};
+    }
+    .ft-block .social-fanpage .list-social .pinterest a:hover{
+        background-color: {{ settings.pinterest_text_color }};
+        color: {{ settings.pinterest_background_color }};
+    }
+    .ft-block .social-fanpage .list-social .tumblr a{
+        background-color: {{ settings.tumblr_background_color }};
+        color: {{ settings.tumblr_text_color }};
+    }
+    .ft-block .social-fanpage .list-social .tumblr a:hover{
+        background-color: {{ settings.tumblr_text_color }};
+        color: {{ settings.tumblr_background_color }};
+    }
+    .ft-block .social-fanpage .list-social .youtube a{
+        background-color: {{ settings.youtube_background_color }};
+        color: {{ settings.youtube_text_color }};
+    }
+    .ft-block .social-fanpage .list-social .youtube a:hover{
+        background-color: {{ settings.youtube_text_color }};
+        color: {{ settings.youtube_background_color }};
+    }
+    .ft-block .social-fanpage .list-social .vimeo a{
+        background-color: {{ settings.vimeo_background_color }};
+        color: {{ settings.vimeo_text_color }};
+    }
+    .ft-block .social-fanpage .list-social .vimeo a:hover{
+        background-color: {{ settings.vimeo_text_color }};
+        color: {{ settings.vimeo_background_color }};
+    }
+</style>
+
+<div class="social-fanpage">
+    <div class="fanpage-title">{{ settings.social_title }}</div>
+
+    <ul class="list-social">
+        {% if settings.facebook_url != blank %}
+            <li class="facebook">
+                <a href="{{ settings.facebook_url }}">
+                    <span class="social-icon fa fa-facebook"></span>
+                    <span class="social-text">{{ settings.facebook_label }}</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.twitter_url != blank %}
+            <li class="twitter">
+                <a href="{{ settings.twitter_url }}">
+                    <span class="social-icon fa fa-twitter"></span>
+                    <span class="social-text">{{ settings.twitter_label }}</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.linkedin_url != blank %}
+            <li class="linkedin">
+                <a href="{{ settings.linkedin_url }}">
+                    <span class="social-icon fa fa-linkedin"></span>
+                    <span class="social-text">{{ settings.linkedin_label }}</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.instagram_url != blank %}
+            <li class="instagram">
+                <a href="{{ settings.instagram_url }}">
+                    <span class="social-icon fa fa-instagram"></span>
+                    <span class="social-text">{{ settings.instagram_label }}</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.pinterest_url != blank %}
+            <li class="pinterest">
+                <a href="{{ settings.pinterest_url }}">
+                    <span class="social-icon fa fa-pinterest-p"></span>
+                    <span class="social-text">{{ settings.pinterest_label }}</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.tumblr_url != blank %}
+            <li class="tumblr">
+                <a href="{{ settings.tumblr_url }}">
+                    <span class="social-icon fa fa-tumblr"></span>
+                    <span class="social-text">{{ settings.tumblr_label }}</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.youtube_url != blank %}
+            <li class="youtube">
+                <a href="{{ settings.youtube_url }}">
+                    <span class="social-icon fa fa-youtube-play"></span>
+                    <span class="social-text">{{ settings.youtube_label }}</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.vimeo_url != blank %}
+            <li class="vimeo">
+                <a href="{{ settings.vimeo_url }}">
+                    <span class="social-icon fa fa-vimeo"></span>
+                    <span class="social-text">{{ settings.vimeo_label }}</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

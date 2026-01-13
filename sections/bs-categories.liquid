@@ -1,0 +1,728 @@
+{% assign randomNumber = 'now' | date: '%N' | modulo: 100 %}
+{% assign blockType = section.settings.block_type %}
+
+{% if blockType == '1' %}
+  {% assign typeClass = 'category-slider' %}
+{% else %}
+  {% assign typeClass = 'category-grid' %}
+  {% assign gridColumns = section.settings.grid_columns %}
+  {% assign gridColumnsValue = gridColumns | times: 1.0 %}
+  {% assign width = 100 | divided_by: gridColumnsValue %}
+  {% assign style = 'style="width:' | append: width | append: '%"' %}
+{% endif %}
+
+{% assign typeTitle = 'block-title-center' %}
+{% if section.settings.button_text != blank %}
+  {% assign typeTitle = 'block-title-left' %}
+{% endif %}
+<div class="bzo-categories">
+  <div class="container">
+    <div class="block block-categories">
+      <div class="block-title {{ typeTitle }}">
+        <div class="title-content">
+          <strong>{{ section.settings.block_title }}</strong>
+
+          {% if section.settings.block_description != blank %}
+            <div class="block-description">
+              {{ section.settings.block_description }}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if section.settings.button_text != blank %}
+          <a class="link-button block-button" href="{{ section.settings.button_url.url }}">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="block-content clearfix">
+        <div class="grid-cats {{ typeClass }}" id="category-id-{{ randomNumber }}">
+          
+          {% if blockType == '1' %}
+            <div class="owl-carousel owl-theme">
+          {% endif %}
+          
+          {% for block in section.blocks %}
+            <!-- Add the index class here -->
+            <div class="item color-{{ forloop.index0 | modulo: 5 }}" {{ style }} data-block-id="{{ block.id }}">
+              <div class="item-inner">
+                <div class="cat-image">
+                  <a href="{{ block.settings.category_collection.url }}">
+                    {% if block.settings.category_image != blank %}
+                      <img loading="lazy"
+                        src="{{ block.settings.category_image | image_url: width: 400 }}"
+                        alt="{{ block.settings.category_name }}"
+                        width="400"
+                        height="400"
+                      >
+                    {% else %}
+                      {{ 'image' | placeholder_svg_tag: 'bzpets-placeholder-class' }}
+                    {% endif %}
+                  </a>
+                </div>
+
+                <div class="cat-info">
+                  {% if block.settings.category_name %}
+                    <h2 class="cat-name font-title">
+                      <a href="{{ block.settings.category_collection.url }}">
+                        {{ block.settings.category_name }}
+                      </a>
+                    </h2>
+                  {% endif %}
+
+                  {% if block.settings.short_description %}
+                    <div class="cat-short-description">
+                      {{ block.settings.category_collection.all_products_count }} {{ 'collections.general.text_items' | t }}
+                      <!--{{ block.settings.short_description }}-->
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.category_subcats %}
+                    <div class="sub-categories">
+                      <ul class="list-subcats">
+                        {%- for link in block.settings.category_subcats.links -%}
+                          <li class="sub-item">
+                            <a href="{{ link.url }}">
+                              {{ link.title | escape }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          
+          {% if blockType == '1' %}
+            </div> <!-- Close owl-carousel -->
+          {% endif %}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  $(function () {
+    $('#category-id-{{ randomNumber }} .owl-carousel').owlCarousel({
+      loop: {{ section.settings.loop }},
+      autoplay: {{ section.settings.auto_play }},
+      margin: {{ section.settings.margin }},
+      nav: {{ section.settings.nav }},
+      dots: {{ section.settings.dots }},
+      responsive: {
+        0: {
+          items: {{ section.settings.screen_8 }},
+        },
+        481: {
+            items: {{ section.settings.screen_7 }},
+        },
+        768: {
+            items: {{ section.settings.screen_6 }},
+        },
+        992: {
+            items: {{ section.settings.screen_5 }},
+        },
+        1200: {
+            items: {{ section.settings.screen_4 }},
+        },
+        1441: {
+            items: {{ section.settings.screen_3 }},
+        },
+        1681: {
+            items: {{ section.settings.screen_2 }},
+        },
+        1921: {
+            items: {{ section.settings.screen_1 }},
+        }
+      }
+    });
+  });
+</script>
+
+
+<style>
+  {% for block in section.blocks %}
+    /* Target using the unique block ID */
+    [data-block-id="{{ block.id }}"] .item-inner:hover .cat-image a:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 20px solid {{ block.settings.hover_border_color }} !important;
+      opacity: 1 !important;
+      z-index: 1;
+    }
+    
+    /* Default state (hidden) */
+    [data-block-id="{{ block.id }}"] .cat-image a:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 20px solid {{ block.settings.hover_border_color }};
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+    
+    /* Ensure relative positioning */
+    [data-block-id="{{ block.id }}"] .cat-image a {
+      position: relative;
+      display: block;
+    }
+  {% endfor %}
+</style>
+{% schema %}
+{
+  "name": "Fix R BS - Categories",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "block_title",
+      "label": "Block title",
+      "default": "Shop By Category"
+    },
+    {
+      "type": "richtext",
+      "id": "block_description",
+      "label": "Short description"
+    },
+    {
+      "type": "header",
+      "content": "Block button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Block configuration"
+    },
+    {
+      "type": "select",
+      "id": "block_type",
+      "options": [
+        {
+          "value": "1",
+          "label": "Slider"
+        },
+        {
+          "value": "0",
+          "label": "Grid"
+        }
+      ],
+      "default": "1",
+      "label": "Style"
+    },
+    {
+      "type": "header",
+      "content": "Grid configuration"
+    },
+    {
+      "type": "select",
+      "id": "grid_columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "3",
+      "label": "Grid column number"
+    },
+    {
+      "type": "header",
+      "content": "Slider configuration"
+    },
+    {
+      "type": "select",
+      "id": "nav",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "1",
+      "label": "Show navigation"
+    },
+    {
+      "type": "select",
+      "id": "dots",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Show dots"
+    },
+    {
+      "type": "select",
+      "id": "loop",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Enable Loop"
+    },
+    {
+      "type": "select",
+      "id": "auto_play",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Enable auto play"
+    },
+    {
+      "type": "text",
+      "id": "margin",
+      "label": "Margin",
+      "default": "30"
+    },
+    {
+      "type": "select",
+      "id": "screen_1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "Greater than 1921px"
+    },
+    {
+      "type": "select",
+      "id": "screen_2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1681px => 1920px"
+    },
+    {
+      "type": "select",
+      "id": "screen_3",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1441px => 1680px"
+    },
+    {
+      "type": "select",
+      "id": "screen_4",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1200px => 1440px"
+    },
+    {
+      "type": "select",
+      "id": "screen_5",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "5",
+      "label": "992px => 1199px"
+    },
+    {
+      "type": "select",
+      "id": "screen_6",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "4",
+      "label": "768px => 991px"
+    },
+    {
+      "type": "select",
+      "id": "screen_7",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "3",
+      "label": "481px => 767px"
+    },
+    {
+      "type": "select",
+      "id": "screen_8",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "2",
+      "label": "Equal or less than 480px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "grid_category",
+      "name": "Category",
+
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "category_image",
+          "label": "Category image"
+        },
+        {
+          "type": "collection",
+          "id": "category_collection",
+          "label": "Collection"
+        },
+        {
+          "type": "link_list",
+          "id": "category_subcats",
+          "label": "Sub categories"
+        },
+        {
+          "type": "richtext",
+          "id": "short_description",
+          "label": "Short description"
+        },
+        {
+          "type": "color",
+          "id": "hover_border_color",
+          "label": "Select the Border Color For This Icon",
+          "info": "Custom Added by R"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fix R BS - Categories",
+      "blocks": [
+        {
+          "type": "grid_category"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

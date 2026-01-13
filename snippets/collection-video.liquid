@@ -1,0 +1,27 @@
+{% if product.description contains '[video]' and product.available %}
+{% assign video = product.content | split: '[/video]' | first %}
+{% assign video = video | split: '[video]' | last %}
+<!-- Button to Open the Modal -->
+<div class="cls-video">
+  <div class="btn-video" data-toggle="modal" data-target="#myModal3">
+    <i class="fa fa-video-camera" aria-hidden="true"></i>
+  </div>
+
+  <div class="modal fade" id="myModal3">
+    <div class="modal-dialog  modal-dialog-centered">
+      <div class="modal-content">
+        <!-- The Modal -->
+        <!-- Modal body -->
+        <div class="modal-body text-center">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="{{ video }}"></iframe>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

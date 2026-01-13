@@ -1,0 +1,287 @@
+.footer-top {
+  padding: 78px 0 40px;
+}
+
+.ft-block {
+  margin-bottom: 30px;
+}
+
+.ft-block .ft-title {
+  font-size: 190%;
+  margin-bottom: 22px;
+  /* font-family: var(--font-custom-family); */ font-family: 'Bubblegum Sans', cursive;
+}
+
+.ft-block .text-address {
+  margin-bottom: 18px;
+  max-width: 330px;
+}
+
+.ft-block .text-email {
+  margin-bottom: 35px;
+}
+
+.ft-block .phone-info .call-title {
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.ft-block .phone-info .call-phone {
+  font-size: 169.23%;
+}
+
+.ft-block .list-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ft-block .list-links li {
+  margin-bottom: 10px;
+}
+
+.ft-block .list-links li a span {
+  font-size: 17px;
+  vertical-align: top;
+  position: relative;
+  top: -2px;
+}
+.ft-block .list-links li a span.icon-keyboard_arrow_right:before {
+  content: '\f105';
+  display: inline-block;
+  font-family: 'Line Awesome Free' !important;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.footer-block-content.newsletter form {
+  display: flex;
+}
+
+.footer-block-content.newsletter form .newsletter-form__field-wrapper {
+  width: 100%;
+}
+
+.footer-block-content.newsletter form .newsletter-form__field-wrapper input {
+  height: 44px;
+  border-radius: 22px 0 0 22px;
+  border: none;
+  width: 100%;
+}
+
+.text-description {
+  margin-bottom: 20px;
+}
+
+.footer-block-content.newsletter form .button {
+  background-color: var(--theme-primary-color);
+  min-width: unset;
+  height: 44px;
+  padding: 0 30px;
+  border-radius: 0 22px 22px 0;
+  transition: .1s;
+  color: var(--text-on-theme-primary-color);
+}
+
+.footer-block-content.newsletter form .button:hover {
+  background-color: var(--theme-primary-darken-color);
+  box-shadow: none;
+}
+
+.footer-bottom {
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.payment-method {
+  text-align: right;
+}
+
+.copyright {
+  padding-top: 4px;
+}
+
+.ft-block .phone-info .call-phone{
+  /* font-family: var(--font-custom-family); */ font-family: 'Bubblegum Sans', cursive;
+}
+
+.ft-block .social-fanpage .fanpage-title{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ft-block .social-fanpage .list-social{
+  display: inline-block;
+  vertical-align: top;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ft-block .social-fanpage .list-social li{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 3px 5px 0;
+}
+
+.ft-block .social-fanpage .list-social .social-text{
+  display: none;
+}
+
+.ft-block .social-fanpage .list-social li a{
+  display: block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 22px;
+  border-radius: 50%;
+}
+
+.footer-block-content.newsletter {
+  margin-bottom: 25px;
+}
+.call-order {
+  display: flex;
+  gap: 10px;
+}
+.footer-container {
+  margin-top: 78px;
+}
+/* Mobile footer bar */
+.m-search-sidebar {
+  display: none;
+}
+.mobile-bottom-bar {
+  display: none;
+}
+/* End Mobile footer bar */
+@media (max-width: 992px) {
+  .footer-container {
+    margin-top: 35px;
+  }
+  .footer-top {
+    padding: 50px 0 10px;
+  } 
+}
+@media (max-width: 767px) {
+/* Mobile footer bar */
+  .footer-container.enable-bottom-bar {
+    margin-bottom: 72px;
+  }
+  .mobile-bottom-bar {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .mobile-bottom-bar .bottom-bar {
+    display: flex;
+    padding: 0 15px;
+    justify-content: space-between;
+  }
+  .mobile-bottom-bar .bottom-bar li a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+  }
+  .mobile-bottom-bar .bottom-bar li .icon {
+    font-size: 24px;
+  }
+  .mobile-bottom-bar .bottom-bar li .text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .m-search-sidebar {
+    display: block;
+  }
+  .m-search-sidebar .search-popup-container {
+    height: 100%;
+    transform: translateX(-100%);
+    max-height: 100%;
+    max-width: calc(100vw - 40px);
+    transition: .5s;
+  }
+  .show-search .m-search-sidebar .search-popup-container{
+    transform: translateX(0);
+  }
+  .m-search-sidebar .search-title {
+    display: flex;
+    padding: 20px 15px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .m-search-sidebar .search-popup-container .btn-close {
+    margin: 0;
+    color: #222;
+  }
+  .m-search-sidebar .search-title h3 {
+    text-transform: capitalize;
+    margin: 0;
+    color: #222;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .m-search-sidebar .search-popup-container .search-content .search-modal__form {
+    width: 100%;
+  }
+  .m-search-sidebar .search-popup-container .search-content {
+    padding: 10px 0;
+  }
+  .m-search-sidebar .search-popup-container .field .search__input {
+    border-bottom: 1px solid #e7e7e7;
+    background: #fafafa;
+    padding: 12px;
+  }
+  .m-search-sidebar .search-content .top-search-collection {
+    display: block;
+  }
+  .m-search-sidebar .search-popup-container .top-search-collection .menu {
+    flex-wrap: wrap;   
+  }
+  .m-search-sidebar .search-popup-container .top-search-collection>span {
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: block;
+    color: #222;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .m-search-sidebar .search-popup-container .top-search-collection .menu .menu-link {
+    padding: 3px 10px;
+  }
+  .m-search-sidebar #m-search-popup-results .container {
+    padding: 0;
+     max-width: 100%;
+  }
+  .m-search-sidebar #m-search-popup-results .search-title {
+    border-bottom: 1px solid #e7e7e7;
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+  .m-search-sidebar #m-search-popup-results .search-title strong{
+    font-weight: 500;
+    color: #222;
+    font-size: 16px;
+  }
+  .m-search-sidebar div.template-search__results {
+    margin-top: 0;
+  }
+  .m-search-sidebar div.template-search__results .search-products {
+    margin-bottom: 30px;
+  }
+/* End Mobile footer bar */
+  }
+@media (max-width: 480px) {
+.call-order .phone-image{
+  display: none;
+}
+.ft-block .text-email {
+  margin-bottom: 10px;
+}
+}

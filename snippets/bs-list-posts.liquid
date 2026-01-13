@@ -1,0 +1,14 @@
+<div class="block widget-list-blogs">
+  <div class="block-title">
+    <strong>{{ 'blogs.sidebar.list_blogs' | t }}</strong>
+  </div>
+
+  <div class="block-content">
+    <ul>
+      {% for link in linklists.blogs.links %}
+        {% assign blog = link.object %}
+          <li class="blog-name"><a href="{{ blog.url }}">{{ blog.title }}</a></li>
+      {% endfor %}
+  </ul>
+  </div>
+</div>

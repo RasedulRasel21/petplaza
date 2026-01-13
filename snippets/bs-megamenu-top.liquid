@@ -1,0 +1,113 @@
+{% if block.settings.top_block_1_enable == '1' %}
+<!-- Top Block 1 -->
+    <div class="megamenu-column top-block" style="width: {{ block.settings.top_block_1_width }}">
+        {% if block.settings.top_block_1_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.top_block_1_image_url }}">
+            <img src="{{ block.settings.top_block_1_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.top_block_1_text != blank %}
+        <div class="block-text">
+            {{ block.settings.top_block_1_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if block.settings.top_block_2_enable == '1' %}
+<!-- Top Block 2 -->
+<div class="megamenu-column top-block" style="width: {{ block.settings.top_block_2_width }}">
+    {% if block.settings.top_block_2_image != blank %}
+    <div class="block-image">
+        <a href="{{ block.settings.top_block_2_image_url }}">
+        <img src="{{ block.settings.top_block_2_image | image_url: width: 1500 }}"/>
+        </a>
+    </div>
+    {% endif %}
+    
+    {% if block.settings.top_block_2_text != blank %}
+    <div class="block-text">
+        {{ block.settings.top_block_2_text }}
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+
+{% if block.settings.top_block_3_enable == '1' %}
+<!-- Top Block 3 -->
+    <div class="megamenu-column top-block" style="width: {{ block.settings.top_block_3_width }}">
+        {% if block.settings.top_block_3_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.top_block_3_image_url }}">
+            <img src="{{ block.settings.top_block_3_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.top_block_3_text != blank %}
+        <div class="block-text">
+            {{ block.settings.top_block_3_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if block.settings.top_block_4_enable == '1' %}
+<!-- Top Block 4 -->
+    <div class="megamenu-column top-block" style="width: {{ block.settings.top_block_4_width }}">
+        {% if block.settings.top_block_4_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.top_block_4_image_url }}">
+            <img src="{{ block.settings.top_block_4_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.top_block_4_text != blank %}
+        <div class="block-text">
+            {{ block.settings.top_block_4_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if block.settings.top_block_5_enable == '1' %}
+<!-- Top Block 5 -->
+    <div class="megamenu-column top-block" style="width: {{ block.settings.top_block_5_width }}">
+        {% if block.settings.top_block_5_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.top_block_5_image_url }}">
+            <img src="{{ block.settings.top_block_5_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.top_block_5_text != blank %}
+        <div class="block-text">
+            {{ block.settings.top_block_5_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if block.settings.top_block_6_enable == '1' %}
+<!-- Top Block 6 -->
+    <div class="megamenu-column top-block" style="width: {{ block.settings.top_block_6_width }}">
+        {% if block.settings.top_block_6_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.top_block_6_image_url }}">
+            <img src="{{ block.settings.top_block_6_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.top_block_6_text != blank %}
+        <div class="block-text">
+            {{ block.settings.top_block_6_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}

@@ -1,0 +1,48 @@
+<!-- Category Block -->
+{% if block.settings.category_enable == '1' %}
+    <div class="megamenu-column category-block" style="width: {{ block.settings.category_width }}">
+        <div class="sub-items">
+            {%- for link in block.settings.category_nav.links -%}
+                <div class="colum-sub-cat" style="width: {{ block.settings.sub_category_width }}">
+                {%- if link.links != blank -%}
+                    <a href="{{ link.url }}" class="{% if link.current %} active {% endif %} {% if link.links.size > 0 %}have-child{% endif %}"{% if link.current %} aria-current="page"{% endif %} > 
+                    {{ link.title | escape }}
+                    </a>
+
+                    <div class="megamenu-sub-dropdown">
+                        <ul class="list-sub-items">
+                            {%- for childlink in link.links -%}
+                            <li class="{%- if childlink.links != blank -%} has-child {% endif %}">
+                                {%- if childlink.links == blank -%}
+                                <a href="{{ childlink.url }}" class="{% if childlink.current %} active {% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                    {{ childlink.title | escape }}
+                                </a>
+                                {%- else -%}
+                                    <a href="{{ childlink.url }}" class="{% if childlink.current %} active {% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                        {{ childlink.title | escape }}
+                                    </a>
+
+                                    <ul class="list-sub-items">
+                                        {%- for grandchildlink in childlink.links -%}
+                                        <li>
+                                            <a href="{{ grandchildlink.url }}" class="{% if grandchildlink.current %} active {% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                            {{ grandchildlink.title | escape }}
+                                            </a>
+                                        </li>
+                                        {%- endfor -%}
+                                    </ul>
+                                {%- endif -%}
+                            </li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+                {%- else -%}
+                    <a href="{{ link.url }}" class="{% if link.current %} active {% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+                    {{ link.title | escape }}
+                    </a>
+                {%- endif -%}
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+{% endif %}

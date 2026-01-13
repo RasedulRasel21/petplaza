@@ -1,0 +1,115 @@
+
+<div class="form_login">
+  {% if settings.logo and settings.logo_img %}
+  <a class="popup-close" data-target="popup-close" data-popup-close="#popup-categories">
+    {% capture image_size %}{{ settings.logo_max_width }}x{% endcapture %}
+    {% assign image_size = settings.logo_max_width  %}
+    <img src="{{ settings.logo | img_url: image_size }}"
+         srcset="{{ settings.logo | img_url: image_size }}"
+         alt="{{ settings.logo.alt | default: shop.name }}">
+  </a>
+  {% else %}
+  <a class="popup-close" data-target="popup-close" data-popup-close="#popup-categories">{{ settings.logo_text }}</a>
+  {% endif %}
+  <div id="CustomerLoginForm" class="form-vertical">
+    {% if shop.customer_accounts_optional or shop.customer_accounts_enabled %}
+    {% capture fullname %}{{ customer.first_name }} {{ customer.last_name }}{% endcapture %}
+    {% assign login_html = 'layout.header.login_html' | t:fullname:fullname %}
+    {% assign logout = 'layout.header.logout' | t %}
+    {% assign login = 'layout.header.login' | t %}
+    {% assign register = 'layout.header.register' | t %}
+    {% if customer  %}
+    <h2 class="title_pop">{{ 'customer.login.title_success' | t }} 
+      <!--        {% if settings.logo and settings.logo_img %}
+<a class="popup-close" data-target="popup-close" data-popup-close="#popup-log">
+{% capture image_size %}{{ settings.logo_max_width }}x{% endcapture %}
+{% assign image_size = settings.logo_max_width  %}
+<img src="{{ settings.logo | img_url: image_size }}"
+srcset="{{ settings.logo | img_url: image_size }}"
+alt="{{ settings.logo.alt | default: shop.name }}">
+</a>
+{% else %}
+<a class="popup-close" data-target="popup-close" data-popup-close="#popup-log">{{ settings.logo_text }}</a>
+{% endif %} -->
+
+    </h2>
+    <ul class="form_log">
+      <li><a class="account" rel="nofollow" href="/account"><i class="fa fa-user-secret" aria-hidden="true"></i>{{ login_html }}</a></li>
+      <li><i class="fa fa-unlock-alt" aria-hidden="true"></i> {{ logout | customer_logout_link }}</li>
+    </ul>
+    {% else %}
+    <h2 class="title_pop">{{ 'customer.login.title_popup' | t }}
+    </h2>
+    {% form 'customer_login' %}
+
+    <label for="CustomerEmail" class="hidden">{{ 'customer.login.email' | t }}</label>
+    <input required  placeholder="User name or Email" type="email" name="customer[email]" id="CustomerEmail" class="form-of {% if form.errors contains 'email' %} input--error{% endif %}" autofocus>
+
+    {% if form.password_needed %}
+    <label for="CustomerPassword" class="hidden">{{ 'customer.login.password' | t }}</label>
+    <input required placeholder="Passwork" type="password" value="" name="customer[password]" id="CustomerPassword" class="form-of {% if form.errors contains 'password' %} input--error{% endif %}">
+    {% endif %}
+    <div class="form-group">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input default " name="remember" id="icb1" value="true">
+        <label for="icb1"></label>
+        <label for="icb1" class="form-check-label">{{ 'customer.garenal.remember_me' | t }}</label>
+      </div>
+      {% if form.password_needed %}
+      <p><a href="/account/login/#recover">{{ 'customer.login.forgot_password' | t }}</a></p>
+      {% endif %}
+    </div>
+    <div class="text-center">
+      <input type="submit" class="btn btn-primary btn-submit" value="{{ 'customer.login.sign_in' | t }}">
+      <!--       <div class="social-buttons">
+<h5>{{ 'layout.customer.connect_via' | t }}</h5>
+<div class="content">
+<div class="facebook">
+
+<a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">
+<svg width="9px" height="18px" viewBox="0 0 9 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<title>facebook</title>
+<desc>Created with Sketch.</desc>
+<g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<g id="001---home" transform="translate(-1194.000000, -5051.000000)" fill="#484B6B" fill-rule="nonzero">
+<g id="Module-/-Footer-/-Desktop" transform="translate(0.000000, 4711.000000)">
+<g id="Col">
+<g transform="translate(1088.000000, 173.000000)">
+<g id="Social" transform="translate(0.000000, 139.000000)">
+<g id="facebook" transform="translate(106.000000, 28.954545)">
+<path d="M5.42536701,17.0454545 L2.17101521,17.0454545 L2.17101521,8.52272727 L0,8.52272727 L0,5.58554909 L2.17101521,5.58458363 L2.16748731,3.85420366 C2.16748731,1.45798562 2.82954518,0 5.70556366,0 L8.10005775,0 L8.10005775,2.93774414 L6.60358375,2.93774414 C5.48361128,2.93774414 5.42974296,3.34816673 5.42974296,4.11434659 L5.42529917,5.58458363 L8.11688312,5.58458363 L7.79957568,8.52176181 L5.42753803,8.52272727 L5.42536701,17.0454545 Z" id="Shape"></path>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>
+</a>
+</div>
+
+<div id="gSignIn">Google</div>
+</div>
+
+<div class="userContent" style="display: none;"></div>
+</div> -->
+
+     
+      <div class="form-group">
+        <h5>{{ 'layout.customer.member' | t }}</h5>
+        <a data-target="popup-regis" data-popup="#popup-regis">
+          <button class="btn btn-primary"><div class="label"><span class="label-title">{{ 'layout.customer.create_account' | t }}</span>
+            </div></button>
+        </a>
+
+      </div>
+    </div>
+
+    {% endform %}
+    {% endif %}
+    {% endif %}
+  </div>
+</div>
+

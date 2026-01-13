@@ -1,0 +1,721 @@
+{% assign randomNumber = 'now' | date: '%N' | modulo: 100 %}
+{% assign countCollection = 0 %}
+{% assign imageSize = '350x350' %}
+
+{% if section.settings.tab_type == '1' %}
+  {% assign tabStyleClass = 'tabstyle-slider' %}
+  {% assign paramStyle = 'slider' %}
+  {% assign view = 'bs_ajax_tab_product_slider' %}
+{% else %}
+  {% assign tabStyleClass = 'tabstyle-grid collection-grid' %}
+  {% assign paramStyle = 'grid' %}
+  {% assign view = 'bs_ajax_tab_product_grid' %}
+{% endif %}
+
+{% assign typeTitle = 'block-title-center' %}
+{% if section.settings.button_text != blank %}
+  {% assign typeTitle = 'block-title-left' %}
+{% endif %}
+
+<div class="product-tabs {{ tabStyleClass }} {{ section.settings.custom_class }}">
+  <div class="container">
+    <div class="block block-product-tabs">
+      {% if section.settings.enable_block_title == '1' %}
+        <div class="block-title {{ typeTitle }}">
+          <div class="title-content">
+            <strong>{{ section.settings.block_title }}</strong>
+
+            {% if section.settings.block_description != blank %}
+              <div class="block-description">
+                {{ section.settings.block_description }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if section.settings.button_text != blank %}
+            <div class="block-title-button">
+              <a class="link-button block-button" href="{{ section.settings.button_url.url }}">
+                {{ section.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="block-content clearfix">
+        <div class="bzo-tab-product block-tabs-container" id="tab-product-{{ randomNumber }}">
+          <div class="tab-container">
+            <div class="tabs-drop-mobile"></div>
+            <ul class="list-tabs clearfix">
+              {%- for block in section.blocks -%}
+                {%- if countCollection == 0 -%}
+                  {% assign blockColletionFirst = block.settings.product_collection %}
+                  {% assign fistTabItemActive = 'active' %}
+                {%- else -%}
+                  {% assign fistTabItemActive = '' %}
+                {%- endif -%}
+
+                {% assign blockColletion = block.settings.product_collection %}
+                {% assign collectionUrl = collections[blockColletion].url %}
+                
+                {% assign collectionId = collections[blockColletion].id %}
+                {% if collectionUrl== blank %} 
+                  {% assign collectionUrl = collections['frontpage'].url %}
+                  {% assign collectionId = collections['frontpage'].id %}
+                {% endif %}
+
+                <li
+                  class="tab-item {{ fistTabItemActive }}"
+                  data-collection="collection-{{ collectionId }}"
+                  data-tab-url="{{ shop.url }}{{ collectionUrl }}?view={{ view }}"
+                >
+                  {% if block.settings.tab_title != blank %}
+                    <span class="tab-title">
+                      {{ block.settings.tab_title }}
+                    </span>
+                  {% endif %}
+                </li>
+
+                {% assign countCollection = countCollection | plus: 1 %}
+              {%- endfor -%}
+            </ul>
+          </div>
+
+          <div class="tab-product-container">
+            <div class="ajax-container">
+              <div class="tab-collection-product collection-{{ collections[blockColletionFirst].id }}">
+                {% if collections[blockColletionFirst].products.size > 0 %}
+                  <div class="product-grid">
+                    {%- if section.settings.tab_type == '1' -%}
+                    <div class="owl-carousel owl-theme">
+                    {%- endif -%}
+
+                      {% for product in collections[blockColletionFirst].products %}
+                        {% render 'product-card-grid', product: product, imageSize: imageSize %}
+                      {% endfor %}
+
+                    {%- if section.settings.tab_type == '1' %}
+                    </div>
+                    {%- endif -%}
+                  </div>
+                {% else %}
+                  {% if collections[blockColletionFirst].url == blank %}
+                    <div class="product-grid">
+                    {%- if section.settings.tab_type == '1' -%}
+                    <div class="owl-carousel owl-theme">
+                    {%- endif -%}
+                    {% for i in (1..4) %}
+                      
+                        {% render 'product-card-placeholder' %}
+                      
+                    {% endfor %}
+                    {%- if section.settings.tab_type == '1' %}
+                    </div>
+                    {%- endif -%}
+                    </div>
+                  {% else %}
+                  <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+            <div class="tab-loading">{% render 'bs-icon-loading' %}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    {% if section.settings.tab_type == '1' %}
+      function tabSliderInit(tabElement){
+        $(tabElement).owlCarousel({
+          loop: {{ section.settings.loop }},
+          autoplay: {{ section.settings.auto_play }},
+          margin: {{ section.settings.margin }},
+          nav: {{ section.settings.nav }},
+          dots: {{ section.settings.dots }},
+          responsive: {
+            0: {
+              items: {{ section.settings.screen_8 }},
+            },
+            481: {
+                items: {{ section.settings.screen_7 }},
+            },
+            768: {
+                items: {{ section.settings.screen_6 }},
+            },
+            992: {
+                items: {{ section.settings.screen_5 }},
+            },
+            1200: {
+                items: {{ section.settings.screen_4 }},
+            },
+            1441: {
+                items: {{ section.settings.screen_3 }},
+            },
+            1681: {
+                items: {{ section.settings.screen_2 }},
+            },
+            1921: {
+                items: {{ section.settings.screen_1 }},
+            }
+          }
+        });
+      }
+
+      var defaultSlider = $("#tab-product-{{ randomNumber }} .owl-carousel");
+      tabSliderInit(defaultSlider);
+    {% endif %}
+
+    $("body").on('click', '.list-tabs .tab-item', function () {
+      if($(this).hasClass('active')){
+        return;
+      }
+
+      var collectionClass = '.' + $(this).data('collection');
+      var sliderElement = collectionClass + ' .owl-carousel';
+      var tabContainer = $(this).closest('.product-tabs');
+      var ajaxUrl = $(this).data('tab-url');
+      $(tabContainer).find('.ajax-container').html('');
+      $(tabContainer).addClass('loading');
+      $(tabContainer).find('.tab-item').removeClass('active');
+      $(this).addClass('active');
+
+      $.ajax({
+          url: ajaxUrl,
+          type: "GET",
+          data: "",
+          success: function (res) {
+            $(tabContainer).find('.ajax-container').css({'opacity': '0'})
+
+            setTimeout(function() {
+              $(tabContainer).find('.ajax-container').html(res);
+
+              {% if section.settings.tab_type == '1' %}
+              tabSliderInit(sliderElement);
+              {% endif %}
+            }, 500);
+
+            setTimeout(function() {
+              $(tabContainer).removeClass('loading');
+              $(tabContainer).find('.ajax-container').css({'opacity': '1'});
+            }, 600);
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+              console.log(thrownError);
+          }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "BS - Product Tabs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "enable_block_title",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "1",
+      "label": "Enable block title"
+    },
+    {
+      "type": "text",
+      "id": "block_title",
+      "label": "Block title",
+      "default": "Block title"
+    },
+    {
+      "type": "richtext",
+      "id": "block_description",
+      "label": "Short description"
+    },
+    {
+      "type": "header",
+      "content": "Block button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default": "View All",
+      "info":"Empty to disable"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "tab_type",
+      "options": [
+        {
+          "value": "1",
+          "label": "Slider"
+        },
+        {
+          "value": "0",
+          "label": "Grid"
+        }
+      ],
+      "default": "1",
+      "label": "Style"
+    },
+    {
+      "type": "header",
+      "content": "Slider Configuration"
+    },
+    {
+      "type": "text",
+      "id": "row",
+      "label": "Row number",
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "nav",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "1",
+      "label": "Show navigation"
+    },
+    {
+      "type": "select",
+      "id": "dots",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Show dots"
+    },
+    {
+      "type": "select",
+      "id": "loop",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Enable Loop"
+    },
+    {
+      "type": "select",
+      "id": "auto_play",
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes"
+        },
+        {
+          "value": "0",
+          "label": "No"
+        }
+      ],
+      "default": "0",
+      "label": "Enable auto play"
+    },
+    {
+      "type": "text",
+      "id": "margin",
+      "label": "Margin",
+      "default": "30"
+    },
+    {
+      "type": "select",
+      "id": "screen_1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "Greater than 1921px"
+    },
+    {
+      "type": "select",
+      "id": "screen_2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1681px => 1920px"
+    },
+    {
+      "type": "select",
+      "id": "screen_3",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1441px => 1680px"
+    },
+    {
+      "type": "select",
+      "id": "screen_4",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "6",
+      "label": "1200px => 1440px"
+    },
+    {
+      "type": "select",
+      "id": "screen_5",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "5",
+      "label": "992px => 1199px"
+    },
+    {
+      "type": "select",
+      "id": "screen_6",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "4",
+      "label": "768px => 991px"
+    },
+    {
+      "type": "select",
+      "id": "screen_7",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "3",
+      "label": "481px => 767px"
+    },
+    {
+      "type": "select",
+      "id": "screen_8",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        },
+        {
+          "value": "5",
+          "label": "5 Columns"
+        },
+        {
+          "value": "6",
+          "label": "6 Columns"
+        },
+        {
+          "value": "7",
+          "label": "7 Columns"
+        },
+        {
+          "value": "8",
+          "label": "8 Columns"
+        }
+      ],
+      "default": "2",
+      "label": "Equal or less than 480px"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "tab_icon",
+          "label": "Tab icon"
+        },
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Title"
+        },
+        {
+          "type": "collection",
+          "id": "product_collection",
+          "label": "Select Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BS - Product Tabs",
+      "blocks": [
+        {
+          "type": "tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

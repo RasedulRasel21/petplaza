@@ -1,0 +1,26 @@
+
+
+{% if product.description contains '[size-chart]' and product.available %}
+  {% assign size-chart = product.content | split: '[/size-chart]' | first %}
+  {% assign size-chart = size-chart | split: '[size-chart]' | last %}
+  <!-- Button to Open the Modal -->
+<div class="cls-size">
+<div class="btn-size" data-toggle="modal" data-target="#myModal1">
+  <i class="fa fa-info-circle" aria-hidden="true"></i>SIZE GUIDE
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal1">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+     
+      <!-- Modal body -->
+      <div class="modal-body text-center">
+        {{ size-chart }}
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+{% endif %}

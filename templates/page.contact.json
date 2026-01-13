@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "form": {
+      "type": "template-contact",
+      "settings": {
+        "display_google_map": true,
+        "google_map_code": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6381330522986!2d-75.44315282476506!3d6.179168380123996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e469d5d3604fae3%3A0xc673120fe7e27c2a!2sPets%20Plaza!5e0!3m2!1ses!2sco!4v1753305596089!5m2!1ses!2sco\" width=\"100%\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "title_info": "Contacta con nosotros",
+        "contact_text_desc": "",
+        "title_1": "Dirección:",
+        "des_1": "Parque empresarial La Regional, vía aeropuerto Rionegro - Glorieta Sajonia. Bodega 57, Rionegro, Antioquia.",
+        "icon_1": "map-marker",
+        "title_2": "Email:",
+        "des_2": "info@petsplaza.com.co",
+        "icon_2": "envelope",
+        "title_3": "Teléfono:",
+        "des_3": "6046045523",
+        "icon_3": "Teléfono",
+        "title_4": "Horarios de Atención:",
+        "des_4": "Lunes a Viernes 8:00 a. m. a 7:00 p. m.",
+        "icon_4": "clock-o",
+        "title_form": "¿Tienes alguna pregunta? ¡Contáctanos!"
+      }
+    }
+  },
+  "order": [
+    "form"
+  ]
+}

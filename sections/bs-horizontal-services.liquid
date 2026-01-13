@@ -1,0 +1,64 @@
+{% unless template contains 'article' or template contains 'product' %}
+  <div class="horizontal_services">
+    <div class="container">
+      <ul class="services">
+        {% for block in section.blocks %}
+          <li class="item">
+            <a href="{{ block.settings.h_service_url.url }}">
+              {% if block.settings.h_service_icon != blank %}
+              <img loading="lazy" src="{{ block.settings.h_service_icon | image_url: width: 400 }}" alt="{{ block.settings.h_service_icon.alt }}" width="30" height="30" />
+              {% else %}
+                <img loading="lazy" src="//via.placeholder.com/26x33">
+              {% endif %}
+              <span>{{ block.settings.h_service_text }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endunless %}
+  
+  {% schema %}
+  {
+  "name": "BS - Simple Services",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "item_h_service",
+      "name": "Item",
+  
+      "settings": [
+        {
+          "type": "text",
+          "id": "h_service_text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "h_service_url",
+          "label": "Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "h_service_icon",
+          "label": "Icon image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BS - Simple Services",
+      "blocks": [
+        {
+          "type": "item_h_service"
+        }
+      ]
+    }
+  ]
+  }
+  {% endschema %}

@@ -1,0 +1,18 @@
+{% if settings.display_language %}
+  <div class="switcher language-wrapper language-theme {{ align }}">
+    <label class="language-picker__wrapper">
+      <span class="language-name">{{ settings.default_language }}</span>
+      <span class="language-caret icon-keyboard_arrow_down"></span>
+    </label>
+
+    <div class="switcher-dropdown">
+      <ul class="dropdown-content">
+        {% for link in linklists[settings.linklist_language].links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}

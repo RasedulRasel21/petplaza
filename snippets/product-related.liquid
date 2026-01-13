@@ -1,0 +1,82 @@
+{% if section.settings.product_related_enable %}
+  {% assign column1 = section.settings.column1 | plus: 0 %}
+  {% assign column2 = section.settings.column2 | plus: 0 %}
+  {% assign column3 = section.settings.column3 | plus: 0 %}
+  {% assign column4 = section.settings.column4 | plus: 0 %}
+  {% assign column5 = section.settings.column5 | plus: 0 %}
+  {% assign margin-rl = section.settings['margin-rl'] | plus: 0 %}
+
+  {% assign relateCol = 4 %}
+  {% assign relateLimit = section.settings.product_related_limit | plus: 0 %}
+  {% assign currentProduct = product %}
+  {% if collection == null or collection.handle == 'all' %}
+    {% assign foundCollection = false %}
+    {% for item in product.collections %}
+      {% if foundCollection == false and item.handle != 'all' and item.all_products_count > 1 %}
+        {% assign foundCollection = true %}
+        {% assign collection = item %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if collection and collection.products_count > 1 %}
+    <section class="section-related">
+      <div id="related" class="related-products">
+        <h3 class="detail-title font-ct">
+          <strong
+            ><span>{{ section.settings.product_related_title }}</span></strong
+          >
+        </h3>
+
+        <div class="products-listing grid product-grid">
+          <div class="product-layout owl-carousel owl-theme">
+            {% for product in collection.products limit: relateLimit %}
+              {% unless product.handle == currentProduct.handle %}
+                <div class="item">
+                  {% include 'product-card-grid' %}
+                </div>
+              {% endunless %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endif %}
+
+<script>
+  $(function () {
+    $('.related-products .owl-carousel').owlCarousel({
+      loop: {{ section.settings.loop }},
+      autoplay: {{ section.settings.auto_play }},
+      margin: {{ section.settings.margin }},
+      nav: {{ section.settings.nav }},
+      dots: false,
+      responsive: {
+        0: {
+          items: {{ section.settings.screen_8 }},
+        },
+        481: {
+            items: {{ section.settings.screen_7 }},
+        },
+        768: {
+            items: {{ section.settings.screen_6 }},
+        },
+        992: {
+            items: {{ section.settings.screen_5 }},
+        },
+        1200: {
+            items: {{ section.settings.screen_4 }},
+        },
+        1441: {
+            items: {{ section.settings.screen_3 }},
+        },
+        1681: {
+            items: {{ section.settings.screen_2 }},
+        },
+        1921: {
+            items: {{ section.settings.screen_1 }},
+        }
+      }
+    });
+  });
+</script>

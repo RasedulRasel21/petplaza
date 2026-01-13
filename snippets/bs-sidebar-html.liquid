@@ -1,0 +1,14 @@
+<div class="block block-html">
+  {% if settings.custom_html_title != blank %}
+    <div class="block-title">
+      <strong
+        >{{ settings.custom_html_title | escape }}</strong
+      >
+    </div>
+  {% endif %}
+  <div class="block-content">
+    {% if settings.custom_html_text != blank %}
+      <div class="html-content">{{ settings.custom_html_text }}</div>
+    {% endif %}
+  </div>
+</div>

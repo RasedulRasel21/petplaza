@@ -1,0 +1,32 @@
+<div class="toplink-item account" id="my_account">
+  <div class="account-right">
+  <a href="#" class="account-toggle">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <span class="title">{{ 'layout.customer.myaccount' | t }}</span>
+    <span class="fa fa-angle-down"></span>
+  </a>
+  <ul class="dropdown-menu sn">
+    {% if shop.customer_accounts_optional or shop.customer_accounts_enabled %}
+    {% capture fullname %}{{ customer.first_name }} {{ customer.last_name }}{% endcapture %}
+    {% assign login_html = 'layout.header.login_html' | t:fullname:fullname %}
+    {% assign logout = 'layout.header.logout' | t %}
+    {% assign login = 'layout.header.login' | t %}
+    {% assign register = 'layout.header.register' | t %}
+    {% if customer  %}
+    <li><a class="account" rel="nofollow" href="/account"><i class="fa fa-user-circle-o"></i>{{ login_html }}</a></li>
+    <li><a href="/pages/wishlist" title="{{ 'layout.customer.wishlist' | t }}"><i class="fa fa-heart"></i>{{ 'layout.customer.wishlist' | t }}</a></li>
+    <li><a href="/account/addresses" title="{{ customer.addresses_count }}"><i class="fa fa-book"></i>{{ 'customer.orders.title' | t }}</a></li>
+    <li><a href="/checkout" title="{{ 'layout.customer.checkout' | t }}"><i class="fa fa-book"></i>{{ 'layout.customer.checkout' | t }}</a></li>
+    <li><i class="fa fa-unlock-alt" aria-hidden="true"></i>{{ logout | customer_logout_link }}</li>
+    {% else %}
+    <li class="s-login"><i class="fa fa-user-circle-o"></i><a href="/account/login" class="customer_login_link">{{ login }}</a></li>
+    <li><a href="/pages/wishlist" title="{{ 'layout.customer.wishlist' | t }}"><i class="fa fa-heart"></i>{{ 'layout.customer.wishlist' | t }}</a></li>
+    <li><a href="/account/addresses" title="{{ customer.addresses_count }}"><i class="fa fa-book"></i>{{ 'customer.orders.title' | t }}</a></li>
+    <li><a href="/checkout" title="{{ 'layout.customer.checkout' | t }}"><i class="fa fa-external-link-square" aria-hidden="true"></i>{{ 'layout.customer.checkout' | t }}</a></li>
+   
+    {% endif %}
+    {% endif %}
+  </ul>
+  </div>
+</div>
+

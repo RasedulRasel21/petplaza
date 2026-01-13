@@ -1,0 +1,119 @@
+{% include 'breadcrumb' %}
+<div class="container">
+  <table class="table table-bordered table-hover wishlist_table">
+    <thead>
+      <tr>
+        <th class="product-thumbnail">{{ 'general.wishlist.product_image' | t }}</th>
+        <th class="product-name">{{ 'general.wishlist.product_name' | t }}</th>
+        <th class="product-price">{{ 'general.wishlist.unit_price' | t }}</th>
+         <th class="product-stock-stauts"> <span class="nobr">Stock status</span> </th>
+        <th class="product-remove" width="100">{{ 'cart.general.remove' | t }}</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody class="wishlist-box">
+
+    </tbody>
+   
+  </table>
+  
+  <script>
+    $(function() {
+      var cookieName = "wishlistList";
+
+      try
+      {
+        if($.cookie(cookieName) != null && $.cookie(cookieName) != '__' && $.cookie(cookieName) != '') {
+          var str = String($.cookie(cookieName)).split("__");
+          for(var i=0; i<str.length; i++) {
+            if(str[i] != ''){
+              Shopify.getProduct(str[i],function(product){
+              	wishlist_product(product);
+              });
+            	
+            }
+          }
+        } else {
+          emptyWishlist();
+        }
+        jQuery('.currency .active').trigger('click');
+      }
+      catch (err) {} // ignore errors reading cookies
+
+      function emptyWishlist(){
+
+        $(".wishlist-box").append('<td colspan="6" class="wishlist-empty tc">{{ 'general.wishlist.empty' | t }}</td>');
+      }
+         function wishlist_product(product) {
+          var $cloneitem = $(".wishlist-item").clone();
+          
+          $cloneitem.find(".wishlist-item-link").attr("href", product.url);
+          $cloneitem.find(".img-responsive").attr("src", product.featured_image);
+         
+          var $cloneitemname = $(".wishlist-item-name").clone();
+          $cloneitemname.find(".wishlist-item-link").attr("href", product.url);
+          $cloneitemname.find(".wishlist-item-link").text(product.title);
+
+          var $cloneitemprice = $(".table-wishlist-1__product-price").clone();
+         $cloneitemprice.html('<span class="money price-new">'+Shopify.formatMoney(product.price)+'</span>');
+	
+          
+          var $cloneitemclear = $(".wishlist-item-clear").clone();
+          var $cloneitemcontinue = $(".wishlist-item-continue").clone();
+          $cloneitemcontinue.find(".wishlist-item-link").attr("href", product.url);
+         
+
+          var $cloneitemstock = $(".wishlist-stock").clone();
+          if (product.available) {
+            $cloneitemstock.find(".wishlist-in-stock").text(window.in_stock);
+            $cloneitemcontinue.find(".wishlist-item-link").text('{{ 'general.wishlist.view_product' | t }}');
+          } else {
+            $cloneitemstock.find(".wishlist-in-stock").addClass("wishlist-out-of-stock").text(window.out_of_stock);
+            $cloneitemcontinue.find(".wishlist-item-link").text('{{ 'general.wishlist.view_product' | t }}');
+          }
+          $('.wishlist-box').append("<tr class='"+product.handle+"'>"+"<td class='product-thumbnail' style='width:100px;'>"+$cloneitem.html()+"</td>"+"<td class='product-name'>"+$cloneitemname.html()+"</td>"+"<td class='wishlist-product-price price'>"+$cloneitemprice.html()+"</td>"+"<td class='product-stock-status'>"+$cloneitemstock.html()+"</td>"+"<td class='product-remove text-center'>"+$cloneitemclear.html()+"</td>"+"</tr>")
+          $('.wishlist-box').find("."+product.handle).find('.product-remove-js').click(function(event) {
+            event.preventDefault();
+            $(this).unbind();
+            var item = $(this).parent().parent();
+            var str = $.cookie(cookieName);
+            str = str.replace(item.attr("class"), '');
+            str = str.replace('____', '__');
+            $.cookie(cookieName, str, {expires:14, path:'/'});
+
+            item.fadeOut(500);
+            setTimeout(removeItem, 500, item);
+          });
+        }
+        function removeItem(item) {
+          item.remove();
+
+          if($.cookie(cookieName) == '__' || $.cookie(cookieName) == ''){
+            emptyWishlist();
+          }
+        }
+      });
+  </script>
+  
+  <div class="wishlist-item-clear" style="display:none">
+    <a href="#" class="remove btn btn_40  product-remove-js" title="Remove this product">×</a>
+  </div>
+  <div class="wishlist-item" style="display:none">
+    <a class="wishlist-item-link" href="#">
+      <!-- img -->
+      <img class="img-responsive" src="#" alt="">									
+    </a>
+  </div>
+  <span class="table-wishlist-1__product-price price-new" style="display:none">#</span>
+  <!-- /img -->
+  <div class="wishlist-item-name" style="display:none">
+    <a class="wishlist-item-link" href="#">#</a>
+  </div>
+  <div class="wishlist-stock" style="display:none">
+    <span class="wishlist-in-stock">#</span>
+  </div>
+  <div class="wishlist-item-continue" style="display:none">
+    <a class="button wishlist-item-link btn" href="#" rel="nofollow">#</a>
+  </div>
+</div>

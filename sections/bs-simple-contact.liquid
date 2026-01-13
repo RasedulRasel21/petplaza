@@ -1,0 +1,108 @@
+<style>
+  .contact-content{
+    background-image: url('{% if section.settings.background_image != blank %} {{ section.settings.background_image | image_url }} {% else %} //via.placeholder.com/1920x170 {% endif %}');
+  }
+  </style>
+  
+  <div class="simple-contact {{ section.settings.custom_class }}">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info phone">
+          <div class="title-contact">{{ section.settings.phone_title }}</div>
+          <div class="value-contact">
+            <a href="tel:{{ section.settings.phone_number }}">
+              {{ section.settings.phone_number }}
+            </a>
+          </div>
+        </div>
+  
+        <div class="contact-icon-center">
+          {% if section.settings.icon_center != blank %}
+          <img loading="lazy"
+            src="{{ section.settings.icon_center | image_url }}"
+            alt="{{ section.settings.icon_center.alt }}"
+            width="200"
+            height="200"
+          >
+          {% else %}
+          <img loading="lazy" src="//via.placeholder.com/70x70">
+          {% endif %}
+        </div>
+  
+        <div class="contact-info email">
+          <div class="title-contact">{{ section.settings.email_title }}</div>
+          <div class="value-contact">
+            <a href="mailto:{{ section.settings.email_address }}">
+              {{ section.settings.email_address }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "BS - Simple Contact",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_center",
+        "label": "Icon center"
+      },
+      {
+        "type": "header",
+        "content": "Phone"
+      },
+      {
+        "type": "text",
+        "id": "phone_title",
+        "label": "Phone title",
+        "default": "Phone"
+      },
+      {
+        "type": "text",
+        "id": "phone_number",
+        "label": "Phone number",
+        "default": "+1 123 456 789"
+      },
+  
+      {
+        "type": "header",
+        "content": "Email"
+      },
+      {
+        "type": "text",
+        "id": "email_title",
+        "label": "Email title",
+        "default": "Email"
+      },
+      {
+        "type": "text",
+        "id": "email_address",
+        "label": "Email address",
+        "default": "contact@email.com"
+      },
+      {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom class"
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "BS - Simple Contact",
+        "blocks": []
+      }
+    ]
+  }
+  {% endschema %}
+  

@@ -1,0 +1,42 @@
+{% comment %}
+    Renders a product card placeholder
+
+    Usage:
+    {% render 'product-card-placeholder' %}
+{% endcomment %}
+
+<div class="product-item card-wrapper">
+  <div class="item-inner">
+    <div class="product-image">
+      <a class="grid-view-item__link" href="#"> 
+        {{ 'image' | placeholder_svg_tag:'bzpets-placeholder-class bg-grey' }}
+      </a>
+    </div>
+    <div class="product-info">
+      <div class="title-vendor"><a href="#" title="vendor">{{ 'products.product.vendor' | t }}</a></div>
+      <div class="product-name">
+          <strong>
+            <a href="#" title="Product demo">{{ 'onboarding.product_title' | t }}</a>
+          </strong>
+      </div>
+      <div class="custom-reviews">
+          <span class="spr-badge" id="spr_badge_8231641514257" data-rating="0.0"><span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style="color: #ffaa00;" aria-hidden="true"></i><i class="spr-icon spr-icon-star-empty" style="color: #ffaa00;" aria-hidden="true"></i><i class="spr-icon spr-icon-star-empty" style="color: #ffaa00;" aria-hidden="true"></i><i class="spr-icon spr-icon-star-empty" style="color: #ffaa00;" aria-hidden="true"></i><i class="spr-icon spr-icon-star-empty" style="color: #ffaa00;" aria-hidden="true"></i></span><span class="spr-badge-caption">No reviews</span>
+</span>
+      </div>
+      <div class="
+    price">
+        <div class="price__container">
+          <div class="price__regular">
+            <ul class="list_price">
+              <li>
+                <span class="price-item price-item--regular">
+                  <span class="money">$281.36</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

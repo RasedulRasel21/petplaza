@@ -1,0 +1,1109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dfddd41c-ce25-4a47-a869-51eca9da24f5": {
+      "type": "bs-slidershow",
+      "blocks": {
+        "item_slider_H8grqx": {
+          "type": "item_slider",
+          "name": "Same Day delivery",
+          "settings": {
+            "slider_image": "shopify://shop_images/Homepage_Sameday_Delivery_PP.webp",
+            "slider_url": "",
+            "slider_title": "¡ENTREGA EL MISMO DIA!",
+            "slider_sub_title": "Medellín, Rionegro y Llanogrande",
+            "slider_short_description": "<h2><strong>Haz tu pedido antes de las 5 p.m. y recíbelo el mismo día! </strong><br/><br/></h2>",
+            "slider_custom_class": "slideshow1",
+            "slider_btn_primary_text": "",
+            "slider_btn_primary_url": "",
+            "slider_btn_secondary_text": "",
+            "slider_btn_secondary_url": ""
+          }
+        },
+        "item_slider_kUkax3": {
+          "type": "item_slider",
+          "name": "Bonnat",
+          "settings": {
+            "slider_image": "shopify://shop_images/Homepage_Slider_Bonnat_PP.webp",
+            "slider_url": "",
+            "slider_title": "¡Nuevo en la colección!",
+            "slider_sub_title": "Obtén un 10%",
+            "slider_short_description": "<p>de descuento usando el código: BONNAT10<br/></p>",
+            "slider_custom_class": "slideshow2",
+            "slider_btn_primary_text": "",
+            "slider_btn_primary_url": "",
+            "slider_btn_secondary_text": "Compra BONNAT",
+            "slider_btn_secondary_url": "shopify://collections/bonnat"
+          }
+        },
+        "item_slider_mB4reP": {
+          "type": "item_slider",
+          "name": "Ofertas combinadas",
+          "settings": {
+            "slider_image": "shopify://shop_images/Homepage_Slider_Bundles_PP.webp",
+            "slider_url": "",
+            "slider_title": "Aprovecha nuestras ofertas combinadas",
+            "slider_sub_title": "¡Solo por Tiempo Limitado!",
+            "slider_short_description": "",
+            "slider_custom_class": "slideshow2",
+            "slider_btn_primary_text": "Combos Especiales",
+            "slider_btn_primary_url": "shopify://collections/ofertas",
+            "slider_btn_secondary_text": "",
+            "slider_btn_secondary_url": "shopify://collections/ofertas"
+          }
+        },
+        "item_slider_dD6DmP": {
+          "type": "item_slider",
+          "name": "Collares etc ",
+          "settings": {
+            "slider_image": "shopify://shop_images/Banner_Arneses_PP.webp",
+            "slider_url": "",
+            "slider_title": "Los mejores collares, arneses y correas para tus peludos",
+            "slider_sub_title": "",
+            "slider_short_description": "",
+            "slider_custom_class": "slideshow2",
+            "slider_btn_primary_text": "Mirar más",
+            "slider_btn_primary_url": "",
+            "slider_btn_secondary_text": "",
+            "slider_btn_secondary_url": ""
+          }
+        },
+        "item_slider_PD9YtY": {
+          "type": "item_slider",
+          "name": "Max discount 5%",
+          "settings": {
+            "slider_image": "shopify://shop_images/Homepage_Slider_Max_Descuento_PP-01.webp",
+            "slider_url": "",
+            "slider_title": "Redíme nuestro código de descuento en Total Max",
+            "slider_sub_title": "Código: #Max100%",
+            "slider_short_description": "",
+            "slider_custom_class": "",
+            "slider_btn_primary_text": "",
+            "slider_btn_primary_url": "",
+            "slider_btn_secondary_text": "",
+            "slider_btn_secondary_url": ""
+          }
+        },
+        "73ad422d-73d9-4b17-b542-31a42246ee6b": {
+          "type": "item_slider",
+          "name": "Purina Slider",
+          "disabled": true,
+          "settings": {
+            "slider_image": "shopify://shop_images/Slider_Purina_PP.webp",
+            "slider_url": "shopify://collections/dog-chow-alimentacion-completa-para-perros-y-gatos",
+            "slider_title": "Juntos le damos una mejor calidad de vida a tu mascota",
+            "slider_sub_title": "Compra ahora con gran descuento",
+            "slider_short_description": "",
+            "slider_custom_class": "slideshow2",
+            "slider_btn_primary_text": "Compra ahora",
+            "slider_btn_primary_url": "shopify://collections/dog-chow-alimentacion-completa-para-perros-y-gatos",
+            "slider_btn_secondary_text": "Preguntas?",
+            "slider_btn_secondary_url": "shopify://pages/contactanos"
+          }
+        },
+        "item_slider_JdBAeM": {
+          "type": "item_slider",
+          "name": "Nutra bar Italcol",
+          "disabled": true,
+          "settings": {
+            "slider_image": "shopify://shop_images/Slider_Nutrabar_PP.webp",
+            "slider_url": "shopify://collections/chunky",
+            "slider_title": "¡Nutrición real para perros reales!",
+            "slider_sub_title": "Pide tu Nutri-Bar en Pets Plaza",
+            "slider_short_description": "",
+            "slider_custom_class": "slideshow3",
+            "slider_btn_primary_text": "",
+            "slider_btn_primary_url": "",
+            "slider_btn_secondary_text": "",
+            "slider_btn_secondary_url": ""
+          }
+        },
+        "item_slider_BMKCXD": {
+          "type": "item_slider",
+          "name": "Hills Slider",
+          "disabled": true,
+          "settings": {
+            "slider_image": "shopify://shop_images/Homepage_Slider_Hills_MP.webp",
+            "slider_url": "shopify://collections/hill-s-science-diet",
+            "slider_title": "¡Alimenta su felicidad con lo mejor del mercado!",
+            "slider_sub_title": "Nutrición, sabor y salud con Hill’s",
+            "slider_short_description": "",
+            "slider_custom_class": "slideshow2",
+            "slider_btn_primary_text": "Conozca más sobre el producto",
+            "slider_btn_primary_url": "shopify://collections/hill-s-science-diet",
+            "slider_btn_secondary_text": "Compra Ya!",
+            "slider_btn_secondary_url": "shopify://collections/hill-s-science-diet"
+          }
+        },
+        "item_slider_GyVWm8": {
+          "type": "item_slider",
+          "name": "Nutra CAT ",
+          "disabled": true,
+          "settings": {
+            "slider_image": "shopify://shop_images/Homepage_Slider_Nutrakey_PP_Mesa_de_trabajo_1_copia.webp",
+            "slider_url": "shopify://collections/nutrecat",
+            "slider_title": "Nutrición premium para tu felino, ¡ya disponible!",
+            "slider_sub_title": "Siempre el mejor precio",
+            "slider_short_description": "",
+            "slider_custom_class": "slideshow",
+            "slider_btn_primary_text": "Conozca más sobre el producto",
+            "slider_btn_primary_url": "shopify://collections/nutrecat",
+            "slider_btn_secondary_text": "Compra Ya!",
+            "slider_btn_secondary_url": "shopify://collections/nutrecat"
+          }
+        },
+        "item_slider_RUdUPj": {
+          "type": "item_slider",
+          "name": "Felix Slider",
+          "disabled": true,
+          "settings": {
+            "slider_image": "shopify://shop_images/Homepage_Slider_Felix_MP.webp",
+            "slider_url": "shopify://collections/felix",
+            "slider_title": "Para gatos con paladar exigente",
+            "slider_sub_title": "Fácil de servir, fácil de amar",
+            "slider_short_description": "",
+            "slider_custom_class": "slideshow2",
+            "slider_btn_primary_text": "Conozca más sobre el producto",
+            "slider_btn_primary_url": "shopify://collections/felix",
+            "slider_btn_secondary_text": "Compra Ya!",
+            "slider_btn_secondary_url": "shopify://collections/felix"
+          }
+        },
+        "item_slider_WriATn": {
+          "type": "item_slider",
+          "name": "Chunkit",
+          "disabled": true,
+          "settings": {
+            "slider_image": "shopify://shop_images/Homepage_Slider_Chuckit_PP.webp",
+            "slider_url": "",
+            "slider_title": "¡Los mejores juguetes interactivos para tus mascotas!",
+            "slider_sub_title": "",
+            "slider_short_description": "",
+            "slider_custom_class": "slideshow2",
+            "slider_btn_primary_text": "Ver más",
+            "slider_btn_primary_url": "",
+            "slider_btn_secondary_text": "",
+            "slider_btn_secondary_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_slider_H8grqx",
+        "item_slider_kUkax3",
+        "item_slider_mB4reP",
+        "item_slider_dD6DmP",
+        "item_slider_PD9YtY",
+        "73ad422d-73d9-4b17-b542-31a42246ee6b",
+        "item_slider_JdBAeM",
+        "item_slider_BMKCXD",
+        "item_slider_GyVWm8",
+        "item_slider_RUdUPj",
+        "item_slider_WriATn"
+      ],
+      "custom_css": [
+        "@media (min-width: 2000px) {.owl-carousel .owl-item img {width: 100vw !important; } .slider-info-wrap.content-left.effect_item {width: 45% !important; }}",
+        ".slider-buttons {width: 600px !important;}",
+        "@media (max-width: 480px) {.slidershow .slider-info .link-button-slide {padding: 0px 0px; margin-right: 5px; } .slidershow .slider-info .slider-main-title {font-size: 18px; line-height: 20px; margin-bottom: 10px; }}"
+      ],
+      "settings": {
+        "full_width": "1",
+        "nav": "1",
+        "dots": "1",
+        "loop": "1",
+        "auto_play": "1",
+        "margin": "30",
+        "screen_1": "1",
+        "screen_2": "1",
+        "screen_3": "1",
+        "screen_4": "1",
+        "screen_5": "1",
+        "screen_6": "1",
+        "screen_7": "1",
+        "screen_8": "1"
+      }
+    },
+    "a2bd907d-8bed-449c-9f57-f70110046a79": {
+      "type": "bs-categories",
+      "blocks": {
+        "template--17215929254161__a2bd907d-8bed-449c-9f57-f70110046a79-167660926772846542-0": {
+          "type": "grid_category",
+          "name": "Toda para perros",
+          "settings": {
+            "category_name": "Todo para Perros",
+            "category_image": "shopify://shop_images/Icon_pink_dog_MP.png",
+            "category_collection": "perros",
+            "category_subcats": "",
+            "short_description": "",
+            "hover_border_color": "#ff6994"
+          }
+        },
+        "6697783f-570d-4d9d-9257-c9a361316763": {
+          "type": "grid_category",
+          "name": "Toda para gatos",
+          "settings": {
+            "category_name": "Todo para gatos",
+            "category_image": "shopify://shop_images/Icon_Yelow_Cath_MP.png",
+            "category_collection": "todo-gatos",
+            "category_subcats": "gatos",
+            "short_description": "<p>33 item(s)</p>",
+            "hover_border_color": "#fcb329"
+          }
+        },
+        "8676c9d1-75e9-4182-99f1-f125c4e9ae8d": {
+          "type": "grid_category",
+          "name": "Higiene para gatos",
+          "settings": {
+            "category_name": "Higiene para gatos",
+            "category_image": "shopify://shop_images/Icon_Blue_Cat_Hygiene_PP-01.svg",
+            "category_collection": "belleza-e-higiene-para-perros",
+            "category_subcats": "",
+            "short_description": "<p>9 item(s)</p>",
+            "hover_border_color": "#2d3054"
+          }
+        },
+        "3aa940d6-474b-4057-8c16-4bd05c40e80c": {
+          "type": "grid_category",
+          "name": "Juguete para mascotas",
+          "settings": {
+            "category_name": "Juguete para mascotas",
+            "category_image": "shopify://shop_images/Icon_Pets_Thoys_LightBlue_MP.png",
+            "category_collection": "juguetes-para-perros",
+            "category_subcats": "",
+            "short_description": "<p>Productos</p>",
+            "hover_border_color": "#02aeea"
+          }
+        },
+        "1f0267bc-9fb7-483e-b5c1-8ef7d9251adb": {
+          "type": "grid_category",
+          "name": "Snacks para perros",
+          "settings": {
+            "category_name": "Snacks para perros",
+            "category_image": "shopify://shop_images/Icon_Snack_For_Food_PP-01-01.svg",
+            "category_collection": "snacks-para-perros",
+            "category_subcats": "",
+            "short_description": "<p>13 item(s)</p>",
+            "hover_border_color": "#fcb329"
+          }
+        }
+      },
+      "block_order": [
+        "template--17215929254161__a2bd907d-8bed-449c-9f57-f70110046a79-167660926772846542-0",
+        "6697783f-570d-4d9d-9257-c9a361316763",
+        "8676c9d1-75e9-4182-99f1-f125c4e9ae8d",
+        "3aa940d6-474b-4057-8c16-4bd05c40e80c",
+        "1f0267bc-9fb7-483e-b5c1-8ef7d9251adb"
+      ],
+      "custom_css": [],
+      "name": "Compra por categoría",
+      "settings": {
+        "block_title": "",
+        "block_description": "<p><strong>Compra por categoría<br/></strong></p>",
+        "button_text": "",
+        "button_url": "",
+        "block_type": "1",
+        "grid_columns": "6",
+        "nav": "1",
+        "dots": "0",
+        "loop": "0",
+        "auto_play": "0",
+        "margin": "30",
+        "screen_1": "5",
+        "screen_2": "5",
+        "screen_3": "5",
+        "screen_4": "5",
+        "screen_5": "5",
+        "screen_6": "4",
+        "screen_7": "3",
+        "screen_8": "2"
+      }
+    },
+    "62830f1c-dd61-4c5f-9352-0d0d2748d767": {
+      "type": "bs-grid-product",
+      "custom_css": [
+        ".container,.container-fluid,.container-lg,.container-md,.container-sm,.container-xl,.container-xxl {--bs-gutter-x: 1.5rem; --bs-gutter-y: 0; width: 100%; padding-right: calc(var(--bs-gutter-x) * 0.5); padding-left: calc(var(--bs-gutter-x) * 0.5); margin-right: auto; margin-left: auto; margin-bottom: -20px;}"
+      ],
+      "name": "Mas vendido",
+      "settings": {
+        "enable_block_title": "1",
+        "block_title": "Más vendido",
+        "block_description": "",
+        "button_text": "",
+        "button_url": "",
+        "block_type": "1",
+        "product_collection": "home-page-mas-vendido",
+        "limit": "8",
+        "image_size": "350x350",
+        "grid_columns": "4",
+        "row": "1",
+        "nav": "1",
+        "dots": "0",
+        "loop": "0",
+        "auto_play": "0",
+        "margin": "30",
+        "screen_1": "4",
+        "screen_2": "4",
+        "screen_3": "4",
+        "screen_4": "4",
+        "screen_5": "4",
+        "screen_6": "3",
+        "screen_7": "2",
+        "screen_8": "1",
+        "custom_class": ""
+      }
+    },
+    "bs_banner_image_X8G6d4": {
+      "type": "bs-banner-image",
+      "blocks": {
+        "item_banner_fTdWta": {
+          "type": "item_banner",
+          "name": "Ropa Perro",
+          "settings": {
+            "banner_image": "shopify://shop_images/Homepage_Banner_PP-05.webp",
+            "banner_url": "shopify://collections/ropa-otros-para-perros",
+            "banner_heading": "Viste a tu peludo con estilo",
+            "banner_description": "",
+            "button_text": "Ver Ropa",
+            "banner_width": "50%"
+          }
+        },
+        "item_banner_WHhCP7": {
+          "type": "item_banner",
+          "name": "Purina",
+          "settings": {
+            "banner_image": "shopify://shop_images/Homepage_Banner_PP-08.webp",
+            "banner_url": "shopify://collections/pro-plan",
+            "banner_heading": "Distribuidor oficial de Purina",
+            "banner_description": "<h6><strong>El precio más barato del país!<br/></strong></h6>",
+            "button_text": "Ver Pro Plan",
+            "banner_width": "50%"
+          }
+        },
+        "item_banner_XqgpPd": {
+          "type": "item_banner",
+          "name": "Camas",
+          "settings": {
+            "banner_image": "shopify://shop_images/Homepage_Banner_PP-06.webp",
+            "banner_url": "shopify://collections/camas-y-cobijas-para-perros",
+            "banner_heading": "Camas y puffs ideales para ellos",
+            "banner_description": "",
+            "button_text": "Ver Camas",
+            "banner_width": "50%"
+          }
+        },
+        "item_banner_MwTDXT": {
+          "type": "item_banner",
+          "name": "Areneros",
+          "settings": {
+            "banner_image": "shopify://shop_images/Homepage_Banner_PP-07.webp",
+            "banner_url": "shopify://collections/arenas-areneros-para-gatos",
+            "banner_heading": "Arenera y areneros para tu gato",
+            "banner_description": "<h3></h3><h3></h3>",
+            "button_text": "Ver colección",
+            "banner_width": "50%"
+          }
+        }
+      },
+      "block_order": [
+        "item_banner_fTdWta",
+        "item_banner_WHhCP7",
+        "item_banner_XqgpPd",
+        "item_banner_MwTDXT"
+      ],
+      "custom_css": [
+        "..owl-stage-outer {margin-bottom: -60px;}",
+        ".banner-images .list-banner .item {margin-bottom: 10px; padding-left: 1px; padding-right: 1px;}"
+      ],
+      "name": "4x Banners promocionales",
+      "settings": {
+        "enable_block_title": "0",
+        "block_title": "Block title",
+        "block_description": "<p>Control flow tags create conditions that decide whether blocks of Liquid code get executed.</p>",
+        "button_text": "",
+        "button_url": "",
+        "custom_class": "home1-banner"
+      }
+    },
+    "4fbdc7f7-c71e-4382-a74c-d7c6782189b5": {
+      "type": "bs-product-tabs",
+      "blocks": {
+        "template--17215929254161__4fbdc7f7-c71e-4382-a74c-d7c6782189b5-16765219114a3d0ea0-0": {
+          "type": "tab",
+          "name": "Alimento perros",
+          "settings": {
+            "tab_title": "Alimento perros",
+            "product_collection": "destacados-alimentos-para-perros"
+          }
+        },
+        "9d41c093-f8e5-4614-9393-bcbba7554b28": {
+          "type": "tab",
+          "name": "Alimento gatos",
+          "settings": {
+            "tab_title": "Alimento gatos",
+            "product_collection": "alimento-gatos-coleccion-general"
+          }
+        },
+        "ab3bf728-88d2-4585-b4e8-ac1d2a1b72d7": {
+          "type": "tab",
+          "name": "Snacks perros",
+          "settings": {
+            "tab_title": "Snacks para perros",
+            "product_collection": "snacks-destacados-para-perros"
+          }
+        },
+        "dbb6cea4-29eb-4d34-9aa0-786e2857eb22": {
+          "type": "tab",
+          "name": "Húmeda perros",
+          "settings": {
+            "tab_title": "Húmeda perros",
+            "product_collection": "destacados-comida-humeda-para-perros"
+          }
+        },
+        "80ca8727-9054-4742-ad2f-bb79d03f91b7": {
+          "type": "tab",
+          "name": "Húmeda gatos",
+          "settings": {
+            "tab_title": "Húmeda gatos",
+            "product_collection": "destacados-en-comida-humeda-para-gatos"
+          }
+        },
+        "d0e41f9a-fc73-45b1-94ee-1e3b857cd38a": {
+          "type": "tab",
+          "name": "Más para perros",
+          "settings": {
+            "tab_title": "Más para perros",
+            "product_collection": "accesorios-destacados-para-perros"
+          }
+        },
+        "36e51a05-226e-420f-aa60-e1b4859b6b19": {
+          "type": "tab",
+          "name": "Nuestra línea propia",
+          "settings": {
+            "tab_title": "Nuestra línea propia",
+            "product_collection": "productos-destacados-petsplaza"
+          }
+        }
+      },
+      "block_order": [
+        "template--17215929254161__4fbdc7f7-c71e-4382-a74c-d7c6782189b5-16765219114a3d0ea0-0",
+        "9d41c093-f8e5-4614-9393-bcbba7554b28",
+        "ab3bf728-88d2-4585-b4e8-ac1d2a1b72d7",
+        "dbb6cea4-29eb-4d34-9aa0-786e2857eb22",
+        "80ca8727-9054-4742-ad2f-bb79d03f91b7",
+        "d0e41f9a-fc73-45b1-94ee-1e3b857cd38a",
+        "36e51a05-226e-420f-aa60-e1b4859b6b19"
+      ],
+      "name": "Produtos destacados",
+      "settings": {
+        "enable_block_title": "1",
+        "block_title": "Productos destacados",
+        "block_description": "",
+        "button_text": "Ver todo",
+        "button_url": "shopify://collections/alimento-perro",
+        "tab_type": "1",
+        "row": "1",
+        "nav": "1",
+        "dots": "0",
+        "loop": "0",
+        "auto_play": "0",
+        "margin": "30",
+        "screen_1": "3",
+        "screen_2": "3",
+        "screen_3": "3",
+        "screen_4": "3",
+        "screen_5": "3",
+        "screen_6": "3",
+        "screen_7": "2",
+        "screen_8": "1",
+        "custom_class": "product-tab-wrap"
+      }
+    },
+    "1748026266d3937cd7": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_phDNXy": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1200
+          }
+        },
+        "zapiet_pickup_delivery_delivery_validator_ncRi8X": {
+          "type": "shopify://apps/zapiet-pickup-delivery/blocks/delivery-validator/5599aff0-8af1-473a-a372-ecd72a32b4d5",
+          "disabled": true,
+          "settings": {
+            "show_on_page_load": true,
+            "sticky": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_phDNXy",
+        "zapiet_pickup_delivery_delivery_validator_ncRi8X"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "15a6feae-cd05-489b-8393-581b6a42ad06": {
+      "type": "bs-list-product-slider",
+      "custom_css": [
+        ".swatches-type-collections {display: none;}"
+      ],
+      "name": "Nuavas llegadas",
+      "settings": {
+        "enable_block_title": "1",
+        "block_title": "Nuevos productos",
+        "block_description": "",
+        "button_text": "",
+        "button_url": "shopify://collections/home-page-nuevas-llegadas",
+        "product_collection": "nuevas-llegadas-para-perros",
+        "limit": "6",
+        "image_size": "250x250",
+        "row": "2",
+        "nav": "1",
+        "dots": "0",
+        "loop": "0",
+        "auto_play": "0",
+        "margin": "30",
+        "screen_1": "3",
+        "screen_2": "3",
+        "screen_3": "3",
+        "screen_4": "3",
+        "screen_5": "2",
+        "screen_6": "2",
+        "screen_7": "1",
+        "screen_8": "1",
+        "custom_class": ""
+      }
+    },
+    "5f660125-f4db-4ad5-8675-44d1dd09f434": {
+      "type": "bs-simple-contact",
+      "disabled": true,
+      "custom_css": [],
+      "name": "Banner bird",
+      "settings": {
+        "background_image": "shopify://shop_images/Banner_Bird_Dog_Pink_001_MP_54f93de0-5a26-45ba-a048-9a48c6a38e34.jpg",
+        "icon_center": "shopify://shop_images/footer.png",
+        "phone_title": "Contáctenos",
+        "phone_number": "Todo para ellos. 🐾",
+        "email_title": "Email",
+        "email_address": "info@mundopets.com.co",
+        "custom_class": "home1-box-contact"
+      }
+    },
+    "rich_text_x7jy8x": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_dqcwjy": {
+          "type": "heading",
+          "settings": {
+            "heading": "PetsPlaza: Tienda online de mascotas en Colombia con las mejores marcas",
+            "heading_size": "small"
+          }
+        },
+        "text_iByLV7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>En PetsPlaza entendemos que tu mascota no es solo un compañero: es parte de tu familia. Por eso, nos hemos convertido en el lugar de confianza donde encontrarás todo lo que necesitas para cuidar, alimentar, consentir y proteger a quienes más amas. Nuestra misión es clara: ofrecerte la mejor experiencia de compra online para mascotas en Colombia, con productos de calidad, precios justos, envíos rápidos y el respaldo de un equipo que vive y respira amor por los animales.<br/>En PetsPlaza trabajamos con marcas líderes y reconocidas a nivel nacional e internacional para garantizar la salud, nutrición y diversión de tus mascotas. En nuestro catálogo encontrarás opciones premium como Pro Plan, Agility Gold, Royal Canin, Hill’s, Taste of the Wild, Nupec, Diamond, VetLife, Nutra-Nuggets, Nutrapro, Wellness, Evolve, Oven-Baked Tradition, Natural Expert, Total Full y Zoetis, además de opciones populares y confiables como Dog Chow, Chunky, Nutrecan, Cat Chow, Alpo, Purina One, Purina Excellent, Nutrecat, Whiskas, Felix, Fancy Feast, Gatsy, Max, Mon Ami, Equilíbrio y Felcan.<br/>Pero en PetsPlaza no solo encuentras nutrición. También contamos con las mejores marcas en accesorios, higiene, entretenimiento y bienestar, como Kong, Zeedog, Chuckit!, Petys, Petoys, Shed-X, Gnawlers, Andis, Savic, Angora, Holliday, Hushpet, Guaumor y Al Torno, además de productos especializados de cuidado como Dentalife, Inaba y Zoetis.<br/>Todo lo que imaginas para consentir a tu perro, gato, ave o pequeño roedor, lo encuentras aquí. Disfruta de envíos a todo Colombia en tiempos de entrega de 1 a 3 días hábiles y beneficios exclusivos como envío gratis en compras superiores a $160.000.<br/>En PetsPlaza creemos que el amor por las mascotas nos une. Haz tu compra hoy y únete a la familia PetsPlaza. Porque tu mascota merece lo mejor, y nosotros lo tenemos.</p>"
+          }
+        },
+        "button_wbC3ym": {
+          "type": "button",
+          "settings": {
+            "button_label": "Más sobre nosotros",
+            "button_link": "shopify://pages/sobre-nosotros",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_dqcwjy",
+        "text_iByLV7",
+        "button_wbC3ym"
+      ],
+      "name": "Seo Text",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true
+      }
+    },
+    "custom_liquid_8EwazC": {
+      "type": "custom-liquid",
+      "name": "Tiene alguna pregunta",
+      "settings": {
+        "custom_liquid": "<!-- Load Google Font -->\n<link href=\"https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap\" rel=\"stylesheet\">\n\n<div style=\"position: relative; text-align: center; width: 100%; margin: 20px 0; font-family: 'Mouse Memoirs', sans-serif;\">\n  <a href=\"#\" style=\"display: block;\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0693/2299/7948/files/Banner_Bird_Dog_Pink_001_MP_54f93de0-5a26-45ba-a048-9a48c6a38e34.jpg?v=1744925745\" \n      alt=\"Bird Dog Banner\" \n      style=\"width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);\"\n    />\n    <div style=\"\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      text-align: center;\n    \">\n      <div style=\"\n        font-size: clamp(1.5rem, 6vw, 7.5rem);\n        font-weight: bold;\n        color: white;\n      \">\n        ¿Tiene alguna pregunta?\n      </div>\n      <a href=\"mailto:info@petsplaza.com.co\" style=\"\n        display: inline-block;\n        margin-top: 2.5vw;\n        padding: 0.8vw 1.2vw;\n        border: 0.3vw solid yellow;\n        color: white;\n        text-decoration: none;\n        font-size: clamp(1rem, 3.5vw, 3.5rem);\n        border-radius: 8px;\n        transition: all 0.3s ease;\n      \">\n        info@petsplaza.com.co\n      </a>\n    </div>\n  </a>\n</div>"
+      }
+    },
+    "bs_grid_product_kzL6n7": {
+      "type": "bs-grid-product",
+      "custom_css": [
+        "@media only screen and (max-width: 992px) {.block .block-title {margin: 30px 0 30px; display: inline-block; } .block .title-content {text-align: left; } .block-title-button {margin-top: 10px; }}"
+      ],
+      "name": "Marca del mes",
+      "settings": {
+        "enable_block_title": "1",
+        "block_title": "Marca del mes: PETSPLAZA",
+        "block_description": "",
+        "button_text": "Ver todo",
+        "button_url": "shopify://collections/marca-del-mes-descubre-la-coleccion-especial",
+        "block_type": "1",
+        "product_collection": "marca-del-mes-descubre-la-coleccion-especial",
+        "limit": "8",
+        "image_size": "350x350",
+        "grid_columns": "4",
+        "row": "1",
+        "nav": "1",
+        "dots": "0",
+        "loop": "1",
+        "auto_play": "1",
+        "margin": "30",
+        "screen_1": "4",
+        "screen_2": "4",
+        "screen_3": "4",
+        "screen_4": "4",
+        "screen_5": "4",
+        "screen_6": "3",
+        "screen_7": "2",
+        "screen_8": "1",
+        "custom_class": ""
+      }
+    },
+    "95c32d75-2af3-4907-894a-74c8c6ad2589": {
+      "type": "bs-full-services",
+      "blocks": {
+        "template--17215929254161__95c32d75-2af3-4907-894a-74c8c6ad2589-1676281491ec772c45-0": {
+          "type": "item_service",
+          "settings": {
+            "service_icon": "shopify://shop_images/Icon_Entrenamiento_para_perros_MP_-01_1.webp",
+            "service_url": "shopify://pages/entrenamiento-para-mascotas",
+            "service_text": "Entrenamiento de mascotas",
+            "service_description": "",
+            "service_read_more": "Leer ahora",
+            "service_width": "20%"
+          }
+        },
+        "6e540615-4edb-4128-a62d-cd23406dd32f": {
+          "type": "item_service",
+          "settings": {
+            "service_icon": "shopify://shop_images/Icon_Tratamiento_del_trauma_MP.png",
+            "service_url": "shopify://pages/tratamiento-de-trauma",
+            "service_text": "Tratamiento de traumatismos",
+            "service_description": "",
+            "service_read_more": "Leer ahora",
+            "service_width": "20%"
+          }
+        },
+        "cbb7e4c9-db3b-48b9-b714-23544e5257c7": {
+          "type": "item_service",
+          "settings": {
+            "service_icon": "shopify://shop_images/Icon_Vacunacion_de_mascotas_MP.png",
+            "service_url": "shopify://pages/vacunacion",
+            "service_text": "Vacunación para tus mascotas",
+            "service_description": "",
+            "service_read_more": "Leer ahora",
+            "service_width": "20%"
+          }
+        },
+        "item_service_EpCTRJ": {
+          "type": "item_service",
+          "settings": {
+            "service_icon": "shopify://shop_images/Icon_Cuidados_del_hogar_MP.png",
+            "service_url": "",
+            "service_text": "Cuidados del hogar to amores",
+            "service_description": "",
+            "service_read_more": "Leer ahora",
+            "service_width": "20%"
+          }
+        },
+        "a8f99f8d-f286-4ba9-9c30-4b18b61fcd7f": {
+          "type": "item_service",
+          "settings": {
+            "service_icon": "shopify://shop_images/Icon_Cirugia_Animal_MP.png",
+            "service_url": "shopify://pages/cirugia-veterinaria",
+            "service_text": "Cirugía para tu mascotas",
+            "service_description": "",
+            "service_read_more": "Leer ahora",
+            "service_width": "20%"
+          }
+        }
+      },
+      "block_order": [
+        "template--17215929254161__95c32d75-2af3-4907-894a-74c8c6ad2589-1676281491ec772c45-0",
+        "6e540615-4edb-4128-a62d-cd23406dd32f",
+        "cbb7e4c9-db3b-48b9-b714-23544e5257c7",
+        "item_service_EpCTRJ",
+        "a8f99f8d-f286-4ba9-9c30-4b18b61fcd7f"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "{text-align: center;}"
+      ],
+      "name": "Nuestros Servicios",
+      "settings": {
+        "block_title": "Nuestros Servicios",
+        "block_description": "",
+        "button_text": "Pedir hora",
+        "button_url": "shopify://pages/contactanos"
+      }
+    },
+    "41f574b6-40bb-4f29-a708-9c941f400073": {
+      "type": "bs-why-choose",
+      "blocks": {
+        "template--17215929254161__41f574b6-40bb-4f29-a708-9c941f400073-1676360065730d9579-0": {
+          "type": "item_why_choose",
+          "settings": {
+            "why_choose_title": "Respuesta Rápida",
+            "why_choose_description": "<p><em>Atención inmediata para ti y tu mascota.</em></p><h3></h3>"
+          }
+        },
+        "8965e738-358c-4093-9a0e-1709164a4a8a": {
+          "type": "item_why_choose",
+          "settings": {
+            "why_choose_title": "Experimentada",
+            "why_choose_description": "<p><em>Equipo calificado con amor por los animales.</em></p><h3></h3>"
+          }
+        },
+        "6b5128f2-624c-4465-9932-ec576c57bbc5": {
+          "type": "item_why_choose",
+          "settings": {
+            "why_choose_title": "Pago Flexible",
+            "why_choose_description": "<p><em>Elige cómo y cuándo pagar, sin complicaciones.</em></p><h3></h3>"
+          }
+        },
+        "item_why_choose_JFU7Gf": {
+          "type": "item_why_choose",
+          "settings": {
+            "why_choose_title": "Amplia gama",
+            "why_choose_description": "<p><em>Todo lo que tu mascota necesita, en un solo lugar.</em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--17215929254161__41f574b6-40bb-4f29-a708-9c941f400073-1676360065730d9579-0",
+        "8965e738-358c-4093-9a0e-1709164a4a8a",
+        "6b5128f2-624c-4465-9932-ec576c57bbc5",
+        "item_why_choose_JFU7Gf"
+      ],
+      "custom_css": [
+        ".whychoose {margin-top: 50px;}"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/Bard-With-Dag.webp",
+        "block_title": "¿Por qué elegirnos?",
+        "block_description": "",
+        "button_text": "",
+        "button_url": "",
+        "custom_class": ""
+      }
+    },
+    "a375a0d2-7047-4e46-a489-1ffd6a9c1992": {
+      "type": "bs-banner-image",
+      "blocks": {
+        "template--17215929254161__a375a0d2-7047-4e46-a489-1ffd6a9c1992-167635864808a9aff5-0": {
+          "type": "item_banner",
+          "name": "Banner Hills",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__hills_602a5e4a-74b7-460d-95aa-6b956f1cc66f.png",
+            "banner_url": "shopify://collections/hill-s",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "65655cda-f993-486b-8643-f65aca656f1f": {
+          "type": "item_banner",
+          "name": "Banner Dog Chow",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__dogchow_Mesa_de_trabajo_1.png",
+            "banner_url": "shopify://collections/dog-chow",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "c0c60678-f846-4578-9873-528784f444cd": {
+          "type": "item_banner",
+          "name": "Banner Felix",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo_felix_3230c9d3-82b6-487c-b354-7d0b1c98e646.png",
+            "banner_url": "shopify://collections/felix",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "8d40a9b4-e565-4a21-9de2-fbe092e83bed": {
+          "type": "item_banner",
+          "name": "Banner Agilty Gold",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__Agilitygold_8e12be93-16ec-4f2c-9c8d-1a1ed4266c1a.png",
+            "banner_url": "shopify://collections/agility-gold",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "3302e417-f532-4229-86a5-f4cd109bdf25": {
+          "type": "item_banner",
+          "name": "Banner Nutra Nuggets",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__nutranuggets_ddfcd4c7-2da3-4380-8eb2-d1745994864e.png",
+            "banner_url": "shopify://collections/nutra-nuggets",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "951d24d3-a873-4420-8131-e6f1bcfd2fe2": {
+          "type": "item_banner",
+          "name": "Banner Vetlife (missing page)",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__vetlife_b82e51ef-0bbb-4055-a91a-fe96573a0dc0.png",
+            "banner_url": "shopify://collections",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "4ea042c1-cfed-493c-8120-da5e5876c9df": {
+          "type": "item_banner",
+          "name": "Banner Nutre Cat",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__nutrecat_e9336c14-5e12-4a11-8ad3-2009acd6c2d6.png",
+            "banner_url": "shopify://collections/nutrecat",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "81cfb1fa-7893-4270-b7f7-60378fa2f7f0": {
+          "type": "item_banner",
+          "name": "Banner Chunky",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__chunky_8e5ab056-7f95-46af-a159-003aab538e15.png",
+            "banner_url": "shopify://collections/chunky",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "88917c73-6dd1-4b0b-87ea-6ed8d64876e4": {
+          "type": "item_banner",
+          "name": "Banner Diamonds",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__diamond_Mesa_de_trabajo_1_copia_12e9f1f4-529a-4fdc-a50a-c710dd60256f.png",
+            "banner_url": "shopify://collections/diamond-naturals",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "5d2d3f1c-6ab1-4628-a8b6-cf5501959265": {
+          "type": "item_banner",
+          "name": "Banner Pedigree",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__pedigree_73200a4f-0d52-466d-a889-f3d2ba3e652a.png",
+            "banner_url": "shopify://collections/pedigree",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "item_banner_TjkJRk": {
+          "type": "item_banner",
+          "name": "Banner Proplan",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__proplan_f7ea7978-d4fd-4662-8a76-cc07f7cef5c5.png",
+            "banner_url": "shopify://collections/pro-plan",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "item_banner_jRYWD9": {
+          "type": "item_banner",
+          "name": "Banner Taste of the Wild",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__tasteofthewild_9b8ffc60-1d85-466a-926c-58f501fbfe4a.png",
+            "banner_url": "shopify://collections/taste-of-the-wild",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "item_banner_hpkkPB": {
+          "type": "item_banner",
+          "name": "Banner Fancy Feast",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__fancyfeast_06957e43-09aa-456d-b9d5-183234e5a56f.png",
+            "banner_url": "shopify://collections/fancy-feast",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "item_banner_mKcGhc": {
+          "type": "item_banner",
+          "name": "Banner Whiskas",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__whiskas-01.svg",
+            "banner_url": "shopify://collections/whiskas",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "item_banner_xbdpTR": {
+          "type": "item_banner",
+          "name": "Banner Royal Canin",
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__royalcanin.png",
+            "banner_url": "shopify://collections/royal-canin",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "item_banner_3EhYFJ": {
+          "type": "item_banner",
+          "name": "Banner Purina One",
+          "disabled": true,
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__Purina_One_PP.webp",
+            "banner_url": "shopify://collections/purina-one",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "item_banner_LzbhaD": {
+          "type": "item_banner",
+          "name": "Banner Gatsy",
+          "disabled": true,
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__Purina_Gatsy_PP.webp",
+            "banner_url": "shopify://collections/gatsy",
+            "banner_heading": "Gatsy",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        },
+        "item_banner_PJBxNt": {
+          "type": "item_banner",
+          "name": "Banner Cat Chow",
+          "disabled": true,
+          "settings": {
+            "banner_image": "shopify://shop_images/Brands_logo__Purina_Cat_Chow_PP.webp",
+            "banner_url": "shopify://collections/cat-chow",
+            "banner_heading": "",
+            "banner_description": "",
+            "button_text": "",
+            "banner_width": "20%"
+          }
+        }
+      },
+      "block_order": [
+        "template--17215929254161__a375a0d2-7047-4e46-a489-1ffd6a9c1992-167635864808a9aff5-0",
+        "65655cda-f993-486b-8643-f65aca656f1f",
+        "c0c60678-f846-4578-9873-528784f444cd",
+        "8d40a9b4-e565-4a21-9de2-fbe092e83bed",
+        "3302e417-f532-4229-86a5-f4cd109bdf25",
+        "951d24d3-a873-4420-8131-e6f1bcfd2fe2",
+        "4ea042c1-cfed-493c-8120-da5e5876c9df",
+        "81cfb1fa-7893-4270-b7f7-60378fa2f7f0",
+        "88917c73-6dd1-4b0b-87ea-6ed8d64876e4",
+        "5d2d3f1c-6ab1-4628-a8b6-cf5501959265",
+        "item_banner_TjkJRk",
+        "item_banner_jRYWD9",
+        "item_banner_hpkkPB",
+        "item_banner_mKcGhc",
+        "item_banner_xbdpTR",
+        "item_banner_3EhYFJ",
+        "item_banner_LzbhaD",
+        "item_banner_PJBxNt"
+      ],
+      "name": "La Mejores marca del mercado",
+      "settings": {
+        "enable_block_title": "1",
+        "block_title": "Las Mejores marcas del mercado",
+        "block_description": "",
+        "button_text": "",
+        "button_url": "",
+        "custom_class": "our-partners"
+      }
+    },
+    "6c3db92e-ff70-4791-9afb-ed6049d279e5": {
+      "type": "bs-latest-blog",
+      "settings": {
+        "enable_block_title": "1",
+        "block_title": "Lee nuestras últimas publicaciones",
+        "block_description": "",
+        "button_text": "",
+        "button_url": "",
+        "block_type": "1",
+        "list_blog": "news",
+        "enable_published_at": "0",
+        "enable_short_description": "0",
+        "enable_author": "0",
+        "enable_blog_category": "1",
+        "readmore_text": "Leer más",
+        "grid_columns": "3",
+        "nav": "1",
+        "dots": "0",
+        "loop": "0",
+        "auto_play": "0",
+        "margin": "30",
+        "screen_1": "3",
+        "screen_2": "3",
+        "screen_3": "3",
+        "screen_4": "3",
+        "screen_5": "3",
+        "screen_6": "2",
+        "screen_7": "2",
+        "screen_8": "1",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "dfddd41c-ce25-4a47-a869-51eca9da24f5",
+    "a2bd907d-8bed-449c-9f57-f70110046a79",
+    "62830f1c-dd61-4c5f-9352-0d0d2748d767",
+    "bs_banner_image_X8G6d4",
+    "4fbdc7f7-c71e-4382-a74c-d7c6782189b5",
+    "1748026266d3937cd7",
+    "15a6feae-cd05-489b-8393-581b6a42ad06",
+    "5f660125-f4db-4ad5-8675-44d1dd09f434",
+    "rich_text_x7jy8x",
+    "custom_liquid_8EwazC",
+    "bs_grid_product_kzL6n7",
+    "95c32d75-2af3-4907-894a-74c8c6ad2589",
+    "41f574b6-40bb-4f29-a708-9c941f400073",
+    "a375a0d2-7047-4e46-a489-1ffd6a9c1992",
+    "6c3db92e-ff70-4791-9afb-ed6049d279e5"
+  ]
+}

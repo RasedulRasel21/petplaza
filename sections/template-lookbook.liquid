@@ -1,0 +1,324 @@
+{% case section.settings.product_per_row %}
+  {% when '2' %}
+      {%- assign grid_item_width = 'col-xl-6 col-lg-4 col-md-4 col-6' -%}}
+  {% when '3' %}
+      {%- assign grid_item_width = 'col-xl-4 col-lg-4 col-md-4 col-6' -%}
+  {% when '4' %}
+    {%- assign grid_item_width = 'col-xl-3 col-lg-4 col-md-4 col-6' -%}
+{% endcase %}
+{% include 'breadcrumb' %}
+<div class="page-lookbook">
+  <div class="container">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <div class="row">
+        {% for block in section.blocks %}
+        {% case block.type %}
+        {% when 'banner' %}        
+        <div class="image-lookbook {{ grid_item_width }}">
+            {% if block.settings.image1 != blank %}
+            <img class="img-responsive" alt="{{ block.settings.image1 | default: shop.name }}" src="{{ block.settings.image1 | img_url: 'master' }}" />
+            {% else %}
+            <img class="img-responsive" alt="{{ shop.name }}" src="//via.placeholder.com/384x630" />                                                              
+            {% endif %} 
+            {% if block.settings.show1 %}
+            <div class="point point1"  style="position: absolute; left:{{ block.settings.left1 }}%; top:{{ block.settings.top1 }}%;"> 
+              {% assign product = all_products[block.settings.prd1] %}
+              {% if block.settings.show1 != blank %}
+              <div class="border-price">
+                <a href="{{ product.url | within: collection }}" class="number">1</a>
+              </div>
+              {% endif %}
+              <div class="product-hot {{ block.settings.position_product1 }}">
+                <div class="product-layout">
+                  {% if product != blank %}
+                  {% include 'product-look-book' %}
+                  {% else %}
+                  <div class="product-item clearfix no-product">
+                    <a href="#" class="product-img">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </a>
+                    <div class="product-info">
+                      <div class="price">
+                        <span class="price-new"> $100.00 </span>
+                      </div>
+                      <div class="product-name">Product's Demo {{ forloop.index }}</div>
+
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endif %} 
+          
+            {% if  block.settings.show2 %}
+            <div class="point point2"  style="position: absolute; left:{{ block.settings.left2 }}%; top:{{ block.settings.top2 }}%;"> 
+              {% assign product = all_products[block.settings.prd2] %}
+              {% if block.settings.show2 != blank %}
+              <div class="border-price">
+                <a href="{{ product.url | within: collection }}" class="number">2</a>
+              </div>
+              {% endif %}
+              <div class="product-hot {{ block.settings.position_product2 }}">
+                <div class="product-layout">
+                  {% if product != blank %}
+                  {% include 'product-look-book' %}
+                  {% else %}
+                  <div class="product-item clearfix no-product">
+                    <a href="#" class="product-img">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </a>
+                    <div class="product-info">
+                      <div class="price">
+                        <span class="price-new"> $100.00 </span>
+                      </div>
+                      <div class="product-name">Product's Demo {{ forloop.index }}</div>
+
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+
+            </div>
+            {% endif %} 
+          
+            {% if block.settings.show3 %}
+            <div class="point point3"  style="position: absolute; left:{{ block.settings.left3 }}%; top:{{ block.settings.top3 }}%;"> 
+              {% assign product = all_products[block.settings.prd3] %}
+              {% if block.settings.show3 != blank %}
+              <div class="border-price">
+                <a href="{{ product.url | within: collection }}" class="number">3</a>
+              </div>
+              {% endif %}
+
+              <div class="product-hot {{ block.settings.position_product3 }}">
+                <div class="product-layout">
+                  {% if product != blank %}
+                  {% include 'product-look-book' %}
+                  {% else %}
+                  <div class="product-item clearfix no-product">
+                    <a href="#" class="product-img">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </a>
+                    <div class="product-info">
+                      <div class="price">
+                        <span class="price-new"> $100.00 </span>
+                      </div>
+                      <div class="product-name">Product's Demo {{ forloop.index }}</div>
+
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+
+
+            </div>
+            {% endif %}      
+        </div>
+        {% endcase %}
+        {% endfor %} 
+      </div>
+  </div>
+</div>
+{% schema %}
+  {
+  "name": "Lookbook Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Lookbook Page Settings"
+    },
+    {
+      "type": "select",
+      "id": "product_per_row",
+      "label": "Products per row",
+      "default": "3",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+	}
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Lookbook Product",
+      "settings": [
+        {
+          "label": "Image Banner",
+          "type": "image_picker",
+          "id": "image1"
+        },
+        {
+          "type": "checkbox",
+          "id": "show1",
+          "label": "Show product 1",
+          "default":true
+        },
+        {
+          "type": "header",
+          "content": "Product 1 Settings"
+        },
+        {
+          "type": "product",
+          "id": "prd1",
+          "label": "Select product 1"
+        },
+        {
+          "type": "text",
+          "id": "left1",
+          "label": "Padding left(%)",
+          "default":"52"
+        },
+        {
+          "type": "text",
+          "id": "top1",
+          "label": "Padding Top(%)",
+          "default":"13"
+        },
+        {
+          "type": "select",
+          "id": "position_product1",
+          "label": "Position Block Product",
+          "default": "bottom",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Product 2 Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show2",
+          "label": "Show product 2",
+          "default":false
+        },
+        {
+          "type": "product",
+          "id": "prd2",
+          "label": "Select product 2"
+        },
+        {
+          "type": "text",
+          "id": "left2",
+          "label": "Padding left(%)",
+          "default":"75"
+        },
+        {
+          "type": "text",
+          "id": "top2",
+          "label": "Padding Top(%)",
+          "default":"46"
+        },
+		{
+          "type": "select",
+          "id": "position_product2",
+          "label": "Position Block Product",
+          "default": "right",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Product 3 Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show3",
+          "label": "Show product 3",
+          "default":false
+        },
+        {
+          "type": "product",
+          "id": "prd3",
+          "label": "Select product 3"
+        },
+        {
+          "type": "text",
+          "id": "left3",
+          "label": "Padding left(%)",
+          "default":"29"
+        },
+        {
+          "type": "text",
+          "id": "top3",
+          "label": "Padding Top(%)",
+          "default":"64"
+        },
+		{
+          "type": "select",
+          "id": "position_product3",
+          "label": "Position Block Product",
+          "default": "top",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

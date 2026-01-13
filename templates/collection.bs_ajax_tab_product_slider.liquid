@@ -1,0 +1,29 @@
+{%- layout none -%}
+
+{%- if canonical_url contains 'style=' -%}
+  {%- assign paginate = canonical_url | split: 'style=' -%}
+  {%- assign last = paginate | last -%}
+  {%- assign last = last | split: '+' -%}
+  {%- assign style = last[0] -%}
+{%- endif -%}
+
+{% assign imageSize = '350x350' %}
+
+{%- capture min_html -%}
+
+<div class="tab-collection-product collection-{{ collection.id }}">
+  {% if collection.products.size > 0 %}
+    <div class="product-grid">
+      <div class="owl-carousel owl-theme">
+        {% for product in collection.products %}
+          {% render 'product-card-grid', product: product, imageSize: imageSize %}
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+  {% endif %}
+</div>
+{%- endcapture -%}
+
+{{ min_html | strip_newlines }}

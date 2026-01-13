@@ -1,0 +1,113 @@
+<!-- Bottom Block 1 -->
+{% if block.settings.bottom_block_1_enable == '1' %}
+    <div class="megamenu-column bottom-block" style="width: {{ block.settings.bottom_block_1_width }}">
+        {% if block.settings.bottom_block_1_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.bottom_block_1_image_url }}">
+            <img src="{{ block.settings.bottom_block_1_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.bottom_block_1_text != blank %}
+        <div class="block-text">
+            {{ block.settings.bottom_block_1_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+<!-- Bottom Block 2 -->
+{% if block.settings.bottom_block_2_enable == '1' %}
+<div class="megamenu-column bottom-block" style="width: {{ block.settings.bottom_block_2_width }}">
+    {% if block.settings.bottom_block_2_image != blank %}
+    <div class="block-image">
+        <a href="{{ block.settings.bottom_block_2_image_url }}">
+        <img src="{{ block.settings.bottom_block_2_image | image_url: width: 1500 }}"/>
+        </a>
+    </div>
+    {% endif %}
+    
+    {% if block.settings.bottom_block_2_text != blank %}
+    <div class="block-text">
+        {{ block.settings.bottom_block_2_text }}
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+
+<!-- Bottom Block 3 -->
+{% if block.settings.bottom_block_3_enable == '1' %}
+    <div class="megamenu-column bottom-block" style="width: {{ block.settings.bottom_block_3_width }}">
+        {% if block.settings.bottom_block_3_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.bottom_block_3_image_url }}">
+            <img src="{{ block.settings.bottom_block_3_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.bottom_block_3_text != blank %}
+        <div class="block-text">
+            {{ block.settings.bottom_block_3_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+<!-- Bottom Block 4 -->
+{% if block.settings.bottom_block_4_enable == '1' %}
+    <div class="megamenu-column bottom-block" style="width: {{ block.settings.bottom_block_4_width }}">
+        {% if block.settings.bottom_block_4_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.bottom_block_4_image_url }}">
+            <img src="{{ block.settings.bottom_block_4_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.bottom_block_4_text != blank %}
+        <div class="block-text">
+            {{ block.settings.bottom_block_4_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+<!-- Bottom Block 5 -->
+{% if block.settings.bottom_block_5_enable == '1' %}
+    <div class="megamenu-column bottom-block" style="width: {{ block.settings.bottom_block_5_width }}">
+        {% if block.settings.bottom_block_5_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.bottom_block_5_image_url }}">
+            <img src="{{ block.settings.bottom_block_5_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.bottom_block_5_text != blank %}
+        <div class="block-text">
+            {{ block.settings.bottom_block_5_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+<!-- Bottom Block 6 -->
+{% if block.settings.bottom_block_6_enable == '1' %}
+    <div class="megamenu-column bottom-block" style="width: {{ block.settings.bottom_block_6_width }}">
+        {% if block.settings.bottom_block_6_image != blank %}
+        <div class="block-image">
+            <a href="{{ block.settings.bottom_block_6_image_url }}">
+            <img src="{{ block.settings.bottom_block_6_image | image_url: width: 1500 }}"/>
+            </a>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.bottom_block_6_text != blank %}
+        <div class="block-text">
+            {{ block.settings.bottom_block_6_text }}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}

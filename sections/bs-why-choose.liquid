@@ -1,0 +1,130 @@
+<style>
+  .whychoose{
+    background-image: url('{% if section.settings.background_image != blank %}{{ section.settings.background_image | image_url }}{% else %} //via.placeholder.com/1920x583 {% endif %}');
+    background-position: center;
+    background-size: cover;
+  }
+  @media (max-width: 767px) {
+    .whychoose{ background-position: 0 0; }
+  }
+  </style>
+    <div class="whychoose {{ section.settings.custom_class }}">
+      <div class="container">
+        <div class="block block-whychoose">
+          <div class="block-title">
+            <div class="title-content">
+              <strong>{{ section.settings.block_title }}</strong>
+    
+              {% if section.settings.block_description != blank %}
+                <div class="block-description">
+                  {{ section.settings.block_description }}
+                </div>
+              {% endif %}
+            </div>
+    
+            {% if section.settings.button_text != blank %}
+              <a class="link-button block-button" href="{{ section.settings.button_url.url }}">
+                {{ section.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+    
+          <div class="block-content clearfix">
+            <ul class="why-chosse-items">
+              {% assign time = 0 %}
+              {% for block in section.blocks %}
+                {% assign time = time | plus: 0.3 %}
+                <li class="item">
+                  <div class="why-content wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="{{time}}s">
+                    <div class="why-title" >
+                      {{ block.settings.why_choose_title }}
+                    </div>
+      
+                    <div class="why-description">
+                      {{ block.settings.why_choose_description }}
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {% schema %}
+    {
+      "name": "BS - Why Choose",
+      "tag": "section",
+      "class": "section",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background image"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Block title",
+          "default": "Why Choose Us?"
+        },
+        {
+          "type": "richtext",
+          "id": "block_description",
+          "label": "Short description"
+        },
+        {
+          "type": "header",
+          "content": "Block button"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Text",
+          "default": "Make An Appointment",
+          "info":"Empty to disable"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "custom_class",
+          "label": "Custom class"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "item_why_choose",
+          "name": "Item",
+    
+          "settings": [
+            {
+              "type": "text",
+              "id": "why_choose_title",
+              "label": "Text"
+            },
+            {
+              "type": "richtext",
+              "id": "why_choose_description",
+              "label": "Description"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "BS - Why Choose",
+          "blocks": [
+            {
+              "type": "item_why_choose"
+            }
+          ]
+        }
+      ]
+    }
+    {% endschema %}
+    

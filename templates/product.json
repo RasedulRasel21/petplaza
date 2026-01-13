@@ -1,0 +1,187 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "bs-product",
+      "blocks": {
+        "a86853f7-7163-499c-b241-6922cd57bcdd": {
+          "type": "title",
+          "settings": {}
+        },
+        "141a34e7-999e-4da7-8174-086549dce629": {
+          "type": "reviews",
+          "name": "Reseñas",
+          "settings": {}
+        },
+        "e895515e-6556-4fd7-b676-a24acda4e126": {
+          "type": "price",
+          "settings": {}
+        },
+        "9efcd2d4-57de-4325-b24d-abc176aba988": {
+          "type": "text",
+          "settings": {
+            "text": "El cálculo de los costos de envío se realiza durante el proceso de pago. Si estás en área de Medellín o en el Valle de Aburrá, selecciona 'Entrega local'. Para el resto de Colombia, selecciona 'Envío'.",
+            "text_style": "body"
+          }
+        },
+        "adccf05e-2c30-4850-8679-e427ff1e883c": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "essential_trust_badges_app_block_AA8VR3": {
+          "type": "shopify://apps/essential-trust-badges/blocks/app-block/0ff65b25-07e1-408e-950f-f54dd3d1751b",
+          "settings": {
+            "banner_display": "all",
+            "banner_id": "55e1e6ea-3301-4c9a-8648-d456325cb5a4"
+          }
+        },
+        "judge_me_reviews_review_snippet_widget_UQrrUF": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_snippet_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "91eb4ce4-c859-4679-bafe-6149907e16a7": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "judge_me_reviews_preview_badge_GHJjjc": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "upsell_by_amp_embedded_product_J6rWPQ": {
+          "type": "shopify://apps/upsell-by-amp/blocks/embedded-product/04a7ddf7-3a4c-4228-9a44-33ba2380f058",
+          "settings": {
+            "override_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "a86853f7-7163-499c-b241-6922cd57bcdd",
+        "141a34e7-999e-4da7-8174-086549dce629",
+        "e895515e-6556-4fd7-b676-a24acda4e126",
+        "9efcd2d4-57de-4325-b24d-abc176aba988",
+        "adccf05e-2c30-4850-8679-e427ff1e883c",
+        "essential_trust_badges_app_block_AA8VR3",
+        "judge_me_reviews_review_snippet_widget_UQrrUF",
+        "91eb4ce4-c859-4679-bafe-6149907e16a7",
+        "judge_me_reviews_preview_badge_GHJjjc",
+        "upsell_by_amp_embedded_product_J6rWPQ"
+      ],
+      "custom_css": [
+        ".product-options-bottom .product-form__cart-submit:hover {background: var(--theme-primary-color) !important;}",
+        ".product-form__item .product-form__item--submit > button {height: 48px !important;}",
+        "@media only screen and (max-width: 768px) {.detail-bottom .nav-tabs {font-size: 10px !important; } .product-single .product__info-container .product-wrap .detail_category .category_content, .product-single .product__info-container .product-wrap .wrap__tag .hlist {flex-direction: column; gap: 5px !important; }}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "enable_video_looping": true,
+        "use_color_swatch": true,
+        "show_price_subtotal": false,
+        "show_quantity_selector": true,
+        "show_share_buttons": true,
+        "enable_simpAsk": true,
+        "show_category": true,
+        "show_tag": false,
+        "show_brand": true,
+        "pt_position": "bottom",
+        "pt_item": "4",
+        "product_tab_type": "protab_hozizoltal",
+        "product_tab1_enable": true,
+        "product_tab1_title": "Descripción",
+        "product_tab2_enable": true,
+        "product_tab2_title": "Detalles del producto",
+        "product_tab2_content": "",
+        "product_tab3_enable": false,
+        "product_tab3_title": "Condiciones de entrega y devolución",
+        "product_tab4_enable": true,
+        "product_tab4_title": "Reseñas",
+        "product_related_enable": true,
+        "product_related_title": "Productos relacionados",
+        "related_products_type": "collection",
+        "product_related_limit": "6",
+        "navigation": true,
+        "nav": "0",
+        "dots": "0",
+        "loop": "0",
+        "auto_play": "0",
+        "margin": "30",
+        "screen_1": 4,
+        "screen_2": 4,
+        "screen_3": 4,
+        "screen_4": 4,
+        "screen_5": 3,
+        "screen_6": 3,
+        "screen_7": 2,
+        "screen_8": 1
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "También te puede gustar esto",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": true,
+        "show_vendor": true
+      }
+    },
+    "175478598089a5a72f": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_cwzk8C": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_cwzk8C"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "176079482182f43428": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_4XadmP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_4XadmP"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "175478598089a5a72f",
+    "176079482182f43428"
+  ]
+}

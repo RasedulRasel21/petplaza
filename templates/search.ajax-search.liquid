@@ -1,0 +1,60 @@
+{%- layout none -%}
+
+<div class="container">
+  {%- if search.performed and search.results.size > 0 -%}
+    {% paginate search.results by 16 %}
+      <div class="template-search__results">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="search-column-result search-products">
+              <div class="search-title">
+                <strong>{{ 'templates.text.products' | t }}</strong>
+                <a href="/search?q={{ search.terms }}&type=product">{{ 'sections.collection_list.view_all' | t }}</a>
+              </div>
+
+              <div class="search-content-result">
+                <div class="product-grid grid-search-popup">
+                  {%- for product in search.results -%}
+                    {%- case product.object_type -%}
+                      {%- when 'product' -%}
+                        {% render 'product-card-grid', product: product %}
+                    {%- endcase -%}
+                  {%- endfor -%}
+                </div>
+
+                <div class="search-no-result">
+                  {{ 'templates.search.no_results_product' | t: terms: search.terms }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="search-column-result search-post">
+              <div class="search-title">
+                <strong>{{ 'templates.text.posts' | t }}</strong>
+                <a href="/search?q={{ search.terms }}&type=article">{{ 'sections.collection_list.view_all' | t }}</a>
+              </div>
+
+              <div class="search-content-result">
+                <ul class="list-post-result">
+                  {%- for item in search.results -%}
+                    {%- case item.object_type -%}
+                      {%- when 'article' -%}
+                        <li class="post-name">
+                          <a href="{{ item.url }}">{{ item.title }}</a>
+                        </li>
+                    {%- endcase -%}
+                  {%- endfor -%}
+                </ul>
+                <div class="search-no-result">
+                  {{ 'templates.search.no_results_post' | t: terms: search.terms }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endpaginate %}
+  {%- endif -%}
+</div>

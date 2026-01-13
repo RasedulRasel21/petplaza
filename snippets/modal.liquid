@@ -1,0 +1,240 @@
+<style>
+  #popup-cookie {
+    display: none;
+  }
+</style>
+<div class="model-popup {% if typeproduct == '1col' %} layout_scroll{% endif %}">
+  <!--   Popup error -->
+  <div class="error-popup popup_cart modal-pu">
+    <div class="popup_content">
+      <div class="container a-center">
+        <div class="popup_inner">
+          <a class="popup_close close-pu" href="#" title=""><i class="la la-remove"></i></a>
+          <div class="modal-header ">
+            <p class="cart-success-messages"> {{ 'cart.general.error' | t }}</p>
+          </div>
+
+          <div class="modal-body cart-popup-action">
+            <p class="ajax-error-message"></p>
+
+            <button class="btn btn-dark close-pu"><span class="">{{ 'cart.general.return' | t }}</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="popup_bg">&nbsp;</div>
+    </div>
+  </div>
+
+  <!--   Popup Cart -->
+  <div class="popup_cart bg_1 modal-pu pu-cart">
+    <div class="popup_content">
+      <div class="container a-center">
+        <div class="popup_inner">
+          <a class="popup_close close-pu" href="#" title=""><i class="la la-remove"></i></a>
+          <div class="modal-header ">
+            <p class="cart-success-messages"> {{ 'cart.general.cart_success' | t }}</p>
+          </div>
+          <div class="modal-body ">
+            <div class="row">
+              <div class="col-lg-9 col-md-6 col-sm-12 cart-popup-left">
+                <div class="product-image col-lg-6">
+                  <img alt="" src="{{ 'ajax-loader.gif' | asset_url }}" />
+                </div>
+
+                <div class="cart-popup-info col-lg-6">
+                  <h3 class="product-name"></h3>
+                  <p class="product-type"><span class="label-quantity"> {{ 'products.product.type' | t }}:</span>  <span class="product-type--value">1</span>	</p>
+                  <p class="cart-price-total price"><span class="price-total">1</span> x <span class="price-new"> $00.00</span>  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-12 cart-popup-right">
+
+                <div class="cart-popup-action">
+                  {% comment %}<button class="btn btn-danger" onclick="window.location='/checkout'">{{'cart.general.checkout' | t }}</button>{% endcomment %}
+
+                  <div class="cart-popup-imgbottom">
+
+                    {{ 'layout.cart.title_subtotal' | t }}
+
+                    <span class="previewCartCheckout-price">$00.00</span>				
+
+                    <p class="cart-popup-total" data-itemTotal="{{ 'layout.cart.items_total' | t }}"> </p>
+
+                  </div>
+                  <a href="#" class="btn btn-dark close-pu">{{'cart.general.continue_shopping' | t }}</a>
+                  <button class="btn btn-dark" onclick="window.location='/cart'">{{'cart.general.view_cart' | t }}</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup_bg">&nbsp;</div>
+    </div>
+  </div>
+  <!-- Social Fixed -->
+  {%- assign social_facebook = settings.social_facebook_link -%} {%- assign social_twitter = settings.social_twitter_link -%} {%- assign social_google = settings.social_google_link -%} {%- assign social_pinterest = settings.social_pinterest_link -%} {%-
+    assign social_instartam = settings.social_instagram_link -%} {% if settings.fixed_social %}
+  <div class="socials-wrap {{ settings.position }} hidden-sm hidden-xs" style="top: {{ settings.position_top }}px">
+    <ul>
+      {% if settings.social_facebook_link != blank %}
+      <li class="li-social facebook-social">
+        <a title="Facebook" href="{{ social_facebook }}" target="_blank"> 
+          <span class="fa fa-facebook icon-social"></span>
+        </a>
+      </li>
+      {% endif %} {% if settings.social_twitter_link != blank %}
+      <li class="li-social twitter-social">
+        <a title="Twitter" href="{{ social_twitter }}" target="_blank"> 
+          <span class="fa fa-twitter icon-social"></span>
+        </a>
+      </li>
+      {% endif %} {% if settings.social_google_link != blank %}
+      <li class="li-social google-social">
+        <a title="Google+" href="{{ social_google }}" target="_blank"> 
+          <span class="fa fa-google-plus icon-social"></span>
+        </a>
+      </li>
+      {% endif %} {% if settings.social_pinterest_link != blank %}
+      <li class="li-social pinterest-social">
+        <a title="Pinterest" href="{{ social_pinterest }}" target="_blank"> 
+          <span class="fa fa-pinterest icon-social"></span>
+        </a>
+      </li>
+      {% endif %} {% if settings.social_instagram_link != blank %}
+      <li class="li-social instagram-social">
+        <a title="Instagram" href="{{ social_instagram }}" target="_blank"> 
+          <span class="fa fa-instagram icon-social"></span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endif %}
+  <!--   Loading Icon -->
+  <div class="bs-loading" style="display: none;"></div>
+
+</div>
+<div class="fixed-bottom-left">
+  {% if settings.dis_pay_page %}
+<a class="buy-demo d-none d-md-block" href="{{ pages[settings.pay_page].content }}">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 415.441 415.441" fill="#81b441" xml:space="preserve">      <path d="M324.63,22.533C135.173,226.428,80.309,371.638,80.309,371.638c41.149,47.743,111.28,43.72,111.28,43.72       c73.921,2.31,119.192-43.522,119.192-43.522c91.861-92.516,80.549-355.302,80.549-355.302      C372.769-23.891,324.63,22.533,324.63,22.533z"></path>     <path d="M32.369,181.983c0,0-28.983,57.964,18.859,155.495L178.367,58.01C176.916,58.538,63.691,98.037,32.369,181.983z"></path>  </svg> <span><strong>Buy Now</strong></span>
+</a>
+  {% endif %}
+ <div id="popup-cookie"> 
+    <div class="block-cookies">
+      <div class="des">
+        La configuración de cookies de este sitio web está configurada para permitir todas las cookies y así ofrecerle la mejor experiencia. Haga clic en "Aceptar cookies" para continuar usando el sitio.
+      </div>
+
+      <div class="group-action-links">
+        <a target="_blank" href="https://policies.google.com/" class="privacy-link">Política de privacidad</a>
+        <button id="accept-cookie" onclick="handleAccept()">Aceptar cookies</button>
+        <button id="decline-cookie" onclick="handleDecline()">Rechazar</button>
+      </div>
+    </div>   
+  </div>
+</div>
+<script>
+ /*jQuery(document).ready(function($) {
+    $(window).load(function () {
+      var accept_cookie = getCookieAccept("showNoti");
+      if (accept_cookie != '') {
+        $('#popup-cookie').hide();
+        return;
+      }
+      else {
+        $('#popup-cookie').show();
+
+        $("#accept-cookie").click(function() {
+          checkCookieAccept();
+          $('#popup-cookie').hide(1000);
+        })
+
+        function unsetCookieAccept(name) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+      }
+    });
+  });
+
+  
+  function setCookieAccept(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+  }
+
+  function getCookieAccept(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1);
+      if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+  }
+
+  function checkCookieAccept() {
+    var accept_cookie = getCookieAccept("showNoti");
+    if(accept_cookie == ""){
+      setCookieAccept("showNoti", "Accept Cookie", 365 );
+    }
+  }
+  
+ function closePopup() {
+  $('#popup-cookie').hide();
+} */
+function getBannerEl() {
+  return document.getElementById('popup-cookie');
+}
+
+function hideBanner(res) {
+  getBannerEl().style.display = 'none';
+}
+
+function showBanner() {
+ getBannerEl().style.display = 'block';
+}
+
+function handleAccept(e) {
+  window.Shopify.customerPrivacy.setTrackingConsent(true, hideBanner);
+
+  document.addEventListener('trackingConsentAccepted',function() {
+    console.log('trackingConsentAccepted event fired');
+  });
+}
+
+function handleDecline() {
+  window.Shopify.customerPrivacy.setTrackingConsent(false,hideBanner);
+}
+
+function initCookieBanner() {
+  //const userCanBeTracked = window.Shopify.customerPrivacy.userCanBeTracked();
+  const userTrackingConsent = window.Shopify.customerPrivacy.getTrackingConsent();
+//console.log(userTrackingConsent);
+  //if(!userCanBeTracked && userTrackingConsent === 'no_interaction') {
+  if(userTrackingConsent === 'no_interaction') {
+    showBanner();
+  }
+}
+
+window.Shopify.loadFeatures([
+  {
+    name: 'consent-tracking-api',
+    version: '0.1',
+  }
+],
+function(error) {
+  if (error) {
+    throw error;
+  }
+
+  initCookieBanner();
+});
+
+</script>

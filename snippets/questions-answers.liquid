@@ -1,0 +1,90 @@
+{% if template contains 'product' %}
+
+{%  assign simpQuestionCounter = 0 %}
+  {% for field in product.metafields.simpquestions %}
+    {% assign simpQuestionCounter = simpQuestionCounter | plus: 1 %}
+    {% endfor %}
+<div class="simpAsk-container" id="simpAskQuestion">
+  <div class="simpAsk-title-container">
+    <h2>
+    	{% if shop.metafields.simptranslation.qa_title %}
+          {{ shop.metafields.simptranslation.qa_title }}
+        {% else %}
+      	  QUESTIONS & ANSWERS
+        {% endif %}
+    </h2>
+    {% if simpQuestionCounter > 0 %}
+    	<a href="javascript:void(0)" class="simpAskQuestionForm-btnOpen btn button"><i class="demo-icon icon-simp-help-circled"></i> 
+    		{% if shop.metafields.simptranslation.qa_ask_btn %}
+				{{ shop.metafields.simptranslation.qa_ask_btn }}
+			{% else %}
+				Ask a Question
+			{% endif %}
+    	</a>
+    {% endif %}
+    <div class="simpAsk-error-msg" style="display:none"></div>
+    <div class="simpAsk-success-msg" style="display:none"></div>
+  </div>
+    {% if simpQuestionCounter == 0 %}
+  <div class="simp-ask-question-header">
+        <div class="simpAskQuestion-Qcontent">
+          <h3>
+          	{% if shop.metafields.simptranslation.qa_have_question %}
+            	{{ shop.metafields.simptranslation.qa_have_question }}
+            {% else %}
+            	Have a Question?
+            {% endif %}
+          </h3>
+          <p>
+            {% if shop.metafields.simptranslation.qa_first_question %}
+            	{{ shop.metafields.simptranslation.qa_first_question }}
+            {% else %}
+            	Be the first to ask a question about this.	
+            {% endif %} 
+           </p>
+        </div>
+    	<a href="javascript:void(0)" class="simpAskQuestionForm-btnOpen btn button"><i class="demo-icon icon-simp-help-circled"></i>
+          
+          {% if shop.metafields.simptranslation.qa_ask_btn %}
+				{{ shop.metafields.simptranslation.qa_ask_btn }}
+			{% else %}
+				Ask a Question
+			{% endif %}
+    	</a>
+  </div>
+ 	 {% endif %}
+  <div class="simpAskForm-container" id="simpAskForm_container" style="display:none;">
+    <form method="post" id="askQuestion" class="">
+		<input type="hidden" value="contact" name="form_type"/>
+          <div class="">
+                  <input type="hidden" name="simpAskAction" value="askQuestion">
+                  <input type="hidden" id="simpAskProductId" name="simpAskProductId" value="{{ product.id }}">
+                  <textarea required="" style="resize:none; min-height:86px;" name="question" placeholder="{% if shop.metafields.simptranslation.qa_question_ph %}{{ shop.metafields.simptranslation.qa_question_ph }}{% else %}Type your question here{% endif %}" title="Please Enter Your Question."></textarea>
+            	  <input required="" type="text" name="name" value="" placeholder="{% if shop.metafields.simptranslation.qa_name_ph %}{{ shop.metafields.simptranslation.qa_name_ph }}{% else %}Your Name{% endif %}" title="Please Enter Your Name here." class="simpAsk-fifty-percent fleft">
+                  <input required="" type="email" name="email" value="" placeholder="{% if shop.metafields.simptranslation.qa_email_ph %}{{ shop.metafields.simptranslation.qa_email_ph }}{% else %}Your Email{% endif %}" title="Please Enter Your Email." class="simpAsk-fifty-percent fright">
+           <div class="simpAskSubmitForm">
+            <input class="button button-primary btn btn-primary btn btn--fill btn--color" type="submit" name="submit" value="{% if shop.metafields.simptranslation.qa_submit %} {{ shop.metafields.simptranslation.qa_submit }}{% else %} Submit{% endif %}">
+             <a href="javascript:void(0)" class="simpAskForm-cancel-btn button">{% if shop.metafields.simptranslation.qa_cancel%}{{ shop.metafields.simptranslation.qa_cancel }}{% else %}Cancel{% endif %}</a>
+            <div class="clear"></div>
+          </div>
+          </div>
+     </form>
+  </div>
+  {% if simpQuestionCounter > 0 %}
+    <div class="accordionSimpQA">
+    <ul>
+      {%  assign j = 1 %}
+      {% for field in product.metafields.simpquestions reversed %}
+      {% assign questionData = field | last | split: '***SIMP***' %}
+      <li>
+         <p class="simpQuestionHolder">{{questionData[0]}}</p>
+         <p class="simpAnswerHolder">{{questionData[1]}}</p>
+      </li>
+          {% assign j = j | plus: 1 %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+<script type="text/javascript" src="https://cdn.simpshopifyapps.com/question-answer-app/lib.min.js?shop={{shop.permanent_domain}}&hashKey=45ae3a92ecd33aa9fe1db2e324c1fb00"></script>
+{% endif %}

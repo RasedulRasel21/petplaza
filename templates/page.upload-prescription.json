@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "form": {
+      "type": "template-upload-prescription",
+      "settings": {
+        "display_google_map": true,
+        "google_map_code": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6787.11846816203!2d-74.00106388051138!3d40.73303806053912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2zVGjDoG5oIHBo4buRIE5ldyBZb3JrLCBUaeG7g3UgYmFuZyBOZXcgWW9yaw!5e0!3m2!1svi!2s!4v1498454043100\"></iframe>",
+        "title_info": "CONTACT US",
+        "contact_text_desc": "Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat sed do eiusmod tempor",
+        "title_1": "",
+        "des_1": "123 Suspendis mattis, Sollicitudin District, Accums Fringilla",
+        "icon_1": "map-marker",
+        "title_2": "Email:",
+        "des_2": "support@demo.com",
+        "icon_2": "envelope",
+        "title_3": "Phone:",
+        "des_3": "0123456789",
+        "icon_3": "phone",
+        "title_form": "SEND YOUR COMMENTS"
+      }
+    }
+  },
+  "order": [
+    "form"
+  ]
+}

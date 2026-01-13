@@ -1,0 +1,21 @@
+<div class="bzotech-buy">
+  {% if settings.enable_buynow_button == '1' %}
+    <div class="buy-btn buy-button">
+      <a href="{{ settings.buynow_link }}">
+        <span>
+          <span>Buy Now</span>
+        </span>
+      </a>
+    </div>
+  {% endif %}
+
+  {% if settings.enable_support_button == '1' %}
+    <div class="buy-btn support-button">
+      <a href="{{ settings.support_link }}">
+        <span>
+          <span>Support</span>
+        </span>
+      </a>
+    </div>
+  {% endif %}
+</div>
